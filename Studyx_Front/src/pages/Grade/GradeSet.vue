@@ -1,10 +1,10 @@
 <template>
-  <div>登录</div>
+  <div>成绩设置</div>
 </template>
 
 <script>
 export default {
-  name: "Login"
+  name: "GradeSet"
 }
 </script>
 
