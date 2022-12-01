@@ -24,14 +24,10 @@ export default new Router({
   mode: 'history',
   routes: [{
       path: '/',
-      redirect: 'login'
+      redirect: 'index'
     },
     //测试界面，输入exerciseno,返回对应的exercise数据
-    {
-      path: '/test',
-      name: 'Test',
-      component: Test
-    },
+
       //login
     {
       path: '/login',
@@ -63,7 +59,11 @@ export default new Router({
           meta: {
             name: '欢迎页面'
           },
-
+        },
+        {
+          path: '/test',
+          name: 'Test',
+          component: Test
         },
       ]
     }

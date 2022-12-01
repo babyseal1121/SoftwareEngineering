@@ -51,9 +51,9 @@ export default {
               path: '/index/menu21'
             },
             {
-              name: '二级菜单2-2',
+              name: 'test',
               icon: 'el-icon-star-off',
-              path: '/index/menu22'
+              path: '/test'
             }
           ]
         },
