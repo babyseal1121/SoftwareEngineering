@@ -21,13 +21,15 @@ Vue.prototype.$axios = axios
 axios.defaults.baseURL ='http://localhost:8443/api'
 
 import '@/assets/global.css';
+import store from './store/store.js';
+import './mock/mock.js';
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   render: h => h(App),
   router,
-  // store,
+  store,
   components: {
     App
   },

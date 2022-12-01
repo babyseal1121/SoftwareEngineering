@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/GeneralCom/Footer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/GeneralCom/Main.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/GeneralCom/Tabs.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mock/mock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/vuex/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/vuex/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/General.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/General.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Test.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Test.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +59,7 @@
       <updated>1669816109388</updated>
       <workItem from="1669816111027" duration="10000" />
       <workItem from="1669864968128" duration="4061000" />
-      <workItem from="1669892325532" duration="3699000" />
+      <workItem from="1669892325532" duration="6887000" />
     </task>
     <servers />
   </component>

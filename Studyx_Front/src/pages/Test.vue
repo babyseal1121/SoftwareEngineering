@@ -46,7 +46,7 @@ export default {
     test () {
       var _this=this;
       this.$axios
-          .get('/test?no=1',{
+          .get('/test?no='+this.keywords,{
           })
           .then(successResponse => {
             if (successResponse.data.code === 200) {

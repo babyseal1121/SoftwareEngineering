@@ -4,7 +4,10 @@
       <el-header><Header/></el-header>
       <el-container>
         <el-aside width="200px"><Aside/></el-aside>
-        <el-main><router-view></router-view></el-main>
+        <el-main>
+          <Tabs/>
+          <router-view></router-view>
+        </el-main>
       </el-container>
       <el-footer><Footer/></el-footer>
     </el-container>
@@ -16,9 +19,10 @@ import Header from "../components/GeneralCom/Header";
 import Main from "../components/GeneralCom/Main";
 import Footer from "../components/GeneralCom/Footer";
 import Aside from "../components/GeneralCom/Aside";
+import Tabs from "../components/GeneralCom/Tabs";
 export default {
   name: "General",
-  components:{Header,Main,Footer,Aside},
+  components:{Header,Main,Footer,Aside,Tabs},
   props: {
     msg: String
   },
