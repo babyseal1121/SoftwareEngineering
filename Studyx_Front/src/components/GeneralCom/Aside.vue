@@ -9,8 +9,8 @@
       <el-submenu :index="item.path" v-for="item in menu_data" :key="item.name">
         <template slot="title"><i :class="item.icon"></i><span>{{item.name}}</span></template>
 
-        <el-menu-item :index="child.path" v-for="child in item.child" :key="child.name" >
-          <i :class="child.icon" @click="selectMenu(item)"></i>{{child.name}}
+        <el-menu-item :index="child.path" v-for="child in item.child" :key="child.name" @click="selectMenu(child)" >
+          <i :class="child.icon" ></i>{{child.name}}
         </el-menu-item>
       </el-submenu>
     </el-menu>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
+    <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab()">
       <el-tab-pane
           :key="item.name"
           v-for="item in editableTabs"
@@ -17,7 +17,9 @@
 export default {
   name: "Tabs.vue",
   data() {
-    return {}
+    return {
+
+    }
   },
   computed:{
     editableTabsValue:{
@@ -35,7 +37,9 @@ export default {
       set(val){
         this.$store.state.editableTabs=val;
       }
-    },
+    }
+  },
+  methods: {
     removeTab(targetName) {
       let tabs = this.editableTabs;
       let activeName = this.editableTabsValue;
@@ -49,9 +53,11 @@ export default {
           }
         });
       }
+
       this.editableTabsValue = activeName;
       this.editableTabs = tabs.filter(tab => tab.name !== targetName);
     }
+
   },
 }
 </script>
