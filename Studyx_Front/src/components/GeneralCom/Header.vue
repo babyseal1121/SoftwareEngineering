@@ -12,7 +12,7 @@
           </div>
         </div>
         <el-dropdown-menu slot="dropdown" style="margin-top:-30px;margin-left: -40px;">
-          <el-dropdown-item><i class="el-icon-info"></i>个人中心</el-dropdown-item>
+          <el-dropdown-item icon="el-icon-s-home" @click.native="mypage()" >个人中心</el-dropdown-item>
           <el-dropdown-item><i class="el-icon-switch-button"></i>退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -27,6 +27,13 @@ export default {
     return {
       avatar: require('@/assets/image/touxiang.jpg')
     }
+  },
+  methods:{
+    mypage() {
+      this.$router.push({
+        path: "/myinfo",
+      });
+    },
   }
 }
 </script>
