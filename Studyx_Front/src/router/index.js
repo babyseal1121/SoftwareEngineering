@@ -9,6 +9,8 @@ import Login from '@/pages/Login/Login'
 //总页面
 import General from '@/pages/General'
 
+//欢迎页面
+import Index from '@/pages/Index'
 //成绩管理
 import GradeSet from '@/pages/Grade/GradeSet'
 //个人信息
@@ -40,6 +42,7 @@ export default new Router({
       path: '/',
       name: 'General',
       component: General,
+      redirect: '/index',
       children: [{
         path: '/myinfo',
         component: MyInfo,
@@ -53,6 +56,14 @@ export default new Router({
           meta: {
             name: '成绩权重设置'
           }
+        },
+        {
+          path: '/index',
+          component: Index,
+          meta: {
+            name: '欢迎页面'
+          },
+
         },
       ]
     }

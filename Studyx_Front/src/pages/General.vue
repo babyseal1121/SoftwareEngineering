@@ -1,21 +1,24 @@
 <template>
-  <div>
-    <el-container>
+  <div class="container">
+    <el-container style="height: 100%">
       <el-header><Header/></el-header>
       <el-container>
-        <el-aside width="200px">Aside</el-aside>
-        <el-main>Main</el-main>
+        <el-aside width="200px"><Aside/></el-aside>
+        <el-main><router-view></router-view></el-main>
       </el-container>
-      <el-footer>Footer</el-footer>
+      <el-footer><Footer/></el-footer>
     </el-container>
   </div>
 </template>
 
 <script>
 import Header from "../components/GeneralCom/Header";
+import Main from "../components/GeneralCom/Main";
+import Footer from "../components/GeneralCom/Footer";
+import Aside from "../components/GeneralCom/Aside";
 export default {
   name: "General",
-  components:{Header},
+  components:{Header,Main,Footer,Aside},
   props: {
     msg: String
   },
@@ -46,5 +49,12 @@ export default {
 
 body > .el-container {
   margin-bottom: 40px;
+}
+.container{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height:100%;
 }
 </style>

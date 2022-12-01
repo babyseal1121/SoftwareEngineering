@@ -1,7 +1,7 @@
 <template>
   <header>
     <div>
-      <h1 style="margin-top: -10px;color: #425049;font-size:30px; ">欢迎来到编程界明世隐的Vue项目</h1>
+      <h1 style="margin-top: -10px;color: #425049;font-size:30px; ">欢迎来到网上实验教学系统</h1>
     </div>
     <div class="opt-wrapper">
       <el-dropdown :hide-on-click="false">
