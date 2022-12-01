@@ -30,7 +30,10 @@ public class ExerciseController {
     @GetMapping("/api/test")
     public Result test(@RequestParam String no){
         Exercise exercise=exerciseDAO.findByExerciseno(no);
-        return new Result(400,"搜索成功",exercise);
+        if(null!=exercise)
+            return new Result(200,"搜索成功",exercise);
+        else
+            return new Result(400,"搜索失败",no);
 
     }
 }
