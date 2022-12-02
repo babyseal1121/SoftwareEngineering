@@ -40,7 +40,7 @@ export default {
     }
   },
   methods: {
-    clickTab(target){
+    clickTab1(target){
       this.$router.push({name:target.name})
     },
 

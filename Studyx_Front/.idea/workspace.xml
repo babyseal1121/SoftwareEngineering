@@ -2,20 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/GetVerification.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/LoadingButton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/ProjectCard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/RecommandCard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/SentButton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/VerificationCode.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Login/Recommand.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/User/UserList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/router/getAsyncRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Tabs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Tabs.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/GetVerification.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/LoadingButton.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/ProjectCard.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/RecommandCard.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/SentButton.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/VerificationCode.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Recommand.vue" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +47,7 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/Desktop/github/DatawareHouse/DatawareHouse_front",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -64,7 +61,7 @@
       <updated>1669816109388</updated>
       <workItem from="1669816111027" duration="10000" />
       <workItem from="1669864968128" duration="4061000" />
-      <workItem from="1669892325532" duration="13374000" />
+      <workItem from="1669892325532" duration="13822000" />
     </task>
     <servers />
   </component>
