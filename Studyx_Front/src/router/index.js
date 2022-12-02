@@ -18,6 +18,8 @@ import MyInfo from '@/pages/MyInfo/MyInfo'
 //测试界面
 import Test from '@/pages/Test'
 
+//用户信息列表
+import UserList from '@/pages/User/UserList'
 
 //有children的都是分成模块的
 export default new Router({
@@ -47,7 +49,7 @@ export default new Router({
         }
       },
         {
-          path: '/gradeset',
+          path: '/成绩权重设置',
           component: GradeSet,
           meta: {
             name: '成绩权重设置'
@@ -65,7 +67,13 @@ export default new Router({
           name: 'Test',
           component: Test
         },
+        {
+          path: '/用户信息列表',
+          name: 'UserList',
+          component: UserList
+        },
       ]
     }
   ]
 })
+

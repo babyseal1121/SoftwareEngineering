@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/GetVerification.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/LoadingButton.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/ProjectCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/RecommandCard.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/SentButton.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LoginCom/VerificationCode.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Login/Recommand.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/User/UserList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/router/getAsyncRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Tabs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Tabs.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,12 +36,15 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2IGm5LoRmAErvazDV9x1PgAyUm0" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -49,7 +64,7 @@
       <updated>1669816109388</updated>
       <workItem from="1669816111027" duration="10000" />
       <workItem from="1669864968128" duration="4061000" />
-      <workItem from="1669892325532" duration="9623000" />
+      <workItem from="1669892325532" duration="13374000" />
     </task>
     <servers />
   </component>
@@ -66,5 +81,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

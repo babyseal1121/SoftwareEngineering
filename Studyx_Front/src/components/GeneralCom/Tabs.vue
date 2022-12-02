@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
+    <el-tabs v-model="editableTabsValue" type="card" @tab-click="clickTab" closable @tab-remove="removeTab">
       <el-tab-pane
           :key="item.name"
           v-for="item in editableTabs"
@@ -40,6 +40,10 @@ export default {
     }
   },
   methods: {
+    clickTab(target){
+      this.$router.push({name:target.name})
+    },
+
     removeTab(targetName) {
       let tabs = this.editableTabs;
       let activeName = this.editableTabsValue;
@@ -57,6 +61,7 @@ export default {
         this.editableTabsValue = activeName;
         this.editableTabs = tabs.filter(tab => tab.name !== targetName);
       }
+     // this.$router.push({name:activeName})
     }
 
   },

@@ -73,7 +73,24 @@ export default {
               path: '/myinfo'
             }
           ]
-        }
+        },
+        {
+          name: '查看用户列表',
+          icon: 'el-icon-location',
+          path: '/user',
+          child: [
+            {
+              name: '用户信息列表',
+              icon: 'el-icon-user',
+              path: '/用户信息列表'
+            },
+            {
+              name: '二级菜单1-2',
+              icon: 'el-icon-user-solid',
+              path: '/index/menu12'
+            }
+          ]
+        },
       ]
     }
   },
@@ -88,6 +105,7 @@ export default {
       console.log("选择：",key, keyPath);
     },
     selectMenu(item){
+      this.$router.push({path:'/'+item.name})
       this.$store.commit("addEditableTabs",item);
     },
   },
