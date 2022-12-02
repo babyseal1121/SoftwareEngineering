@@ -47,4 +47,25 @@ public class LoginController {
             return new Result(400,"搜索失败",no);
 
     }
+
+    @CrossOrigin
+    @PostMapping(value = "/api/login")
+    public Result login(@RequestBody User requestUser, HttpSession session) {
+        String mail = requestUser.getMail();//获取用户输入的mail
+        mail = HtmlUtils.htmlEscape(mail);
+        //先得到salt加密的值
+        User user = userService.getByMail(mail);//根据mail从数据库中查找对应的user
+        if (null == user) {//查不到
+            return ResultFactory.buildFailResult("账号不存在");
+        }
+        else {
+            //看密码是否对应
+            if(user.getPassword().equals(requestUser.getPassword()))
+                return new Result(200,"搜索成功",user);
+            else{
+                return new Result(400,"密码错误",mail);
+            }
+        }
+    }
+
 }
