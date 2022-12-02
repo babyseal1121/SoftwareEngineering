@@ -29,7 +29,7 @@ public class UserController {
     @CrossOrigin
     @GetMapping("/api/user/login")
     public Result test(@RequestParam int id){
-        User user=userDAO.findByUserid(id);
+        User user=userDAO.getById(id);
         if(null!=user)
             return new Result(200,"搜索成功",user);
         else

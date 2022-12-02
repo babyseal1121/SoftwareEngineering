@@ -441,6 +441,7 @@ export default {
     },
     //用户登录，或者管理员登录
     Login() {
+
       var _this = this;
       var loginv = this.loginForm.validCode;
       var v = this.validCode;

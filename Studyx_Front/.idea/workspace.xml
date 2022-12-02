@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Tabs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Tabs.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/GetVerification.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/LoadingButton.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/ProjectCard.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/RecommandCard.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/SentButton.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginCom/VerificationCode.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login/Recommand.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +58,7 @@
       <updated>1669816109388</updated>
       <workItem from="1669816111027" duration="10000" />
       <workItem from="1669864968128" duration="4061000" />
-      <workItem from="1669892325532" duration="13822000" />
+      <workItem from="1669892325532" duration="15417000" />
     </task>
     <servers />
   </component>

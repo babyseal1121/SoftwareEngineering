@@ -13,21 +13,21 @@ import javax.persistence.*;
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class User {
     @Id
-    @Column(name = "userid")
-    Integer userid;
+    @Column(name = "id")
+    Integer id;
     Integer level;
     Integer status;
 
     String username;
     String password;
-    String email;
+    String mail;
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getLevel() {
@@ -62,11 +62,11 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }

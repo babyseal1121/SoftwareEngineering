@@ -4,5 +4,6 @@ import com.example.studyx.pojo.Exercise;
 import com.example.studyx.pojo.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserDAO extends JpaRepository<User,Integer>{
-    User findByUserid(Integer id);
+    User getById(Integer id);
+    User findByMail(String mail);
 }
