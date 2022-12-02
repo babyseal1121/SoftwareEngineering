@@ -51,21 +51,52 @@ public class LoginController {
     @CrossOrigin
     @PostMapping(value = "/api/login")
     public Result login(@RequestBody User requestUser, HttpSession session) {
-        String mail = requestUser.getMail();//获取用户输入的mail
+
+        String mail = requestUser.getMail();
         mail = HtmlUtils.htmlEscape(mail);
         //先得到salt加密的值
-        User user = userService.getByMail(mail);//根据mail从数据库中查找对应的user
-        if (null == user) {//查不到
+        User user = userService.getByMail(mail);
+        if (null == user) {
             return ResultFactory.buildFailResult("账号不存在");
         }
-        else {
-            //看密码是否对应
-            if(user.getPassword().equals(requestUser.getPassword()))
-                return new Result(200,"搜索成功",user);
-            else{
-                return new Result(400,"密码错误",mail);
-            }
+        String salt = user.getSalt();
+
+        //加密密码，和原来的做对比
+        String password = new SimpleHash("md5", requestUser.getPassword(), salt, 2).toString();
+        ;
+        System.out.println(password);
+        user = userService.get(mail, password);
+        if (null == user) {
+            return ResultFactory.buildFailResult("账号不存在");
+        } else {
+            session.setAttribute("user", user);
+            return ResultFactory.buildSuccessResult(mail);
         }
+    }
+
+    @CrossOrigin
+    @RequestMapping("/api/logout")
+    public void logout(HttpSession session) {
+        System.out.println("logout");
+        //session失效
+        if (session.getAttribute("user") != null)
+            session.removeAttribute("user");
+        if (session.getAttribute("admin") != null)
+            session.removeAttribute("admin");
+    }
+    @CrossOrigin
+    @PostMapping(value = "/api/findpassword")
+    public Result findpassword(@RequestBody User user) {
+        int status = userService.findpassword(user);
+        switch (status) {
+            case 0:
+                return ResultFactory.buildFailResult("邮箱或密码或用户名不能为空");
+            case 1:
+                return ResultFactory.buildSuccessResult("找回密码成功");
+            case 2:
+                return ResultFactory.buildFailResult("该邮箱未注册，请先注册");
+        }
+        return ResultFactory.buildFailResult("未知错误");
     }
 
 }

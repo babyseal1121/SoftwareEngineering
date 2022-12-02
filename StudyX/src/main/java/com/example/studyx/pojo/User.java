@@ -22,6 +22,16 @@ public class User {
     String password;
     String mail;
 
+    String salt;
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     public Integer getId() {
         return id;
     }

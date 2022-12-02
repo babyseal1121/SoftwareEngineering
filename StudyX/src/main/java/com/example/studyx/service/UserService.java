@@ -13,7 +13,78 @@ import org.springframework.web.util.HtmlUtils;
 public class UserService {
     @Autowired
     UserDAO userDAO;
+    public User getByName(String username) {
+        return userDAO.findByUsername(username);
+    }
     public User getByMail(String mail) {
         return userDAO.findByMail(mail);
+    }
+
+    public boolean isExist(String mail) {
+        User user = getByMail(mail);
+        return null!=user;
+    }
+
+    public User get(String mail, String password){
+        return userDAO.getByMailAndPassword(mail, password);
+    }
+
+    public void add(User user) {
+        userDAO.save(user);
+    }
+
+    public int register(User user) {
+        String mail = user.getMail();
+        String username = user.getUsername();
+        String password = user.getPassword();
+
+        mail = HtmlUtils.htmlEscape(mail);
+        user.setMail(mail);
+        user.setUsername(username);
+
+        if (mail.equals("") || password.equals("")||username.equals("")) {
+            return 0;
+        }
+        boolean exist = isExist(mail);
+
+        if (exist) {
+            return 2;
+        }
+        // 默认生成 16 位盐，干扰数据
+        String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+        int times = 2;
+        user.setSalt(salt);
+        String encodedPassword = new SimpleHash("md5", password, salt, times).toString();
+        user.setPassword(encodedPassword);
+        userDAO.save(user);
+        return 1;
+    }
+
+    public int findpassword(User user) {
+        String mail = user.getMail();
+        String password = user.getPassword();
+
+        mail = HtmlUtils.htmlEscape(mail);
+        user.setMail(mail);
+
+        if (mail.equals("") || password.equals("")) {
+            return 0;
+        }
+        boolean exist = isExist(mail);
+
+        if (!exist) {
+            return 2;
+        }
+        User user1=getByMail(mail);
+        user.setId(user1.getId());
+        // 默认生成 16 位盐，干扰数据
+        String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+        int times = 2;
+        user.setSalt(salt);
+        String encodedPassword = new SimpleHash("md5", password, salt, times).toString();
+        user.setPassword(encodedPassword);
+        user.setUsername(user1.getUsername());
+        userDAO.save(user);
+        return 1;
     }
 }
