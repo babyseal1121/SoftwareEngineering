@@ -1,21 +1,20 @@
 package com.example.studyx.pojo;
 
+import com.example.studyx.domain.MemberInExercisePK;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
+@IdClass(MemberInExercisePK.class)
 @Table(name = "memberinexercise")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class MemberInExercise {
@@ -24,6 +23,7 @@ public class MemberInExercise {
     @Column(name = "id")
     Integer id;
 
+    @Id
     @Column(name = "exerciseno")
     Integer exerciseno;
 

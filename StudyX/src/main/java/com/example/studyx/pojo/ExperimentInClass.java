@@ -1,21 +1,21 @@
 package com.example.studyx.pojo;
 
+import com.example.studyx.domain.ExperimentInClassPK;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
+//此处为复合主键需要主键实体类
+@IdClass(ExperimentInClassPK.class)
 @Table(name = "experimentinclass")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class ExperimentInClass {
@@ -24,6 +24,7 @@ public class ExperimentInClass {
     @Column(name = "experimentno")
     Integer experimentno;
 
+    @Id
     @Column(name = "experimentclassno")
     Integer experimentclassno;
 
