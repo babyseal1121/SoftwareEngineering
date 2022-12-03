@@ -24,7 +24,6 @@ public class MemberInExercise {
     @Column(name = "id")
     Integer id;
 
-    @Id
     @Column(name = "exerciseno")
     Integer exerciseno;
 

@@ -24,7 +24,6 @@ public class MemberInClass {
     @Column(name = "id")
     Integer id;
 
-    @Id
     @Column(name = "experimentclassno")
     Integer experimentclassno;
 

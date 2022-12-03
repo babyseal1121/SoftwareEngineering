@@ -24,7 +24,6 @@ public class ExperimentInClass {
     @Column(name = "experimentno")
     Integer experimentno;
 
-    @Id
     @Column(name = "experimentclassno")
     Integer experimentclassno;
 

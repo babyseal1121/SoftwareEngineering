@@ -16,31 +16,15 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "probleminexercise")
+@Table(name = "memberinexercise")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class ProblemInExercise {
-
-    @Id
-    @Column(name = "problemno")
-    Integer problemno;
 
     @Id
     @Column(name = "exerciseno")
     Integer exerciseno;
 
-    public Integer getProblemno() {
-        return problemno;
-    }
+    @Column(name = "problemno")
+    Integer problemno;
 
-    public void setProblemno(Integer problemno) {
-        this.problemno = problemno;
-    }
-
-    public Integer getExerciseno() {
-        return exerciseno;
-    }
-
-    public void setExerciseno(Integer exerciseno) {
-        this.exerciseno = exerciseno;
-    }
 }
