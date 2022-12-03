@@ -464,8 +464,13 @@ export default {
               // console.log(res.data)
               if (res.data.code == "200") {
                 _this.$myglobal.setnowmail = _this.loginForm.mail;
+                localStorage.setItem('token',res.data.token)
+                // 将登录名使用vuex传递到Home页面
+                this.$store.commit('handleUserName',res.data.result.username);
+                //将用户权限使用vuex传递到Home页面
+                this.$store.commit('handleLevel',res.data.result.level);
                 _this.$message.success({
-                  message: "登录成功！",
+                  message: "登录成功！"+res.data.result.username+"权限："+res.data.result.level,
                   duration: "500",
                 });
                 var that = _this;

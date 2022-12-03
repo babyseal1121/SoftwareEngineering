@@ -5,6 +5,7 @@
       <el-container>
         <el-aside width="200px"><Aside/></el-aside>
         <el-main>
+          您好，{{$store.getters.level}}
           <Tabs/>
           <router-view></router-view>
         </el-main>
@@ -20,12 +21,16 @@ import Main from "../components/GeneralCom/Main";
 import Footer from "../components/GeneralCom/Footer";
 import Aside from "../components/GeneralCom/Aside";
 import Tabs from "../components/GeneralCom/Tabs";
+import {calcRoutes} from "../router/index";
+
 export default {
   name: "General",
   components:{Header,Main,Footer,Aside,Tabs},
   props: {
     msg: String
   },
+  created(){calcRoutes()},
+
 
 }
 </script>

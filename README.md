@@ -5,6 +5,8 @@
 
 - 可以用postman软件来调试后端，后端对接端口8443
 
+- 登录测试号：907021907@qq.com password:123
+
 - 参考资料：https://blog.csdn.net/dkm123456/article/details/121912514  前端页面总体布局
 
 -参考资料：https://learner.blog.csdn.net/article/details/88926242    springboot+vue教程

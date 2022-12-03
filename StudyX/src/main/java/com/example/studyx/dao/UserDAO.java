@@ -5,6 +5,7 @@ import com.example.studyx.pojo.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 public interface UserDAO extends JpaRepository<User,Integer>{
     User getById(Integer id);
+    //User findById(Integer id);
     User findByMail(String mail);
 
     User findByUsername(String username);

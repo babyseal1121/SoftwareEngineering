@@ -18,7 +18,9 @@
 </template>
 
 <script>
+
 export default {
+
   name: "Aside",
   data() {
     return {
@@ -94,6 +96,7 @@ export default {
       ]
     }
   },
+
   methods: {
     handleOpen(key, keyPath) {
       console.log("打开：",key, keyPath);

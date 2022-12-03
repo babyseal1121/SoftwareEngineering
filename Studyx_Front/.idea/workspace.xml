@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/SMSCodeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/SMSCodeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Grade/GradeDisplay.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/General.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/General.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +46,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Desktop/github/DatawareHouse/DatawareHouse_front",
+    "last_opened_file_path": "D:/Desktop/se/SoftwareEngineering/StudyX",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
     "vue.rearranger.settings.migration": "true"
@@ -58,7 +62,8 @@
       <updated>1669816109388</updated>
       <workItem from="1669816111027" duration="10000" />
       <workItem from="1669864968128" duration="4061000" />
-      <workItem from="1669892325532" duration="18151000" />
+      <workItem from="1669892325532" duration="18750000" />
+      <workItem from="1670025953016" duration="4349000" />
     </task>
     <servers />
   </component>

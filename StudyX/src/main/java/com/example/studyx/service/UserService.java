@@ -20,6 +20,10 @@ public class UserService {
         return userDAO.findByMail(mail);
     }
 
+    public User getById(Integer id) {
+        return userDAO.getById(id);
+    }
+
     public boolean isExist(String mail) {
         User user = getByMail(mail);
         return null!=user;

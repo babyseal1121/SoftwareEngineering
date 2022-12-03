@@ -37,6 +37,17 @@ public class LoginController {
     }
 
     @CrossOrigin
+    @PostMapping(value = "/api/level")
+    public Result getLevel(@RequestBody User user1){
+        //System.out.println(user1.getMail());
+        User user = userService.getByMail(user1.getMail());
+        if(null!=user)
+            return new Result(200,"搜索成功",user.getLevel());
+        else
+            return new Result(400,"搜索失败",user1.getMail());
+    }
+
+    @CrossOrigin
     @GetMapping("/api/test1")
     public Result test(@RequestParam String no){
         User user = userService.getByMail(no);
@@ -70,7 +81,7 @@ public class LoginController {
             return ResultFactory.buildFailResult("账号不存在");
         } else {
             session.setAttribute("user", user);
-            return ResultFactory.buildSuccessResult(mail);
+            return ResultFactory.buildSuccessResult(user);
         }
     }
 
