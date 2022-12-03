@@ -7,6 +7,16 @@
 
 - 登录测试号：907021907@qq.com password:123
 
+- 用户权限等级：
+ ```
+  level:0   管理员
+  level:1   责任教师
+  level:2   教师
+  level:3   助教
+  level:4   学生
+ 
+  ```
+
 - 参考资料：https://blog.csdn.net/dkm123456/article/details/121912514  前端页面总体布局
 
 -参考资料：https://learner.blog.csdn.net/article/details/88926242    springboot+vue教程
