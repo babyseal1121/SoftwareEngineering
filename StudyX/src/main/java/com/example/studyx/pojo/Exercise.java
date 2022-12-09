@@ -14,16 +14,16 @@ import javax.persistence.*;
 public class Exercise {
     @Id
     @Column(name = "exerciseno")
-    String exerciseno;
+    Integer exerciseno;
 
     String exercisestarttime;
     String exerciseendtime;
 
-    public String getExerciseno() {
+    public Integer getExerciseno() {
         return exerciseno;
     }
 
-    public void setExerciseno(String exerciseno) {
+    public void setExerciseno(Integer exerciseno) {
         this.exerciseno = exerciseno;
     }
 
