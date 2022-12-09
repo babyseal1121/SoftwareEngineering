@@ -22,12 +22,13 @@
             label="权限等级"
             width="150"
             :filters="[
-            { text: '管理员', value: '0' },
-            { text: '责任教师', value: '1' },
-            { text: '教师', value: '2' },
-            { text: '助教', value: '3' },
-            { text: '学生', value: '4' },
-            { text: '未激活', value: '5' },
+            { text: '管理员', value: '管理员' },
+            { text: '责任教师', value: '责任教师' },
+            { text: '教师', value: '教师' },
+            { text: '助教', value: '助教' },
+            { text: '学生', value: '学生' },
+            { text: '未激活', value: '未激活' },
+            { text: '未授权', value: '未授权' },
           ]"
             :filter-method="filterTag"
             filter-placement="bottom-end"
@@ -35,18 +36,20 @@
           <template slot-scope="scope">
             <el-tag
                 :type="
-                scope.row.level == '0'
+                scope.row.level == '责任教师'
                   ? ''
-                  : scope.row.level == '1'
+                  : scope.row.level == '教师'
                   ? 'success'
-                  : scope.row.level == '2'
+                  : scope.row.level == '管理员'
                   ? 'danger'
-                  : scope.row.level == '3'
-                  ? 'warning'
-                  : scope.row.level == '4'
-                  ? 'info'
-                  : scope.row.level == '5'
+                  : scope.row.level == '助教'
                   ? 'success'
+                  : scope.row.level == '学生'
+                  ? 'warning'
+                  : scope.row.level == '未激活'
+                  ? 'info'
+                  : scope.row.level == '未授权'
+                  ? 'info'
                   : 'primary'
               "
                 disable-transitions
@@ -58,12 +61,15 @@
           </el-table-column> -->
         <el-table-column label="操作按钮" width="200px">
           <template slot-scope="scope">
-            <el-button size="mini" @click="borrowcon(scope.$index, scope.row)"
-            >账号激活</el-button
+            <el-button size="mini"
+                       type="warning"
+                       @click="borrowcon(scope.$index, scope.row)"
+                       plain
+            >账号授权</el-button
             >
             <el-button
                 size="mini"
-                type="warning"
+
                 @click="returncon(scope.$index, scope.row)"
             >账号注销</el-button
             >
@@ -109,21 +115,21 @@ export default {
     },
     borrowcon(index, row) {
       var _this = this;
-      if (row.status != "申请中") {
+      if (row.status == "visit") {
         _this.$message({
           showClose: true,
-          message: "该借阅并未在申请中",
+          message: "该账号未激活，等待激活后授权",
           type: "warning",
         });
       } else {
         this.$axios.post("/changeborrow", {
           userid: row.userid,
           bookid: row.bookid,
-          status: "借阅中",
+          status: "授权中",
         });
         _this.$message({
           showClose: true,
-          message: "借阅成功",
+          message: "授权成功",
           type: "success",
         });
       }
@@ -131,10 +137,10 @@ export default {
     returncon(index, row) {
       var _this = this;
       console.log(index, row);
-      if (row.status != "归还中") {
+      if (row.level != "未激活") {
         _this.$message({
           showClose: true,
-          message: "该借阅并未在归还中",
+          message: "该账号未激活",
           type: "warning",
         });
       } else {

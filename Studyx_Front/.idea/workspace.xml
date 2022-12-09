@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/AdminCom/CategoryForm.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AdminCom/Contentfield.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AdminCom/Search.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AdminCom/Sidebar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AdminCom/Topnav.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/User/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/User/UserList.vue" afterDir="false" />
     </list>
@@ -63,7 +57,7 @@
       <workItem from="1669892325532" duration="18750000" />
       <workItem from="1670025953016" duration="11043000" />
       <workItem from="1670072062212" duration="2137000" />
-      <workItem from="1670579819363" duration="2188000" />
+      <workItem from="1670579819363" duration="3770000" />
     </task>
     <servers />
   </component>

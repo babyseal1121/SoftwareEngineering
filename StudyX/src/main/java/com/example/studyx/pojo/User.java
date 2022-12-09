@@ -16,8 +16,8 @@ public class User {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
-    Integer level;
-    Integer status;
+    String level;
+    String status;
 
     String username;
     String password;
@@ -41,19 +41,19 @@ public class User {
         this.id = id;
     }
 
-    public Integer getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
