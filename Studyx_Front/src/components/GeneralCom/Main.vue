@@ -1,8 +1,9 @@
 <template>
   <div>
-    <i class="el-icon-edit"></i>
-    <i class="el-icon-user"></i>
-    <el-button type="primary" class="el-icon-search">查询</el-button>
+    您好，{{$store.getters.username}}
+    <!-- <Tabs/>-->
+    <Tabs/>
+    <router-view></router-view>
   </div>
 </template>
 

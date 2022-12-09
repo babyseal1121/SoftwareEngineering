@@ -33,7 +33,7 @@ public class SMSCodeService {
     }
     public boolean send(String code,String mail) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("2083978036@qq.com");
+        message.setFrom("907021907@qq.com");
         message.setTo(mail);
         message.setSubject("it is a test for spring boot");
         message.setText("你好，验证码为："+code);

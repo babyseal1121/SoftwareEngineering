@@ -15,6 +15,7 @@ public class SMSCodeController {
     @PostMapping(value = "/api/sms")
     public String getCode(@RequestBody String mail){
         String code=smsCodeService.sendCodeToSMS("11111111111");
+
         //Map map = new HashMap();
         //map.put("code",code);
         System.out.println(mail);

@@ -5,9 +5,7 @@
       <el-container>
         <el-aside width="200px"><Aside/></el-aside>
         <el-main>
-          您好，{{$store.getters.level}}
-          <Tabs/>
-          <router-view></router-view>
+          <Main/>
         </el-main>
       </el-container>
       <el-footer><Footer/></el-footer>

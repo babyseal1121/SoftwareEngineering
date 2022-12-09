@@ -22,6 +22,8 @@ import Test from '@/pages/Test'
 //用户信息列表
 import UserList from '@/pages/User/UserList'
 
+//导入外部数据
+import navData from "@/utils/navData";
 const routes = [
   // 登录
   {
@@ -29,6 +31,7 @@ const routes = [
     component: Login,
     hide: true    // 不是菜单
   },
+
   // 布局
   {
     path: '/',
@@ -39,11 +42,38 @@ const routes = [
       {
         path: '/index',
         component: Index,
-      }
+      },
+      {
+        path: '/myinfo',
+        component: MyInfo,
+      },
+      {
+        path: '/index',
+        component: Index,
+      },
+      {
+        path: '/test',
+        component: Test,
+      },
+      {
+        path: '/gradeset',
+        component: GradeSet,
+      },
+      {
+        path: '/userlist',
+        component: UserList,
+      },
     ]
   },
 ]
 
+//动态生成路由
+navData.forEach(item=>{
+  routes.push({
+    path:item.path,
+    //component:item.component,
+  })
+})
 // 公共路由添加
 const router = new Router({
   mode: 'history',
