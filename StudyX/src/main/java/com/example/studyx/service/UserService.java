@@ -5,14 +5,22 @@ import com.example.studyx.pojo.User;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.HtmlUtils;
+
+import java.util.List;
 
 //对数据库操作的进一步封装
 @Service
 public class UserService {
     @Autowired
     UserDAO userDAO;
+
+    public List<User> list() {
+        //Sort sort = new Sort(Sort.Direction.DESC, "isbn");
+        return userDAO.findAll(Sort.by(Sort.Direction.DESC, "id"));
+    }
     public User getByName(String username) {
         return userDAO.findByUsername(username);
     }

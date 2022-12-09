@@ -3,7 +3,7 @@ package com.example.studyx.controller;
 import com.example.studyx.dao.UserDAO;
 import com.example.studyx.pojo.Exercise;
 import com.example.studyx.pojo.User;
-
+import com.example.studyx.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.example.studyx.result.Result;
@@ -26,6 +26,9 @@ public class UserController {
     @Autowired
     UserDAO userDAO;
 
+    @Autowired
+    UserService userService;
+
     @CrossOrigin
     @GetMapping("/api/user/login")
     public Result test(@RequestParam int id){
@@ -35,5 +38,11 @@ public class UserController {
         else
             return new Result(400,"搜索失败",id);
 
+    }
+
+    @CrossOrigin
+    @GetMapping("/api/userlist")
+    public Result listUsers() {
+        return ResultFactory.buildSuccessResult(userService.list());
     }
 }

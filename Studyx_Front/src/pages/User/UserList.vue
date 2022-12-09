@@ -1,64 +1,185 @@
 <template>
-  <div>
-    <div id="button_div">
-      <el-input id='search-input' size='small' label-width='100px'
-                prefix-icon="el-icon-search" placeholder="请输入名字..."
-                v-model='search_name'>
-
-      </el-input>
-      <el-button type="primary" size='small' class="search-button" @click="search">搜索</el-button>
+  <Contentfield>
+    <div>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/admin' }">管理员页面</el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/admin/adminborrow">用户管理</a></el-breadcrumb-item>
+      </el-breadcrumb>
+      <el-table
+          :data="tableData"
+          style="width: 100%"
+          :default-sort="{ prop: 'date', order: 'descending' }"
+      >
+        <el-table-column prop="id" label="用户id" sortable width="150">
+        </el-table-column>
+        <el-table-column prop="username" label="用户名" width="120">
+        </el-table-column>
+        <el-table-column prop="mail" label="电子邮箱"  width="200">
+        </el-table-column>
+        <el-table-column prop="status" label="账号状态" width="150"> </el-table-column>
+        <el-table-column
+            prop="level"
+            label="权限等级"
+            width="150"
+            :filters="[
+            { text: '管理员', value: '0' },
+            { text: '责任教师', value: '1' },
+            { text: '教师', value: '2' },
+            { text: '助教', value: '3' },
+            { text: '学生', value: '4' },
+            { text: '未激活', value: '5' },
+          ]"
+            :filter-method="filterTag"
+            filter-placement="bottom-end"
+        >
+          <template slot-scope="scope">
+            <el-tag
+                :type="
+                scope.row.level == '0'
+                  ? ''
+                  : scope.row.level == '1'
+                  ? 'success'
+                  : scope.row.level == '2'
+                  ? 'danger'
+                  : scope.row.level == '3'
+                  ? 'warning'
+                  : scope.row.level == '4'
+                  ? 'info'
+                  : scope.row.level == '5'
+                  ? 'success'
+                  : 'primary'
+              "
+                disable-transitions
+            >{{ scope.row.level }}</el-tag
+            >
+          </template>
+        </el-table-column>
+        <!-- <el-table-column prop="status" label="当前状态" width="150">
+          </el-table-column> -->
+        <el-table-column label="操作按钮" width="200px">
+          <template slot-scope="scope">
+            <el-button size="mini" @click="borrowcon(scope.$index, scope.row)"
+            >账号激活</el-button
+            >
+            <el-button
+                size="mini"
+                type="warning"
+                @click="returncon(scope.$index, scope.row)"
+            >账号注销</el-button
+            >
+          </template>
+        </el-table-column>
+      </el-table>
     </div>
-    <el-table
-        :data="userData"
-        style="width: 100%"
-        border
-        :default-sort = "{prop: 'date', order: 'descending'}"
-        header-row-class-name="table_header_class"
-        height="360"
-    >
-      <el-table-column
-          type="index"
-          width="50">
-      </el-table-column>
-      <el-table-column
-          prop="date"
-          label="日期"
-          sortable
-          width="180">
-      </el-table-column>
-      <el-table-column
-          prop="name"
-          label="姓名"
-          sortable
-          width="180">
-      </el-table-column>
-      <el-table-column
-          prop="address"
-          label="地址">
-      </el-table-column>
-      <el-table-column
-          prop="tag"
-          label="标签">
-        <template slot-scope="scope">
-          <el-tag
-              :type="scope.row.tag === '家' ? 'primary' : 'success'"
-              disable-transitions>{{scope.row.tag}}</el-tag>
-        </template>
-      </el-table-column>`
-    </el-table>
-
-  </div>
+  </Contentfield>
 </template>
 
 <script>
+//import Bookcard from "@/components/MypageCom/MyBorrowCom/Bookcard.vue";
+import Contentfield from "@/components/AdminCom/Contentfield.vue";
 export default {
-  name: "UserList"
-}
+  components: { Contentfield,},
+  data() {
+    return {
+      id: "",
+      username: "",
+      level: "",
+      mail:"",
+      status:"",
+      tableData: [],
+    };
+  },
+  mounted() {
+    this.getdata();
+  },
+  methods: {
+    getdata() {
+      var _this = this
+      this.$axios
+          .get('/userlist')
+          .then(resp => {
+            if (resp && resp.data.code === 200) {
+              _this.tableData = resp.data.result
+              this.$message.success("共"+_this.tableData.length+"条");
+            }
+          })
+          .catch(failResponse => {
+            this.$message.error("数据发送失败");
+          })
+    },
+    borrowcon(index, row) {
+      var _this = this;
+      if (row.status != "申请中") {
+        _this.$message({
+          showClose: true,
+          message: "该借阅并未在申请中",
+          type: "warning",
+        });
+      } else {
+        this.$axios.post("/changeborrow", {
+          userid: row.userid,
+          bookid: row.bookid,
+          status: "借阅中",
+        });
+        _this.$message({
+          showClose: true,
+          message: "借阅成功",
+          type: "success",
+        });
+      }
+    },
+    returncon(index, row) {
+      var _this = this;
+      console.log(index, row);
+      if (row.status != "归还中") {
+        _this.$message({
+          showClose: true,
+          message: "该借阅并未在归还中",
+          type: "warning",
+        });
+      } else {
+        this.$axios.post("/changeborrow", {
+          userid: row.userid,
+          bookid: row.bookid,
+          status: "已结束",
+        });
+        _this.$message({
+          showClose: true,
+          message: "归还成功",
+          type: "success",
+        });
+      }
+    },
+    filterTag(value, row) {
+      return row.status === value;
+    },
+    viewbookdetail(index, row) {
+      let _this = this;
+      this.$axios({
+        url: "/user/getbookdetail",
+        method: "post",
+        data: row.bookid,
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      }).then((res) => {
+        console.log(res);
+        _this.donatetime = res.data.donatetime;
+        _this.isbn = res.data.isbn;
+        _this.userid = res.data.userid;
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>
-/deep/ .table_header_class th{
-  background-color: #91a8b1 !important;
-  color:white;
+.rwd-table {
+  position: absolute;
+  top: 150px;
+  left: 300px;
+}
+.el-breadcrumb {
+  height: 50px;
 }
 </style>
