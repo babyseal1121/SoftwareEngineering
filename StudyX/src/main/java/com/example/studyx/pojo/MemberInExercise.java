@@ -20,8 +20,8 @@ import javax.persistence.*;
 public class MemberInExercise {
 
     @Id
-    @Column(name = "id")
-    Integer id;
+    @Column(name = "userid")
+    Integer userid;
 
     @Id
     @Column(name = "exerciseno")
@@ -31,12 +31,13 @@ public class MemberInExercise {
 
     Integer exercisegrade;
 
-    public Integer getId() {
-        return id;
+
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public Integer getExerciseno() {
@@ -62,4 +63,5 @@ public class MemberInExercise {
     public void setExercisegrade(Integer exercisegrade) {
         this.exercisegrade = exercisegrade;
     }
+
 }

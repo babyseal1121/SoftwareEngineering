@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Builder
 @Entity
 @IdClass(ProblemInExercisePK.class)
-@Table(name = "memberinexercise")
+@Table(name = "probleminexercise")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class ProblemInExercise {
 

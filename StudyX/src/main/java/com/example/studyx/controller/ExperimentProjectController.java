@@ -50,7 +50,7 @@ public class ExperimentProjectController {
 
     //获取单个实验的详细内容
     @CrossOrigin
-    @PostMapping(value = "/api/experiment/getexperiment")
+    @GetMapping(value = "/api/experiment/getexperiment")
     public Result GetExperiment(@RequestParam int experimentNo){
 
         try {
@@ -69,7 +69,7 @@ public class ExperimentProjectController {
 
     //获取所有实验项目的简易信息列表
     @CrossOrigin
-    @PostMapping(value = "/api/experiment/getexperimentlist")
+    @GetMapping(value = "/api/experiment/getexperimentlist")
     public Result GetExperimentList(){
 
         try {

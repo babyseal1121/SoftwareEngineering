@@ -48,7 +48,7 @@ public class ExerciseProblemController {
 
     //获取一个实验项目的题目列表
     @CrossOrigin
-    @PostMapping(value = "/api/exercise/getexperimentproblemlist")
+    @GetMapping(value = "/api/exercise/getexperimentproblemlist")
     public Result getExperimentProblemList(@RequestParam int experimentNo){
 
         try {
@@ -64,7 +64,7 @@ public class ExerciseProblemController {
 
     //获取一个实验题目
     @CrossOrigin
-    @PostMapping(value = "/api/exercise/getexperimentproblem")
+    @GetMapping(value = "/api/exercise/getexperimentproblem")
     public Result getExperimentProblem(@RequestParam int problemNo){
 
         try {

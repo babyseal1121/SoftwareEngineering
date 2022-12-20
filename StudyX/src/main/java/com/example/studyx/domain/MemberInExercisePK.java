@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class MemberInExercisePK implements Serializable {
-    Integer id;
+    Integer userid;
 
     Integer exerciseno;
 }

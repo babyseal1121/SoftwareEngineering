@@ -51,7 +51,7 @@ public class ExperimentReportController {
 
     //获取实验报告的详细内容
     @CrossOrigin
-    @PostMapping(value = "/api/experiment/getexperimentreport")
+    @GetMapping(value = "/api/experiment/getexperimentreport")
     public Result getExperimentReport(@RequestParam int experimentReportNo){
 
         try {
@@ -67,7 +67,7 @@ public class ExperimentReportController {
 
     //获取学生本人的所有实验报告
     @CrossOrigin
-    @PostMapping(value = "/api/experiment/getexperimentreportlist")
+    @GetMapping(value = "/api/experiment/getexperimentreportlist")
     public Result getExperimentReportList(@RequestParam int userId){
 
         try {

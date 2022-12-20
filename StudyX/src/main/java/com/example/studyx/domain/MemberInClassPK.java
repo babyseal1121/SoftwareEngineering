@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Data
 public class MemberInClassPK implements Serializable {
 
-    Integer id;
+    Integer userid;
 
     Integer experimentclassno;
 }
