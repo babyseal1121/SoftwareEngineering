@@ -2,10 +2,14 @@ package com.example.studyx.service;
 
 import com.example.studyx.dao.ExperimentClassDAO;
 import com.example.studyx.dao.ExperimentInClassDAO;
+import com.example.studyx.dao.ExperimentReportDAO;
 import com.example.studyx.dao.MemberInClassDAO;
 import com.example.studyx.domain.ExperimentClassInfo;
+import com.example.studyx.domain.ExperimentProjectSimpleInfo;
+import com.example.studyx.domain.ExperimentReportSimpleInfo;
 import com.example.studyx.pojo.ExperimentClass;
 import com.example.studyx.pojo.ExperimentInClass;
+import com.example.studyx.pojo.ExperimentReport;
 import com.example.studyx.pojo.MemberInClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +27,8 @@ public class ExperimentClassService {
     MemberInClassDAO memberInClassDAO;
     @Autowired
     ExperimentInClassDAO experimentInClassDAO;
+    @Autowired
+    private ExperimentReportDAO experimentReportDAO;
 
     //创建新的班级
     public void createExperimentClass(ExperimentClassInfo experimentClassInfo){
@@ -141,5 +147,34 @@ public class ExperimentClassService {
         MemberInClass member = memberInClassDAO.findByUserid(userId);
 
         return member.getExperimentclassno();
+    }
+
+    public List<ExperimentReportSimpleInfo> getClassExperimentReportList(int experimentClassNo){
+
+        //寻找班级内的所有人
+        List<MemberInClass> userList = memberInClassDAO.findByExperimentclassno(experimentClassNo);
+        int userListSize = userList.size();
+        //存储人员的报告的信息
+        List<ExperimentReportSimpleInfo> reportInfo = new ArrayList<>();
+
+
+        //获取人员的报告
+        for(int i = 0; i <userListSize; i++){
+
+            //获取一个人的所有报告
+            List<ExperimentReport> reportInfoIn = experimentReportDAO.findByUserid((userList.get(i)).getUserid());
+            int reportSize = reportInfoIn.size();
+            //转化为简易信息
+            List<ExperimentReportSimpleInfo> reportSimpleInfos = new ArrayList<>();
+            //提取每个人的信息
+            for(int m = 0; m < reportSize; m++){
+
+                reportSimpleInfos.add(new ExperimentReportSimpleInfo(reportInfoIn.get(m)));
+            }
+            //加入集合
+            reportInfo.addAll(reportSimpleInfos);
+        }
+
+        return reportInfo;
     }
 }

@@ -1,7 +1,9 @@
 package com.example.studyx.controller;
 
 import com.example.studyx.domain.ExperimentClassInfo;
+import com.example.studyx.domain.ExperimentReportSimpleInfo;
 import com.example.studyx.pojo.ExperimentClass;
+import com.example.studyx.pojo.ExperimentReport;
 import com.example.studyx.result.Result;
 import com.example.studyx.service.ExperimentClassService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -156,6 +158,22 @@ public class ExperimentClassController {
         catch (Exception e){
             System.out.println(e);
             return new Result(400,"failure", "所在班级查询失败");
+        }
+    }
+
+    //教师获取自己班级内的所有实验报告
+    @CrossOrigin
+    @GetMapping(value = "/api/experiment/getclassexperimentreportlist")
+    public Result getClassExperimentReportList(@RequestParam int experimentClassNo){
+
+        try {
+            List<ExperimentReportSimpleInfo> list = experimentClassService.getClassExperimentReportList(experimentClassNo);
+
+            return new Result(200,"success", list);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "所在班级所有报告查询失败");
         }
     }
 
