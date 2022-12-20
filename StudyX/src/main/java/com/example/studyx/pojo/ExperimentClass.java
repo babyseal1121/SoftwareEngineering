@@ -1,5 +1,6 @@
 package com.example.studyx.pojo;
 
+import com.example.studyx.domain.ExperimentClassInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,8 @@ public class ExperimentClass {
     String classstarttime;
 
     String experimentclassname;
+
+    int randkey;
 
     public Integer getExperimentclassno() {
         return experimentclassno;
@@ -58,5 +61,22 @@ public class ExperimentClass {
 
     public void setExperimentclassname(String experimentclassname) {
         this.experimentclassname = experimentclassname;
+    }
+
+    public int getRandkey() {
+        return randkey;
+    }
+
+    public void setRandkey(int randkey) {
+        this.randkey = randkey;
+    }
+
+    public ExperimentClass(ExperimentClassInfo experimentClassInfo, int randKey) {
+
+        experimentclassno = experimentClassInfo.getExperimentclassno();
+        teacheridnumber = experimentClassInfo.getTeacheridnumber();
+        classstarttime = experimentClassInfo.getClassstarttime();
+        experimentclassname = experimentClassInfo.getExperimentclassname();
+        randkey = randKey;
     }
 }
