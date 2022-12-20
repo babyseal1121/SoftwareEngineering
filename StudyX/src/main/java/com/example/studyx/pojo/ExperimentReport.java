@@ -16,17 +16,13 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "experimentclass")
+@Table(name = "experimentreport")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class ExperimentReport {
 
-    @Id
-    @Column(name = "experimentreportno")
-    Integer experimentreportno;
-
     Integer experimentno;
 
-    Integer id;
+    Integer userid;
 
     String username;
 
@@ -39,6 +35,12 @@ public class ExperimentReport {
     String experimentcomments;
 
     String experimentsubmissontime;
+
+    @Id
+    @Column(name = "experimentreportno")
+    Integer experimentreportno;
+
+    String experimentname;
 
     public Integer getExperimentreportno() {
         return experimentreportno;
@@ -56,12 +58,12 @@ public class ExperimentReport {
         this.experimentno = experimentno;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -110,5 +112,13 @@ public class ExperimentReport {
 
     public void setExperimentsubmissontime(String experimentsubmissontime) {
         this.experimentsubmissontime = experimentsubmissontime;
+    }
+
+    public String getExperimentname() {
+        return experimentname;
+    }
+
+    public void setExperimentname(String experimentname) {
+        this.experimentname = experimentname;
     }
 }

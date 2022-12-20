@@ -23,11 +23,11 @@ public class ExperimentProjectController {
         try {
             experimentProjectService.addExperimentProject(experimentProject);
 
-            return new Result(200,"加入新实验项目成功", "successful");
+            return new Result(200,"success", "加入新实验项目成功");
         }
         catch (Exception e){
 
-            return new Result(400,"加入新实验项目失败", "failure");
+            return new Result(400,"failure", "加入新实验项目失败");
         }
 
 
@@ -40,11 +40,11 @@ public class ExperimentProjectController {
         try {
             experimentProjectService.deleteExperimentProject(experimentNo);
 
-            return new Result(200,"删除实验项目成功", "successful");
+            return new Result(200,"success", "删除实验项目成功");
         }
         catch (Exception e){
 
-            return new Result(400,"删除实验项目失败", "failure");
+            return new Result(400,"failure", "删除实验项目失败");
         }
     }
 
@@ -57,13 +57,13 @@ public class ExperimentProjectController {
             ExperimentProject experimentProject =  experimentProjectService.getExperimentProjectById(experimentNo);
 
             if(null != experimentProject)
-                return new Result(200,"查询实验项目成功", experimentProject);
+                return new Result(200,"success", experimentProject);
             else
-                return new Result(400,"查询实验项目失败", "failure");
+                return new Result(400,"failure", "未查询到该实验项目");
         }
         catch (Exception e){
 
-            return new Result(400,"查询实验项目失败", "failure");
+            return new Result(400,"failure", "查询实验项目失败");
         }
     }
 
@@ -75,12 +75,12 @@ public class ExperimentProjectController {
         try {
             List<ExperimentProjectSimpleInfo> list = experimentProjectService.getAllExperimentSimpleInfo();
 
-            return new Result(200,"查询实验项目列表成功", list);
+            return new Result(200,"success", list);
 
         }
         catch (Exception e){
 
-            return new Result(400,"查询实验项目列表失败", "failure");
+            return new Result(400,"failure", "查询实验项目列表失败");
         }
     }
 }
