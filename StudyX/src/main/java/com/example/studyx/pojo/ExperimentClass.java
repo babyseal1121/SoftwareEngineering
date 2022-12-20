@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +19,7 @@ public class ExperimentClass {
 
     @Id
     @Column(name = "experimentclassno")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer experimentclassno;
 
     Integer teacheridnumber;

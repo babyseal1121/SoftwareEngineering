@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +19,7 @@ public class StudyMaterial {
 
     @Id
     @Column(name = "materialno")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer materialno;
 
     String materialname;

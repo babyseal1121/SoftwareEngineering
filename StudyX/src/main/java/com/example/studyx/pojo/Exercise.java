@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class Exercise {
     @Id
     @Column(name = "exerciseno")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer exerciseno;
 
     String exercisestarttime;

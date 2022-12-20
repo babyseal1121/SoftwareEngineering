@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -20,13 +17,14 @@ import javax.persistence.Table;
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class ExerciseProblem {
 
+    String problemdescription;
+
     @Id
     @Column(name = "problemno")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer problemno;
 
     Integer experimentno;
-
-    String problemdescription;
 
     String experimentname;
 
