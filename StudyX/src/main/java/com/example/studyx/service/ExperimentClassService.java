@@ -146,7 +146,11 @@ public class ExperimentClassService {
 
         MemberInClass member = memberInClassDAO.findByUserid(userId);
 
-        return member.getExperimentclassno();
+        //若空则返回-1
+        if(member != null)
+            return member.getExperimentclassno();
+        else
+            return -1;
     }
 
     public List<ExperimentReportSimpleInfo> getClassExperimentReportList(int experimentClassNo){
