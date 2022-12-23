@@ -54,7 +54,7 @@
         title="提示"
         :visible.sync="dialogVisible"
         width="30%">
-            <span>这是一段信息</span>
+            <span>要删除这个实验吗</span>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="dialogVisible = false">取 消</el-button>
                 <el-button type="primary" @click="handleDelete">确 定</el-button>

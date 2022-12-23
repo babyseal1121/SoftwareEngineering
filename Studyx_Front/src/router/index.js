@@ -35,6 +35,11 @@ import CorrectReportDetail from '@/pages/ExperimentReport/CorrectReportDetail.vu
 import MyReport from '@/pages/ExperimentReport/MyReport.vue'
 import ReportDetail from '@/pages/ExperimentReport/ReportDetail.vue'
 
+//快速测试
+import ProblemManagement from '@/pages/Exercise/ProblemManagement.vue'
+import ExperimentProblem from '@/pages/Exercise/ExperimentProblem.vue'
+import CreateProblem from '@/pages/Exercise/CreateProblem.vue'
+
 //导入外部数据
 import navData from "@/utils/navData";
 const routes = [
@@ -111,6 +116,18 @@ const routes = [
       {
         path: '/reportdetail',
         component: ReportDetail
+      },
+      {
+        path: '/problemmanagement',
+        component: ProblemManagement
+      },
+      {
+        path: '/experimentproblem',
+        component: ExperimentProblem
+      },
+      {
+        path: '/createproblem',
+        component: CreateProblem
       }
 
     ]

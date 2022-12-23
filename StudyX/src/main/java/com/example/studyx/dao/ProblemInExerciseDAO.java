@@ -14,4 +14,8 @@ public interface ProblemInExerciseDAO extends JpaRepository<ProblemInExercise,In
     void deleteByExerciseno(Integer exerciseNo);
 
     List<ProblemInExercise> findByExerciseno(Integer exerciseNo);
+
+    @Modifying
+    @Transactional
+    void deleteByProblemno(Integer no);
 }

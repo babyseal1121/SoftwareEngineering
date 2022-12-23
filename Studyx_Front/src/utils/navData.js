@@ -75,8 +75,8 @@ export default[
             {
                 name: '题目管理',
                 icon: 'el-icon-paperclip',
-                path: '/userlist',
-                component:"UserList",
+                path: '/problemmanagement',
+                component:"ProblemManagement",
             },
             {
                 name: '发布测验',
