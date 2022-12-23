@@ -1,16 +1,10 @@
 package com.example.studyx.service;
 
-import com.example.studyx.dao.ExperimentClassDAO;
-import com.example.studyx.dao.ExperimentInClassDAO;
-import com.example.studyx.dao.ExperimentReportDAO;
-import com.example.studyx.dao.MemberInClassDAO;
+import com.example.studyx.dao.*;
 import com.example.studyx.domain.ExperimentClassInfo;
 import com.example.studyx.domain.ExperimentProjectSimpleInfo;
 import com.example.studyx.domain.ExperimentReportSimpleInfo;
-import com.example.studyx.pojo.ExperimentClass;
-import com.example.studyx.pojo.ExperimentInClass;
-import com.example.studyx.pojo.ExperimentReport;
-import com.example.studyx.pojo.MemberInClass;
+import com.example.studyx.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +23,8 @@ public class ExperimentClassService {
     ExperimentInClassDAO experimentInClassDAO;
     @Autowired
     private ExperimentReportDAO experimentReportDAO;
+    @Autowired
+    private ExperimentProjectDAO experimentProjectDAO;
 
     //创建新的班级
     public void createExperimentClass(ExperimentClassInfo experimentClassInfo){
@@ -153,7 +149,15 @@ public class ExperimentClassService {
             return -1;
     }
 
-    public List<ExperimentReportSimpleInfo> getClassExperimentReportList(int experimentClassNo){
+    public List<ExperimentReportSimpleInfo> getClassExperimentReportList(int userId){
+
+        //获取班级
+        int experimentClassNo = findExperimentClass(userId);
+        //如果不在班级里
+        if(-1 == experimentClassNo){
+
+            return new ArrayList<>();
+        }
 
         //寻找班级内的所有人
         List<MemberInClass> userList = memberInClassDAO.findByExperimentclassno(experimentClassNo);
@@ -180,5 +184,43 @@ public class ExperimentClassService {
         }
 
         return reportInfo;
+    }
+
+    //获取班级内的实验报告简易信息列表
+    public List<ExperimentProjectSimpleInfo> getClassExperimentProjectList(int userId){
+        //获取班级
+        int classNo = findExperimentClass(userId);
+        if(-1 == classNo){
+            return new ArrayList<>();
+        }
+        //获取班级的实验信息
+        List<ExperimentInClass> list = experimentInClassDAO.findByExperimentclassno(classNo);
+        int listSize = list.size();
+        //存储结果
+        List<ExperimentProjectSimpleInfo> InfoList = new ArrayList<>();
+        //获取一个人已经完成的实验报告
+        List<ExperimentReport> reportList = experimentReportDAO.findByUserid(userId);
+        int reportListSize = reportList.size();
+        //获取简易信息列表
+        for(int i = 0; i < listSize; i++){
+            //实验编号
+            int experimentNo = (list.get(i)).getExperimentno();
+            ExperimentProject experimentProject = experimentProjectDAO.findById(experimentNo);
+            ExperimentProjectSimpleInfo simpleInfo = new ExperimentProjectSimpleInfo(experimentProject);
+            InfoList.add(simpleInfo);
+        }
+        //校验已完成的
+        for(int i = 0; i < InfoList.size(); i++){
+            for(int n = 0; n < reportListSize; n++){
+                //已经完成的
+                if((InfoList.get(i).getExperimentno()).equals(reportList.get(n).getExperimentno())){
+                    //移除这一项
+                    InfoList.remove(i);
+                    i--;
+                    break;
+                }
+            }
+        }
+        return InfoList;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.studyx.controller;
 
+import com.example.studyx.domain.ExperimentProjectSimpleInfo;
 import com.example.studyx.domain.ExperimentReportSimpleInfo;
+import com.example.studyx.pojo.ExperimentProject;
 import com.example.studyx.pojo.ExperimentReport;
 import com.example.studyx.result.Result;
 import com.example.studyx.service.ExperimentReportService;
@@ -80,4 +82,5 @@ public class ExperimentReportController {
             return new Result(400,"failure", "获取实验报告列表失败");
         }
     }
+
 }

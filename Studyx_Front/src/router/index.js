@@ -27,6 +27,14 @@ import ExperimentProjectManagement from '@/pages/ExperimentProject/ExperimentPro
 import ExperimentDetail from '@/pages/ExperimentProject/ExperimentDetail.vue'
 import CreateExperimentProject from '@/pages/ExperimentProject/CreateExperimentProject.vue'
 
+//实验报告
+import SubmitReport from '@/pages/ExperimentReport/SubmitReport.vue'
+import FinishReport from '@/pages/ExperimentReport/FinishReport.vue'
+import CorrectReport from '@/pages/ExperimentReport/CorrectReport.vue'
+import CorrectReportDetail from '@/pages/ExperimentReport/CorrectReportDetail.vue'
+import MyReport from '@/pages/ExperimentReport/MyReport.vue'
+import ReportDetail from '@/pages/ExperimentReport/ReportDetail.vue'
+
 //导入外部数据
 import navData from "@/utils/navData";
 const routes = [
@@ -79,7 +87,32 @@ const routes = [
       {
         path: '/createexperimentproject',
         component: CreateExperimentProject
+      },
+      {
+        path: '/submitreport',
+        component: SubmitReport
+      },
+      {
+        path: '/finishreport',
+        component: FinishReport
+      },
+      {
+        path: '/correctreport',
+        component: CorrectReport
+      },
+      {
+        path: '/correctreportdetail',
+        component: CorrectReportDetail
+      },
+      {
+        path: '/myreport',
+        component: MyReport
+      },
+      {
+        path: '/reportdetail',
+        component: ReportDetail
       }
+
     ]
   },
 ]

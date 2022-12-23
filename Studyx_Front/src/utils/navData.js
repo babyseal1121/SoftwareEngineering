@@ -47,22 +47,22 @@ export default[
             {
                 name: '提交实验报告',
                 icon: 'el-icon-document-add',
-                path: '/gradeset',
-                component:"UserList",
+                path: '/submitreport',
+                component:"SubmitReport",
                 
             },
             {
                 name: '批改实验报告',
                 icon: 'el-icon-document-checked',
-                path: '/gradeset',
-                component:"UserList",
+                path: '/correctreport',
+                component:"CorrectReport",
                 
             },
             {
                 name: '我的实验报告',
                 icon: 'el-icon-folder-opened',
-                path: '/gradeset',
-                component:"UserList",
+                path: '/myreport',
+                component:"MyReport",
                 
             },
         ]

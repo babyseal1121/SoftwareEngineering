@@ -1,6 +1,7 @@
 package com.example.studyx.controller;
 
 import com.example.studyx.domain.ExperimentClassInfo;
+import com.example.studyx.domain.ExperimentProjectSimpleInfo;
 import com.example.studyx.domain.ExperimentReportSimpleInfo;
 import com.example.studyx.pojo.ExperimentClass;
 import com.example.studyx.pojo.ExperimentReport;
@@ -164,16 +165,31 @@ public class ExperimentClassController {
     //教师获取自己班级内的所有实验报告
     @CrossOrigin
     @GetMapping(value = "/api/experiment/getclassexperimentreportlist")
-    public Result getClassExperimentReportList(@RequestParam int experimentClassNo){
+    public Result getClassExperimentReportList(@RequestParam int userId){
 
         try {
-            List<ExperimentReportSimpleInfo> list = experimentClassService.getClassExperimentReportList(experimentClassNo);
+            List<ExperimentReportSimpleInfo> list = experimentClassService.getClassExperimentReportList(userId);
 
             return new Result(200,"success", list);
         }
         catch (Exception e){
             System.out.println(e);
             return new Result(400,"failure", "所在班级所有报告查询失败");
+        }
+    }
+
+    //获取班级未完成的简易实验信息列表
+    @CrossOrigin
+    @GetMapping(value = "/api/experiment/getclassexperimentprojectlist")
+    public Result getClassExperimentProjectList(@RequestParam int userId){
+        try {
+            List<ExperimentProjectSimpleInfo> list = experimentClassService.getClassExperimentProjectList(userId);
+
+            return new Result(200,"success", list);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "获取实验列表失败");
         }
     }
 
