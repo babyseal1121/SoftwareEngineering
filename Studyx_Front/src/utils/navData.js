@@ -40,8 +40,8 @@ export default[
             {
                 name: '实验项目管理',
                 icon: 'el-icon-document',
-                path: '/gradeset',
-                component:"UserList",
+                path: '/experimentprojectmanagement',
+                component:"ExperimentProjectManagement",
                 
             },
             {

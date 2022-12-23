@@ -22,6 +22,11 @@ import Test from '@/pages/Test'
 //用户信息列表
 import UserList from '@/pages/User/UserList'
 
+//实验项目
+import ExperimentProjectManagement from '@/pages/ExperimentProject/ExperimentProjectManagement.vue'
+import ExperimentDetail from '@/pages/ExperimentProject/ExperimentDetail.vue'
+import CreateExperimentProject from '@/pages/ExperimentProject/CreateExperimentProject.vue'
+
 //导入外部数据
 import navData from "@/utils/navData";
 const routes = [
@@ -63,6 +68,18 @@ const routes = [
         path: '/userlist',
         component: UserList,
       },
+      {
+        path: '/experimentprojectmanagement',
+        component: ExperimentProjectManagement
+      },
+      {
+        path: '/experimentdetail',
+        component: ExperimentDetail
+      },
+      {
+        path: '/createexperimentproject',
+        component: CreateExperimentProject
+      }
     ]
   },
 ]
