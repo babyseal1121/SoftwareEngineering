@@ -298,4 +298,50 @@ public class ExperimentClassService {
         return studentSimInfo;
     }
 
+    //获取班级内的所有学生
+    public List<UserSimpleInfo> getAllStudentInClass(int userId){
+
+        //获取班级号
+        int experimentClassNo = findExperimentClass(userId);
+        //存储信息列表
+        List<UserSimpleInfo> userList = new ArrayList<>();
+        //获取班级内学生信息
+        List<MemberInClass> infoList = memberInClassDAO.findByExperimentclassno(experimentClassNo);
+        //获取长度
+        int infoListSize = infoList.size();
+
+        //获取学生信息
+        for(int i = 0; i< infoListSize; i++){
+
+            UserSimpleInfo user = new UserSimpleInfo(userDAO.getById(infoList.get(i).getUserid()));
+            //不加入教师
+            if(!(user.getLevel().equals("教师")))
+                userList.add(user);
+        }
+
+        return userList;
+    }
+
+    //获取班级内实验报告的信息
+    public List<ExperimentProjectSimpleInfo> getAllExperimentInClass(int userId){
+
+        //获取班级号
+        int experimentClassNo = findExperimentClass(userId);
+        //存储信息列表
+        List<ExperimentProjectSimpleInfo> experimentList = new ArrayList<>();
+        //获取班级内报告信息
+        List<ExperimentInClass> infoList = experimentInClassDAO.findByExperimentclassno(experimentClassNo);
+        //获取长度
+        int infoListSize = infoList.size();
+
+        //获取报告信息
+        for(int i = 0; i< infoListSize; i++){
+            int experimentNo = infoList.get(i).getExperimentno();
+            ExperimentProjectSimpleInfo simpleInfo = new ExperimentProjectSimpleInfo(experimentProjectDAO.findById(experimentNo));
+            experimentList.add(simpleInfo);
+        }
+
+        return experimentList;
+    }
+
 }

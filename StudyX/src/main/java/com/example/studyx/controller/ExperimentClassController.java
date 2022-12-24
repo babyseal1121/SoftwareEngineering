@@ -115,7 +115,7 @@ public class ExperimentClassController {
         }
         catch (Exception e){
             System.out.println(e);
-            return new Result(400,"failure", "向班级内添加报告失败");
+            return new Result(400,"failure", "向班级内添加报告失败(请勿添加已有实验)");
         }
     }
 
@@ -225,6 +225,36 @@ public class ExperimentClassController {
         catch (Exception e){
             System.out.println(e);
             return new Result(400,"failure", "获取学生列表失败");
+        }
+    }
+
+    //获取班级内学生信息
+    @CrossOrigin
+    @GetMapping(value = "/api/experiment/getallstudentinclass")
+    public Result getAllStudentInClass(int userId){
+        try {
+            List<UserSimpleInfo> list = experimentClassService.getAllStudentInClass(userId);
+
+            return new Result(200,"success", list);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "获取学生列表失败");
+        }
+    }
+
+    //获取班级内项目的信息
+    @CrossOrigin
+    @GetMapping(value = "/api/experiment/getallexperimentinclass")
+    public Result getAllExperimentInClass(int userId){
+        try {
+            List<ExperimentProjectSimpleInfo> list = experimentClassService.getAllExperimentInClass(userId);
+
+            return new Result(200,"success", list);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "获取项目列表失败");
         }
     }
 }

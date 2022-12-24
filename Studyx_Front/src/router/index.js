@@ -48,6 +48,8 @@ import ComeExercise from '@/pages/Exercise/ComeExercise.vue'
 //班级信息管理
 import ClassManagement from '@/pages/ExperimentClass/ClassManagement.vue'
 import CreateClass from '@/pages/ExperimentClass/CreateClass.vue'
+import ClassExperiment from '@/pages/ExperimentClass/ClassExperiment.vue'
+import ClassStudent from '@/pages/ExperimentClass/ClassStudent.vue'
 
 
 //导入外部数据
@@ -166,6 +168,14 @@ const routes = [
       {
         path: '/createclass',
         component: CreateClass
+      },
+      {
+        path: '/classexperiment',
+        component: ClassExperiment
+      },
+      {
+        path: '/classstudent',
+        component: ClassStudent
       }
 
     ]

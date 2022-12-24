@@ -106,14 +106,14 @@ export default[
             {
                 name: '实验管理',
                 icon: 'el-icon-folder',
-                path: '/userlist',
-                component:"UserList",
+                path: '/classexperiment',
+                component:"ClassExperiment",
             },
             {
                 name: '人员管理',
                 icon: 'el-icon-s-custom',
-                path: '/userlist',
-                component:"UserList",
+                path: '/classstudent',
+                component:"ClassStudent",
             },
             {
                 name: '班级管理',
