@@ -77,8 +77,15 @@ public class ExperimentClassService {
     }
 
     //获取班级内的详细信息
-    public ExperimentClassInfo getExperimentClass(int experimentClassNo){
+    public ExperimentClassInfo getExperimentClass(int userId){
 
+        //查找人员班级信息
+        int experimentClassNo = findExperimentClass(userId);
+        //如果没有加入班级
+        if(-1 == experimentClassNo){
+
+            return null;
+        }
         //查找课程基础信息
         ExperimentClass experimentClass = experimentClassDAO.findByExperimentclassno(experimentClassNo);
         //查找有关人员的信息

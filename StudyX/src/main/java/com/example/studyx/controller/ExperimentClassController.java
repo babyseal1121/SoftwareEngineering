@@ -53,12 +53,16 @@ public class ExperimentClassController {
     //获取班级详细内容
     @CrossOrigin
     @GetMapping(value = "/api/class/getexperimentclass")
-    public Result getExperimentClass(@RequestParam int experimentClassNo){
+    public Result getExperimentClass(@RequestParam int userId){
 
         try {
-            ExperimentClassInfo experimentClassInfo = experimentClassService.getExperimentClass(experimentClassNo);
+            ExperimentClassInfo experimentClassInfo = experimentClassService.getExperimentClass(userId);
 
-            return new Result(200,"success", experimentClassInfo);
+            if(null != experimentClassInfo)
+                return new Result(200,"success", experimentClassInfo);
+            else{
+                return new Result(400,"failure", "未加入班级");
+            }
         }
         catch (Exception e){
             System.out.println(e);

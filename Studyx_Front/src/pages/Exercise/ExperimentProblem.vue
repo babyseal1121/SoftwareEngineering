@@ -6,7 +6,7 @@
         </el-breadcrumb>
         <br/>
         <el-table
-            :data="tableData.filter(data => !search || data.experimentname.toLowerCase().includes(search.toLowerCase()))"
+            :data="tableData.filter(data => !search || data.problemdescription.toLowerCase().includes(search.toLowerCase()))"
             style="width: 100%"
             height="495">
 
