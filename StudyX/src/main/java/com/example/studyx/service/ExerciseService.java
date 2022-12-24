@@ -1,11 +1,13 @@
 package com.example.studyx.service;
 
 import com.example.studyx.dao.ExerciseDAO;
+import com.example.studyx.dao.ExerciseProblemDAO;
 import com.example.studyx.dao.MemberInExerciseDAO;
 import com.example.studyx.dao.ProblemInExerciseDAO;
 import com.example.studyx.domain.ExerciseInfo;
 import com.example.studyx.domain.ExerciseResult;
 import com.example.studyx.pojo.Exercise;
+import com.example.studyx.pojo.ExerciseProblem;
 import com.example.studyx.pojo.MemberInExercise;
 import com.example.studyx.pojo.ProblemInExercise;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class ExerciseService {
     MemberInExerciseDAO memberInExerciseDAO;
     @Autowired
     ProblemInExerciseDAO problemInExerciseDAO;
+    @Autowired
+    private ExerciseProblemDAO exerciseProblemDAO;
 
     //发布一场测试
     public void publishExercise(ExerciseInfo exerciseInfo){
@@ -140,8 +144,36 @@ public class ExerciseService {
     }
 
     //存储某人的提交结果
-    public void submitExercise(MemberInExercise member){
+    public int submitExercise(MemberInExercise member){
 
-        memberInExerciseDAO.save(member);
+        //获取之前的用时
+        int memberTime = (memberInExerciseDAO.findByUseridAndExerciseno(member.getUserid(), member.getExerciseno())).getExerciseusetime();
+        if(0 != memberTime){
+            return -1;
+        }
+        else {
+            memberInExerciseDAO.save(member);
+            return 0;
+        }
+    }
+
+    //获取一场测试题目的详细信息
+    public List<ExerciseProblem> getExerciseProblemList(int exerciseNo){
+
+        //获取考试的题目信息
+        List<ProblemInExercise> NoList = problemInExerciseDAO.findByExerciseno(exerciseNo);
+        int NoListSize = NoList.size();
+        //存储考试题目的详细信息
+        List<ExerciseProblem> problemList = new ArrayList<>();
+
+        //查询题目详细信息
+        for(int i = 0; i < NoListSize; i++){
+
+            int problemId = (NoList.get(i)).getProblemno();
+            ExerciseProblem problem = exerciseProblemDAO.findById(problemId);
+            problemList.add(problem);
+        }
+
+        return problemList;
     }
 }

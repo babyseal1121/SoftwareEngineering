@@ -41,6 +41,9 @@ import ExperimentProblem from '@/pages/Exercise/ExperimentProblem.vue'
 import CreateProblem from '@/pages/Exercise/CreateProblem.vue'
 import PublishExercise from '@/pages/Exercise/PublishExercise.vue'
 import ExperimentExercise from '@/pages/Exercise/ExperimentExercise.vue'
+import MyExercise from '@/pages/Exercise/MyExercise.vue'
+import ExerciseDetail from '@/pages/Exercise/ExerciseDetail.vue'
+import ComeExercise from '@/pages/Exercise/ComeExercise.vue'
 
 //导入外部数据
 import navData from "@/utils/navData";
@@ -138,6 +141,18 @@ const routes = [
       {
         path: '/experimentexercise',
         component: ExperimentExercise
+      },
+      {
+        path: '/myexercise',
+        component: MyExercise
+      },
+      {
+        path: '/exercisedetail',
+        component: ExerciseDetail
+      },
+      {
+        path: '/comeexercise',
+        component: ComeExercise
       }
 
     ]

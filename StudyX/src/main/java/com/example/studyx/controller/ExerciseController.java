@@ -4,6 +4,7 @@ package com.example.studyx.controller;
 import com.example.studyx.domain.ExerciseInfo;
 import com.example.studyx.domain.ExerciseResult;
 import com.example.studyx.pojo.Exercise;
+import com.example.studyx.pojo.ExerciseProblem;
 import com.example.studyx.pojo.MemberInExercise;
 import com.example.studyx.service.ExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,9 +93,10 @@ public class ExerciseController {
     public Result submitExercise(@RequestBody MemberInExercise member){
 
         try {
-            exerciseService.submitExercise(member);
-
-            return new Result(200,"success", "提交测试成功");
+            if(-1 == exerciseService.submitExercise(member))
+                return new Result(400,"failure", "请勿重复提交");
+            else
+                return new Result(200,"success", "提交测试成功");
         }
         catch (Exception e){
             System.out.println(e);
@@ -115,6 +117,22 @@ public class ExerciseController {
         catch (Exception e){
             System.out.println(e);
             return new Result(400,"failure", "获取测试结果详情失败");
+        }
+    }
+
+    //获取一场测试的题目
+    @CrossOrigin
+    @GetMapping(value = "/api/exercise/getexerciseproblemlist")
+    public Result getExerciseProblemList(int exerciseNo){
+
+        try {
+            List<ExerciseProblem> list = exerciseService.getExerciseProblemList(exerciseNo);
+
+            return new Result(200,"success", list);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "获取测试题目详情失败");
         }
     }
 

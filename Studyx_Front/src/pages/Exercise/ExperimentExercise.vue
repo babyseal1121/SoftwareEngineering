@@ -93,7 +93,7 @@
               <el-col class="line" :span="1">-</el-col>
               <el-col :span="3">
                 <el-time-picker 
-                value-format="hh:mm:ss" 
+                value-format="HH:mm:ss" 
                 placeholder="选择开始时间" 
                 v-model="form.date2" 
                 style="width: 100%;"></el-time-picker>
@@ -111,7 +111,7 @@
               <el-col :span="3">
                 <el-time-picker 
                 placeholder="选择结束时间" 
-                value-format="hh:mm:ss" 
+                value-format="HH:mm:ss" 
                 v-model="form.date4" 
                 style="width: 100%;"></el-time-picker>
               </el-col>

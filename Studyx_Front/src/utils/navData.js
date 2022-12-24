@@ -87,8 +87,8 @@ export default[
             {
                 name: '我的测验',
                 icon: 'el-icon-edit',
-                path: '/userlist',
-                component:"UserList",
+                path: '/myexercise',
+                component:"MyExercise",
             },
         ]
     },
