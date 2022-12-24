@@ -45,6 +45,11 @@ import MyExercise from '@/pages/Exercise/MyExercise.vue'
 import ExerciseDetail from '@/pages/Exercise/ExerciseDetail.vue'
 import ComeExercise from '@/pages/Exercise/ComeExercise.vue'
 
+//班级信息管理
+import ClassManagement from '@/pages/ExperimentClass/ClassManagement.vue'
+import CreateClass from '@/pages/ExperimentClass/CreateClass.vue'
+
+
 //导入外部数据
 import navData from "@/utils/navData";
 const routes = [
@@ -153,6 +158,14 @@ const routes = [
       {
         path: '/comeexercise',
         component: ComeExercise
+      },
+      {
+        path: '/classmanagement',
+        component: ClassManagement
+      },
+      {
+        path: '/createclass',
+        component: CreateClass
       }
 
     ]

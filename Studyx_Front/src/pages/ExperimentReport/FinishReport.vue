@@ -106,6 +106,7 @@ export default {
     },
     //函数
     methods: {
+        
          //根据实验编号请求信息
          getExperimentDetail(){
             //请求的信息
@@ -131,6 +132,7 @@ export default {
                 this.$message.error("详情数据获取失败");
             })
         },
+
         //提交实验报告
         submitExperimentReport(){
             //检查是否已经提交

@@ -4,6 +4,7 @@ import com.example.studyx.dao.*;
 import com.example.studyx.domain.ExperimentClassInfo;
 import com.example.studyx.domain.ExperimentProjectSimpleInfo;
 import com.example.studyx.domain.ExperimentReportSimpleInfo;
+import com.example.studyx.domain.UserSimpleInfo;
 import com.example.studyx.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,8 @@ public class ExperimentClassService {
     private ExperimentReportDAO experimentReportDAO;
     @Autowired
     private ExperimentProjectDAO experimentProjectDAO;
+    @Autowired
+    private UserDAO userDAO;
 
     //创建新的班级
     public void createExperimentClass(ExperimentClassInfo experimentClassInfo){
@@ -193,7 +196,7 @@ public class ExperimentClassService {
         return reportInfo;
     }
 
-    //获取班级内的实验报告简易信息列表
+    //获取班级内的未完成的实验报告简易信息列表
     public List<ExperimentProjectSimpleInfo> getClassExperimentProjectList(int userId){
         //获取班级
         int classNo = findExperimentClass(userId);
@@ -230,4 +233,69 @@ public class ExperimentClassService {
         }
         return InfoList;
     }
+
+    //获取未加入班级的教师
+    public List<UserSimpleInfo> teacherNoInClass(){
+
+        //存储教师的信息
+        List<User> teacherInfo = userDAO.findByLevel("教师");
+        //存储责任教师的信息
+        teacherInfo.addAll(userDAO.findByLevel("责任教师"));
+        //记录数量
+        int InfoListSize = teacherInfo.size();
+        //存储教师简易的信息
+        List<UserSimpleInfo> teacherSimInfo = new ArrayList<>();
+
+        //筛选已经加入的老师
+        for(int i = 0; i < InfoListSize; i++){
+            //移除已经加入的老师
+            if(null != memberInClassDAO.findByUserid(teacherInfo.get(i).getId())){
+                teacherInfo.remove(i);
+                InfoListSize--;
+                i--;
+            }
+        }
+
+        //转化为简易信息形式
+        for(int i = 0; i < InfoListSize; i++){
+
+            UserSimpleInfo simpleInfo = new UserSimpleInfo(teacherInfo.get(i));
+            teacherSimInfo.add(simpleInfo);
+        }
+
+        return teacherSimInfo;
+    }
+
+    //获取未加入班级的学生和助教
+    public List<UserSimpleInfo> studentNoInClass(){
+
+        //存储学生的信息
+        List<User> studentInfo = userDAO.findByLevel("学生");
+        //存储助教的信息
+        studentInfo.addAll(userDAO.findByLevel("助教"));
+        //记录数量
+        int InfoListSize = studentInfo.size();
+        //存储学生简易的信息
+        List<UserSimpleInfo> studentSimInfo = new ArrayList<>();
+
+        //筛选已经加入的学生
+        for(int i = 0; i < InfoListSize; i++){
+            //移除已经加入的学生
+            if(null != memberInClassDAO.findByUserid(studentInfo.get(i).getId())){
+                studentInfo.remove(i);
+                InfoListSize--;
+                i--;
+            }
+        }
+
+        //转化为简易信息形式
+        for(int i = 0; i < InfoListSize; i++){
+
+            UserSimpleInfo simpleInfo = new UserSimpleInfo(studentInfo.get(i));
+            studentSimInfo.add(simpleInfo);
+        }
+
+        return studentSimInfo;
+    }
+
 }

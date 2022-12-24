@@ -118,8 +118,8 @@ export default[
             {
                 name: '班级管理',
                 icon: 'el-icon-collection-tag',
-                path: '/userlist',
-                component:"UserList",
+                path: '/classmanagement',
+                component:"ClassManagement",
             },
         ]
     },

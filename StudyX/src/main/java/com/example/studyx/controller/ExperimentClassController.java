@@ -3,6 +3,7 @@ package com.example.studyx.controller;
 import com.example.studyx.domain.ExperimentClassInfo;
 import com.example.studyx.domain.ExperimentProjectSimpleInfo;
 import com.example.studyx.domain.ExperimentReportSimpleInfo;
+import com.example.studyx.domain.UserSimpleInfo;
 import com.example.studyx.pojo.ExperimentClass;
 import com.example.studyx.pojo.ExperimentReport;
 import com.example.studyx.result.Result;
@@ -197,4 +198,33 @@ public class ExperimentClassController {
         }
     }
 
+    //获取未加入班级的教师的列表
+    @CrossOrigin
+    @GetMapping(value = "/api/experiment/teachernoinclass")
+    public Result teacherNoInClass(){
+        try {
+            List<UserSimpleInfo> list = experimentClassService.teacherNoInClass();
+
+            return new Result(200,"success", list);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "获取教师列表失败");
+        }
+    }
+
+    //获取尚未加入班级的学生列表
+    @CrossOrigin
+    @GetMapping(value = "/api/experiment/studentnoinclass")
+    public Result studentNoInClass(){
+        try {
+            List<UserSimpleInfo> list = experimentClassService.studentNoInClass();
+
+            return new Result(200,"success", list);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "获取学生列表失败");
+        }
+    }
 }
