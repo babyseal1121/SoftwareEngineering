@@ -35,6 +35,10 @@
                 type="danger"
                 @click="handleClickDelete(scope.row)">删除</el-button>
 
+                <el-button
+                size="mini"
+                @click="handleCheck(scope.row)">查看详情</el-button>
+
             </template>
             </el-table-column>
         </el-table>
@@ -65,6 +69,11 @@
                 v-model="allSearch"
                 size="mini"
                 placeholder="输入项目名称搜索"/>
+            </template>
+            <template slot-scope="scope">
+                <el-button
+                size="mini"
+                @click="handleCheck(scope.row)">查看详情</el-button>
             </template>
             </el-table-column>
         </el-table>
@@ -123,6 +132,13 @@ export default {
     },
     //函数
     methods:{
+
+        //处理报告查看详情
+        handleCheck(row){
+            row["path"] = "/classexperiment"
+            this.$router.push({path:'/experimentdetail',query:row})
+        },
+
         //处理删除
         handleDelete(){
             this.dialogVisible = false

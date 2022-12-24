@@ -32,6 +32,11 @@
                 size="mini"
                 placeholder="输入关键字搜索"/>
             </template>
+            <template slot-scope="scope">
+                <el-button
+                size="mini"
+                @click="handleCheck(scope.row)">查看详情</el-button>
+            </template>
             </el-table-column>
         </el-table>
 
@@ -79,7 +84,6 @@
 
             <el-table-column
             align="right">
-
                 <template slot="header">
                     <el-input
                     v-model="classSearch"
@@ -120,6 +124,13 @@ export default {
     },
     //函数
     methods:{
+
+        //处理报告查看详情
+        handleCheck(row){
+            row["path"] = "/myclass"
+            this.$router.push({path:'/experimentdetail',query:row})
+        },
+
         //获取当前班级
         getExperimentClass(){
             //请求的信息
