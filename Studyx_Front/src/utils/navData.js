@@ -100,8 +100,8 @@ export default[
             {
                 name: '我的班级',
                 icon: 'el-icon-s-flag',
-                path: '/userlist',
-                component:"UserList",
+                path: '/myclass',
+                component:"MyClass",
             },
             {
                 name: '实验管理',

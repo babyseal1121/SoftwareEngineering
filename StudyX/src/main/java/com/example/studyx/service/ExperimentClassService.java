@@ -315,7 +315,7 @@ public class ExperimentClassService {
 
             UserSimpleInfo user = new UserSimpleInfo(userDAO.getById(infoList.get(i).getUserid()));
             //不加入教师
-            if(!(user.getLevel().equals("教师")))
+            //if(!(user.getLevel().equals("教师")))
                 userList.add(user);
         }
 

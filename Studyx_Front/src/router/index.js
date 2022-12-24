@@ -50,6 +50,7 @@ import ClassManagement from '@/pages/ExperimentClass/ClassManagement.vue'
 import CreateClass from '@/pages/ExperimentClass/CreateClass.vue'
 import ClassExperiment from '@/pages/ExperimentClass/ClassExperiment.vue'
 import ClassStudent from '@/pages/ExperimentClass/ClassStudent.vue'
+import MyClass from '@/pages/ExperimentClass/MyClass.vue'
 
 
 //导入外部数据
@@ -176,6 +177,10 @@ const routes = [
       {
         path: '/classstudent',
         component: ClassStudent
+      },
+      {
+        path: '/myclass',
+        component: MyClass
       }
 
     ]

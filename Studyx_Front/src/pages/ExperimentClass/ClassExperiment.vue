@@ -7,7 +7,7 @@
         </div>
         <br/>
 
-        <h1 style="text-align:left">班级内实验报告列表</h1>
+        <h1 style="text-align:left">班级内实验项目列表</h1>
         <el-table
             :data="classExperimentTable.filter(data => !classSearch || data.experimentname.toLowerCase().includes(classSearch.toLowerCase()))"
             style="width: 100%"

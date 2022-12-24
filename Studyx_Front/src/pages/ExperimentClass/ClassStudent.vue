@@ -240,6 +240,10 @@ export default {
 
         //处理点击删除
         handleClickDelete(row){
+            if((row.level == "教师") || (row.level == "责任教师")){
+                this.$message.error("不可删除教师")
+                return
+            }
             this.dialogVisible = true
             this.deletInfo = row
         },
