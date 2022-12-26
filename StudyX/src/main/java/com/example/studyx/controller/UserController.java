@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 public class UserController {
     @Autowired
@@ -37,7 +39,6 @@ public class UserController {
             return new Result(200,"搜索成功",user);
         else
             return new Result(400,"搜索失败",id);
-
     }
 
     @CrossOrigin
@@ -45,4 +46,6 @@ public class UserController {
     public Result listUsers() {
         return ResultFactory.buildSuccessResult(userService.list());
     }
+
+
 }

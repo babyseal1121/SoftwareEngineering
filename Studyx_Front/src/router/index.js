@@ -62,7 +62,6 @@ const routes = [
     component: Login,
     hide: true    // 不是菜单
   },
-
   // 布局
   {
     path: '/',
@@ -70,6 +69,7 @@ const routes = [
     redirect: '/index',     //重定向
     meta: { title: '后台首页' },
     children: [
+
       {
         path: '/index',
         component: Index,
@@ -185,6 +185,7 @@ const routes = [
 
     ]
   },
+
 ]
 
 //动态生成路由

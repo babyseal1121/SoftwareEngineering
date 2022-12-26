@@ -23,12 +23,7 @@
                   >SIGN IN</span
                 >
                 <br />
-                <el-link
-                  type="info"
-                  @click="changerole()"
-                  style="margin: 0px; padding: 0px"
-                  >{{ nowrole }}</el-link
-                >
+
               </div>
             </transition>
             <transition
@@ -42,18 +37,9 @@
                 <el-form :model="loginForm" ref="loginForm">
                   <el-form-item prop="userName">
                     <el-input
-                      v-show="nowrole == 'USER NOW'"
                       v-model="loginForm.mail"
                       style="width: 230px"
                       placeholder="Mail"
-                      size="meddle"
-                      autocomplete="off"
-                    ></el-input>
-                    <el-input
-                      v-show="nowrole != 'USER NOW'"
-                      v-model="loginForm.mail"
-                      style="width: 230px"
-                      placeholder="Name"
                       size="meddle"
                       autocomplete="off"
                     ></el-input>
@@ -92,7 +78,6 @@
               </div>
             </transition>
             <el-link
-              v-show="nowrole == 'USER NOW'"
               type="info"
               @click="forgetPassword()"
               style="margin: 5px; padding: 0px"
@@ -323,6 +308,7 @@ export default {
       validCode: "",
       regVerification: "",
       loginForm: {
+        quanxian:"",
         mail: "",
         password: "",
         validCode: "",
@@ -441,7 +427,6 @@ export default {
     },
     //用户登录，或者管理员登录
     Login() {
-
       var _this = this;
       var loginv = this.loginForm.validCode;
       var v = this.validCode;
@@ -454,8 +439,7 @@ export default {
       if (loginv1 != v1) {
         _this.$message.error("验证码错误！");
       } else {
-        if (this.nowrole == "USER NOW") {
-          _this.$axios
+        _this.$axios
             .post("/login", {
               mail: _this.loginForm.mail,
               password: _this.loginForm.password,
@@ -475,47 +459,52 @@ export default {
                 });
                 var that = _this;
                 _this
-                  .$axios({
-                    url: "/getuserid",
-                    method: "post",
-                    data: that.loginForm.mail,
-                    headers: {
-                      "Content-Type": "text/plain",
-                    },
-                  })
-                  .then((res) => {
-                    that.$myglobal.setnowuserid(res.data); //改变全局nowusername
-                    alert(res.data + ":" + that.$.nowuserid);
-                    // console.log( _this.$myglobal.nowuserid)
+                    .$axios({
+                      url: "/getuserid",
+                      method: "post",
+                      data: that.loginForm.mail,
+                      headers: {
+                        "Content-Type": "text/plain",
+                      },
+                    })
+                    .then((res) => {
+                      that.$myglobal.setnowuserid(res.data); //改变全局nowusername
+                      alert(res.data + ":" + that.$.nowuserid);
+                      // console.log( _this.$myglobal.nowuserid)
+                    });
+                if(res.data.result.level=="管理员")
+                {
+                  this.$router.push({
+                    path: "/admin",
                   });
-                this.$router.push({
-                  path: "/index",
-                });
+                }
+                else if(res.data.result.level=="责任教师"){
+                  this.$router.push({
+                    path: "/userlist",
+                  });
+                }
+                else if(res.data.result.level=="教师"){
+                  this.$router.push({
+                    path: "/userlist",
+                  });
+
+                }
+                else if(res.data.result.level=="助教"){
+                  this.$router.push({
+                    path: "/userlist",
+                  });
+
+                }
+                else
+                {
+                  this.$router.push({
+                    path: "/111",
+                  });
+                }
               } else {
                 this.$message.error("用户名或密码错误！");
               }
             });
-        } else if (this.nowrole == "ADMINISTRATOR NOW") {
-          _this.$axios
-            .post("/login/admin", {
-              adminname: _this.loginForm.mail,
-              password: _this.loginForm.password,
-            })
-            .then((res) => {
-              // console.log(res.data)
-              if (res.data.code == "200") {
-                this.$message.success({
-                  message: "登录成功！",
-                  duration: "500",
-                });
-                this.$router.push({
-                  path: "/admin",
-                });
-              } else {
-                this.$message.error("用户名或密码错误！");
-              }
-            });
-        }
       }
     },
     //用户注册

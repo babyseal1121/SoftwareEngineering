@@ -59,14 +59,26 @@ public class LoginController {
 
     }
 
+    //注销登录
+    @CrossOrigin
+    @RequestMapping("/api/logout")
+    public void logout(HttpSession session) {
+        System.out.println("logout");
+        //session失效
+        if (session.getAttribute("user") != null)
+            session.removeAttribute("user");
+    }
     @CrossOrigin
     @PostMapping(value = "/api/login")
     public Result login(@RequestBody User requestUser, HttpSession session) {
 
         String mail = requestUser.getMail();
         mail = HtmlUtils.htmlEscape(mail);
+        //先对比权限
+
         //先得到salt加密的值
         User user = userService.getByMail(mail);
+
         if (null == user) {
             return ResultFactory.buildFailResult("账号不存在");
         }
@@ -85,16 +97,6 @@ public class LoginController {
         }
     }
 
-    @CrossOrigin
-    @RequestMapping("/api/logout")
-    public void logout(HttpSession session) {
-        System.out.println("logout");
-        //session失效
-        if (session.getAttribute("user") != null)
-            session.removeAttribute("user");
-        if (session.getAttribute("admin") != null)
-            session.removeAttribute("admin");
-    }
     @CrossOrigin
     @PostMapping(value = "/api/findpassword")
     public Result findpassword(@RequestBody User user) {
