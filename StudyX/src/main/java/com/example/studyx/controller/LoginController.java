@@ -131,10 +131,10 @@ public class LoginController {
         switch (status) {
             case 0:
                 return ResultFactory.buildFailResult("邮箱或密码或用户名不能为空");
-            case 1:
-                return ResultFactory.buildSuccessResult("注册成功");
             case 2:
-                return ResultFactory.buildFailResult("该邮箱已注册");
+                return ResultFactory.buildSuccessResult("激活成功");
+            case 1:
+                return ResultFactory.buildFailResult("该邮箱未注册");
         }
         return ResultFactory.buildFailResult("未知错误");
     }

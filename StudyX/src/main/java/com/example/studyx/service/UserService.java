@@ -62,8 +62,8 @@ public class UserService {
         }
         boolean exist = isExist(mail);
 
-        if (exist) {
-            return 2;
+        if (!exist) {
+            return 1;
         }
         // 默认生成 16 位盐，干扰数据
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();
@@ -71,8 +71,9 @@ public class UserService {
         user.setSalt(salt);
         String encodedPassword = new SimpleHash("md5", password, salt, times).toString();
         user.setPassword(encodedPassword);
+        user.setLevel("未激活");
         userDAO.save(user);
-        return 1;
+        return 2;
     }
 
     public int findpassword(User user) {

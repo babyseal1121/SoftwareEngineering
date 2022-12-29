@@ -186,7 +186,7 @@
               >
                 <div style="flex: 2">
                   <Loadingbutton
-                    infor="to register"
+                    infor="to SIGN UP"
                     @click.native="changeToRegiest"
                   ></Loadingbutton>
                 </div>
@@ -249,7 +249,7 @@
                 <div>
                   <input
                     type="text"
-                    placeholder="验证码"
+                    placeholder="激活码"
                     v-model="findUser.findverification"
                     style="width: 120px"
                   />
@@ -509,7 +509,7 @@ export default {
                     path: "/userlist",
                   });
                 }
-                else
+                else if(res.data.result.level=="学生")
                 {
                   this.$axios.get("/studentmenu").then(res=>{
                     this.$store.commit('setMenuData',res.data.menu_data)
@@ -517,6 +517,11 @@ export default {
                   })
                   this.$router.push({
                     path: "/userlist",
+                  });
+                }
+                else {
+                  this.$router.push({
+                    path: "/index",
                   });
                 }
               } else {
