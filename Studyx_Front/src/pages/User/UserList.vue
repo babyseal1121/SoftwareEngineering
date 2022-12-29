@@ -63,30 +63,49 @@
 
           <template slot-scope="scope">
             <el-button size="mini"
+                       type="success"
+                       @click="mod(scope.row)"
+                       plain
+            >编辑用户信息</el-button
+            >
+
+            <el-dialog
+                title="修改用户权限"
+                :visible.sync="dialogFormVisible">
+            <el-form :model="dataForm"
+                     :label-width="formLabelWidth"
+                     :rules="rules"
+                     ref="dataForm">
+              <el-form-item label="ID" prop="ID" v-show="false">
+                <el-col :span="10">
+                  <el-input v-model="dataForm.id" autocomplete="off" size="small"></el-input>
+                </el-col>
+              </el-form-item>
+              <el-form-item label="权限" >
+
+                <el-select v-model="dataForm.level" placeholder="请选择">
+                  <el-option
+                      v-for="item in options"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="cancel">取 消</el-button>
+              <el-button type="primary" @click="confirm">确 定</el-button>
+            </div>
+            </el-dialog>
+
+            <el-button size="mini"
                        type="warning"
-                       @click="dialogVisible = true"
+                       @click="mod(scope.row)"
                        plain
                        v-show="scope.row.level!='未激活'"
             >账号授权</el-button
             >
-            <el-dialog
-                title="修改用户权限"
-                :visible.sync="dialogVisible"
-                width="30%"
-                >
-              <el-select v-model="value" placeholder="请选择">
-                <el-option
-                    v-for="item in options"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value">
-                </el-option>
-              </el-select>
-              <span slot="footer" class="dialog-footer">
-            <el-button @click="dialogVisible = false">取 消</el-button>
-            <el-button type="primary" @click="changelevel(scope.$index, scope.row)">确 定</el-button>
-            </span>
-            </el-dialog>
             <el-button
                 size="mini"
                 @click="deleteuser(scope.$index, scope.row)"
@@ -140,12 +159,49 @@ export default {
         label: '学生'
       }],
       value: '',
+      dialogFormVisible: false,
+      dataForm: {
+        level:'',
+        id:'',
+      }
     };
   },
   mounted() {
     this.getdata();
   },
   methods: {
+    add(){
+      this.dialogFormVisible = true;
+    },
+    confirm(){//确定添加
+      var _this = this;
+      this.$axios
+          .post("/changelevel", {
+            id: this.dataForm.id,
+            level:this.dataForm.level})
+          .then(successResponse => {
+        if (successResponse.data.code === 200) {
+          this.$message.success("授权成功"+successResponse.data.result.level);
+          this.getdata();
+        }
+        else{
+          this.$message.error("授权失败");
+        }
+      }).catch(failResponse => {
+        this.$message.error("授权失败！");
+      })
+      this.dialogFormVisible = false;
+    },
+    cancel(){//取消
+      this.dialogFormVisible = false;
+    },
+    mod(row){
+      //将选中的行内容赋值给表单对象
+      this.dataForm.id=row.id;
+      //显示编辑窗口
+      this.dialogFormVisible = true;
+      this.modFlag = true;
+    },
     changestatus(index, row) {
       this.$message("邮件正在发送，请稍等");
       //alert(this.regUser.regPhone)
@@ -189,23 +245,7 @@ export default {
             this.$message.error("数据发送失败");
           })
     },
-    changeLevel(index, row) {
-      var _this = this;
-      this.$message.error("授权成功！"+row.id);
-      this.$axios
-          .post("/changeLevel", {
-        userid: row.id,}).then(successResponse => {
-        if (successResponse.data.code === 200) {
-          this.$message.error("授权成功！");
-          this.getdata()//实时显示评论
-        }
-        else{
-          this.$message.error("授权失败");
-        }
-      }).catch(failResponse => {
-            this.$message.error("授权失败！");
-          })
-    },
+
     deleteuser(index,row) {
       this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
         confirmButtonText: '确定',

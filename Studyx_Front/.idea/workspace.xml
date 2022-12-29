@@ -2,28 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/Card.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/Form.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/ImgUpload.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/QRcode.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/Share.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/TDButton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/User/AddUser.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/adminSideBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/mockjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mockjs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Aside.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mock/mock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock/mock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/General.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/General.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/User/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/User/UserList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +70,7 @@
       <workItem from="1671009960999" duration="1912000" />
       <workItem from="1672056697187" duration="3938000" />
       <workItem from="1672071692750" duration="6781000" />
-      <workItem from="1672271789023" duration="11877000" />
+      <workItem from="1672271789023" duration="16397000" />
     </task>
     <servers />
   </component>
