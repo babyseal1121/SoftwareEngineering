@@ -1,5 +1,6 @@
 <template>
   <div>
+    <el-button @click="getTest">get数据</el-button>
     <h1>{{$store.state.username}}</h1>
     数据状态：{{$store.state.userState}}
     计算数据状态：{{$store.getters.getUserState}}
@@ -17,8 +18,8 @@ export default {
       this.$store.commit('setUserState',1);
     },
     getTest(){
-      this.$axios.get("/test").then(res=>{
-        console.log(res.data)
+      this.$axios.get("/adminmenu").then(res=>{
+        console.log(res.data.menu_data)
       })
     },
     postTest(){

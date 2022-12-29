@@ -47,5 +47,14 @@ public class UserController {
         return ResultFactory.buildSuccessResult(userService.list());
     }
 
+    @CrossOrigin
+    @PostMapping("/api/delete")
+    public Result delete(@RequestBody User user) throws Exception {
+        //int id=remarkid;
+        userService.deleteById(user.getId());
+        System.out.println("删除用户"+user.getId());
+        return new Result(200,"用户已删除",user.getId());
+
+    }
 
 }

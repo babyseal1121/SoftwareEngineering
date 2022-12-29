@@ -474,31 +474,49 @@ export default {
                     });
                 if(res.data.result.level=="管理员")
                 {
+                  this.$axios.get("/adminmenu").then(res=>{
+                    this.$store.commit('setMenuData',res.data.menu_data)
+                    console.log(res.data.menu_data)
+                  })
                   this.$router.push({
-                    path: "/admin",
+                    path: "/userlist",
                   });
                 }
                 else if(res.data.result.level=="责任教师"){
+                  this.$axios.get("/instructormenu").then(res=>{
+                    this.$store.commit('setMenuData',res.data.menu_data)
+                    console.log(res.data.menu_data)
+                  })
                   this.$router.push({
                     path: "/userlist",
                   });
                 }
                 else if(res.data.result.level=="教师"){
+                  this.$axios.get("/teachermenu").then(res=>{
+                    this.$store.commit('setMenuData',res.data.menu_data)
+                    console.log(res.data.menu_data)
+                  })
                   this.$router.push({
                     path: "/userlist",
                   });
-
                 }
                 else if(res.data.result.level=="助教"){
+                  this.$axios.get("/tutormenu").then(res=>{
+                    this.$store.commit('setMenuData',res.data.menu_data)
+                    console.log(res.data.menu_data)
+                  })
                   this.$router.push({
                     path: "/userlist",
                   });
-
                 }
                 else
                 {
+                  this.$axios.get("/studentmenu").then(res=>{
+                    this.$store.commit('setMenuData',res.data.menu_data)
+                    console.log(res.data.menu_data)
+                  })
                   this.$router.push({
-                    path: "/111",
+                    path: "/userlist",
                   });
                 }
               } else {

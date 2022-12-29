@@ -17,6 +17,9 @@ public class UserService {
     @Autowired
     UserDAO userDAO;
 
+    public void deleteById(int id) {
+        userDAO.deleteById(id);
+    }
     public List<User> list() {
         //Sort sort = new Sort(Sort.Direction.DESC, "isbn");
         return userDAO.findAll(Sort.by(Sort.Direction.DESC, "id"));
@@ -87,8 +90,11 @@ public class UserService {
         if (!exist) {
             return 2;
         }
-        User user1=getByMail(mail);
-        user.setId(user1.getId());
+        User user1=getByMail(mail);//在数据库中找到对应的user1
+
+        user.setLevel(user1.getLevel());
+        user.setStatus(user1.getStatus());
+        user.setId(user1.getId());//把user的id设置成user1的id//不知所云
         // 默认生成 16 位盐，干扰数据
         String salt = new SecureRandomNumberGenerator().nextBytes().toString();
         int times = 2;
