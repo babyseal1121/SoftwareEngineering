@@ -14,7 +14,7 @@
         <el-dropdown-menu slot="dropdown" style="margin-top:-30px;margin-left: -40px;">
           <el-dropdown-item>您好，{{$store.getters.username}}</el-dropdown-item>
           <el-dropdown-item icon="el-icon-s-home" @click.native="mypage()" >个人中心</el-dropdown-item>
-          <el-dropdown-item><i class="el-icon-switch-button"></i>退出登录</el-dropdown-item>
+          <el-dropdown-item @click.native="logout()"><i class="el-icon-switch-button"></i>退出登录</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -35,6 +35,12 @@ export default {
         path: "/myinfo",
       });
     },
+    logout(){
+      this.$axios.post("logout");
+      this.$router.push({
+        path: "/login",
+      });
+    }
   }
 }
 </script>
