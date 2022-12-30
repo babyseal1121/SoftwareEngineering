@@ -59,21 +59,68 @@
         </el-table-column>
         <!-- <el-table-column prop="status" label="当前状态" width="150">
           </el-table-column> -->
-        <el-table-column label="操作按钮" width="200px">
+        <el-table-column label="操作按钮" width="400px">
+
           <template slot-scope="scope">
             <el-button size="mini"
-                       type="warning"
-                       @click="borrowcon(scope.$index, scope.row)"
+                       type="success"
+                       @click="mod(scope.row)"
                        plain
+            >编辑用户信息</el-button
+            >
+
+            <el-dialog
+                title="修改用户权限"
+                :visible.sync="dialogFormVisible">
+            <el-form :model="dataForm"
+                     :label-width="formLabelWidth"
+                     :rules="rules"
+                     ref="dataForm">
+              <el-form-item label="ID" prop="ID" v-show="false">
+                <el-col :span="10">
+                  <el-input v-model="dataForm.id" autocomplete="off" size="small"></el-input>
+                </el-col>
+              </el-form-item>
+              <el-form-item label="权限" >
+
+                <el-select v-model="dataForm.level" placeholder="请选择">
+                  <el-option
+                      v-for="item in options"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="cancel">取 消</el-button>
+              <el-button type="primary" @click="confirm">确 定</el-button>
+            </div>
+            </el-dialog>
+
+            <el-button size="mini"
+                       type="warning"
+                       @click="mod(scope.row)"
+                       plain
+                       v-show="scope.row.level!='未激活'"
             >账号授权</el-button
             >
             <el-button
                 size="mini"
-
-                @click="returncon(scope.$index, scope.row)"
-            >账号注销</el-button
-            >
+                @click="deleteuser(scope.$index, scope.row)"
+            >账号注销</el-button>
+            <el-button v-if="sending === '已发送'"
+                       type="warning"
+                       size="mini"
+                       @click="changestatus(scope.$index, scope.row); refresh()"
+                       v-show="scope.row.level=='未激活'">已发送</el-button>
+            <el-button v-else size="mini"
+                       type="danger"
+                       @click="changestatus(scope.$index, scope.row); refresh()"
+                       v-show="scope.row.level=='未激活'">重新发送激活邮件</el-button>
           </template>
+
         </el-table-column>
       </el-table>
     </div>
@@ -93,12 +140,98 @@ export default {
       mail:"",
       status:"",
       tableData: [],
+      sending:"未发送",
+      dialogVisible: false,
+      options: [{
+        value: '管理员',
+        label: '管理员'
+      }, {
+        value: '责任教师',
+        label: '责任教师'
+      }, {
+        value: '教师',
+        label: '教师'
+      }, {
+        value: '助教',
+        label: '助教'
+      }, {
+        value: '学生',
+        label: '学生'
+      }],
+      value: '',
+      dialogFormVisible: false,
+      dataForm: {
+        level:'',
+        id:'',
+      }
     };
   },
   mounted() {
     this.getdata();
   },
   methods: {
+    add(){
+      this.dialogFormVisible = true;
+    },
+    confirm(){//确定添加
+      var _this = this;
+      this.$axios
+          .post("/changelevel", {
+            id: this.dataForm.id,
+            level:this.dataForm.level})
+          .then(successResponse => {
+        if (successResponse.data.code === 200) {
+          this.$message.success("授权成功"+successResponse.data.result.level);
+          this.getdata();
+        }
+        else{
+          this.$message.error("授权失败");
+        }
+      }).catch(failResponse => {
+        this.$message.error("授权失败！");
+      })
+      this.dialogFormVisible = false;
+    },
+    cancel(){//取消
+      this.dialogFormVisible = false;
+    },
+    mod(row){
+      //将选中的行内容赋值给表单对象
+      this.dataForm.id=row.id;
+      //显示编辑窗口
+      this.dialogFormVisible = true;
+      this.modFlag = true;
+    },
+    changestatus(index, row) {
+      this.$message("邮件正在发送，请稍等");
+      //alert(this.regUser.regPhone)
+      this.$axios({
+        url: "/sms",
+        method: "post",
+        data: row.mail,
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      }).then((res) => {
+        // console.log(res.data.code)
+        if (res.data != null) {
+          this.$message.success("邮件发送成功");
+          this.findVerification = res.data;
+        } else {
+          console.log(res.data);
+          this.$message.error("验证码发送失败");
+          return;
+        }
+      });
+      this.sending="已发送"
+    },
+    handleClose(done) {
+      this.$confirm('确认修改用户权限？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+    },
     getdata() {
       var _this = this
       this.$axios
@@ -106,74 +239,46 @@ export default {
           .then(resp => {
             if (resp && resp.data.code === 200) {
               _this.tableData = resp.data.result
-              this.$message.success("共"+_this.tableData.length+"条");
             }
           })
           .catch(failResponse => {
             this.$message.error("数据发送失败");
           })
     },
-    borrowcon(index, row) {
-      var _this = this;
-      if (row.status == "visit") {
-        _this.$message({
-          showClose: true,
-          message: "该账号未激活，等待激活后授权",
-          type: "warning",
+
+    deleteuser(index,row) {
+      this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$axios
+            .post('/delete', {id: row.id}).then(res => {
+
+          if (res.data.code == "200") {
+            this.$message({
+              type: 'info',
+              message: '已删除'
+            })
+            this.getdata();
+          }
+          else {
+            this.$message({
+              type: 'info',
+              message: '删除失败'
+            })
+          }
         });
-      } else {
-        this.$axios.post("/changeborrow", {
-          userid: row.userid,
-          bookid: row.bookid,
-          status: "授权中",
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
         });
-        _this.$message({
-          showClose: true,
-          message: "授权成功",
-          type: "success",
-        });
-      }
+      });
     },
-    returncon(index, row) {
-      var _this = this;
-      console.log(index, row);
-      if (row.level != "未激活") {
-        _this.$message({
-          showClose: true,
-          message: "该账号未激活",
-          type: "warning",
-        });
-      } else {
-        this.$axios.post("/changeborrow", {
-          userid: row.userid,
-          bookid: row.bookid,
-          status: "已结束",
-        });
-        _this.$message({
-          showClose: true,
-          message: "归还成功",
-          type: "success",
-        });
-      }
-    },
+
     filterTag(value, row) {
       return row.status === value;
-    },
-    viewbookdetail(index, row) {
-      let _this = this;
-      this.$axios({
-        url: "/user/getbookdetail",
-        method: "post",
-        data: row.bookid,
-        headers: {
-          "Content-Type": "text/plain",
-        },
-      }).then((res) => {
-        console.log(res);
-        _this.donatetime = res.data.donatetime;
-        _this.isbn = res.data.isbn;
-        _this.userid = res.data.userid;
-      });
     },
   },
 };
