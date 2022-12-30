@@ -107,7 +107,7 @@ export default {
 
         return{
             //用户Id
-            userId:5,
+            userId:3,
             //存储班级
             experimentClassNo:0,
             //存储班级详情
