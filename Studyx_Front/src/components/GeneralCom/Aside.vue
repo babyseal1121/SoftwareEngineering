@@ -6,7 +6,7 @@
       <!-- <el-menu-item :index="item.path" v-for="item in menu_data" :key="item.name">
            <i :class="item.icon"></i>{{item.name}}
        </el-menu-item>-->
-      <el-submenu :index="item.path" v-for="item in menu_data" :key="item.name">
+      <el-submenu :index="item.path" v-for="item in navData" :key="item.name">
         <template slot="title"><i :class="item.icon"></i><span>{{item.name}}</span></template>
         <el-menu-item :index="child.path" v-for="child in item.child" :key="child.name" @click="selectMenu(child)" >
           <i :class="child.icon" ></i>{{child.name}}
@@ -21,17 +21,11 @@ import navData from "@/utils/navData";
 export default {
 
   name: "Aside",
-  data(){
-    return {}
-  },
-  computed:{
-    menu_data:{
-      get(){
-        return this.$store.state.menu_data
-      }
+  data() {
+    return {
+      navData,
     }
   },
-
 
   methods: {
     handleOpen(key, keyPath) {

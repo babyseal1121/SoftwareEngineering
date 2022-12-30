@@ -48,18 +48,6 @@ public class LoginController {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/api/menulist")
-    public Result getMenuList(@RequestBody User user1){
-        //System.out.println(user1.getMail());
-        User user = userService.getByMail(user1.getMail());
-        //Objest Menu
-        if(null!=user)
-            return new Result(200,"搜索成功",user.getLevel());
-        else
-            return new Result(400,"搜索失败",user1.getMail());
-    }
-
-    @CrossOrigin
     @GetMapping("/api/test1")
     public Result test(@RequestParam String no){
         User user = userService.getByMail(no);
@@ -71,26 +59,14 @@ public class LoginController {
 
     }
 
-    //注销登录
-    @CrossOrigin
-    @RequestMapping("/api/logout")
-    public void logout(HttpSession session) {
-        System.out.println("logout");
-        //session失效
-        if (session.getAttribute("user") != null)
-            session.removeAttribute("user");
-    }
     @CrossOrigin
     @PostMapping(value = "/api/login")
     public Result login(@RequestBody User requestUser, HttpSession session) {
 
         String mail = requestUser.getMail();
         mail = HtmlUtils.htmlEscape(mail);
-        //先对比权限
-
         //先得到salt加密的值
         User user = userService.getByMail(mail);
-
         if (null == user) {
             return ResultFactory.buildFailResult("账号不存在");
         }
@@ -109,6 +85,16 @@ public class LoginController {
         }
     }
 
+    @CrossOrigin
+    @RequestMapping("/api/logout")
+    public void logout(HttpSession session) {
+        System.out.println("logout");
+        //session失效
+        if (session.getAttribute("user") != null)
+            session.removeAttribute("user");
+        if (session.getAttribute("admin") != null)
+            session.removeAttribute("admin");
+    }
     @CrossOrigin
     @PostMapping(value = "/api/findpassword")
     public Result findpassword(@RequestBody User user) {
@@ -131,10 +117,10 @@ public class LoginController {
         switch (status) {
             case 0:
                 return ResultFactory.buildFailResult("邮箱或密码或用户名不能为空");
-            case 2:
-                return ResultFactory.buildSuccessResult("激活成功");
             case 1:
-                return ResultFactory.buildFailResult("该邮箱未注册");
+                return ResultFactory.buildSuccessResult("注册成功");
+            case 2:
+                return ResultFactory.buildFailResult("该邮箱已注册");
         }
         return ResultFactory.buildFailResult("未知错误");
     }

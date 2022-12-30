@@ -27,7 +27,7 @@ export default {
   props: {
     msg: String
   },
- // created(){calcRoutes()},
+  created(){calcRoutes()},
 
 
 }
