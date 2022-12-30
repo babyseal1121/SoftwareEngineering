@@ -4,9 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 // import store from './store'
-import axios from "axios";
+import axios from 'axios';
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+
 import global from './utils/global';
 import * as echarts from 'echarts';
 //需要挂载到Vue原型上
