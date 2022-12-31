@@ -61,7 +61,7 @@ export default {
 
         return{
             //用户Id
-            userId: 5,
+            userId: this.$store.getters.userId,
             //存放实验项目信息
             tableData: [],
             //用于搜素指定实验项目

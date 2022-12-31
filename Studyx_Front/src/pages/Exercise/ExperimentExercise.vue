@@ -148,7 +148,7 @@ export default {
             //存放题目信息
             tableData: [],
             //存放教师Id
-            userId:3,
+            userId:this.$store.getters.userId,
             //存放选中的题目
             problemInfo: [],
            

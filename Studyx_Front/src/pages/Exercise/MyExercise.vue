@@ -63,7 +63,7 @@ export default {
             //用于搜素指定时间的测试
             search: '',
             //存放用户的Id
-            userId: 5
+            userId: this.$store.getters.userId
         }
     },
     //函数

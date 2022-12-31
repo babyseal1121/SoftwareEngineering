@@ -65,7 +65,7 @@ export default {
             //用于搜素指定实验项目
             search: '',
             //存放用户Id
-            userId:3
+            userId:this.$store.getters.userId
         }
     },
     //函数

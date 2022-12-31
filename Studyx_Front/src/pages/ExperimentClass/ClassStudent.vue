@@ -158,7 +158,7 @@ export default {
 
         return{
             //用户Id
-            userId:3,
+            userId:this.$store.getters.userId,
             //存储班级
             experimentClassNo:0,
             //班级内人员列表

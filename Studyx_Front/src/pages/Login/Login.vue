@@ -453,6 +453,8 @@ export default {
                 this.$store.commit('handleUserName',res.data.result.username);
                 //将用户权限使用vuex传递到Home页面
                 this.$store.commit('handleLevel',res.data.result.level);
+                //存储用户ID
+                this.$store.commit('handleUserId', res.data.result.id)
                 _this.$message.success({
                   message: "登录成功！"+res.data.result.username+"权限："+res.data.result.level,
                   duration: "500",

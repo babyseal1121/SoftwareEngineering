@@ -62,7 +62,7 @@ export default {
             //当前测试编号
             exerciseNo: 0,
             //用户Id
-            userId:5,
+            userId:0,
             //用于存放考试结果
             exerciseResult:{
                 userid:0,

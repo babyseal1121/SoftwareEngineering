@@ -5,6 +5,8 @@ const state ={
     //username: '明世隐',
     username: '' || localStorage.getItem('username'),
     level: '' || localStorage.getItem('level'),
+    //存放用户id
+    userId: '' || localStorage.getItem('userId'),
     userState:0,
     menu_data:[],
     isLoadRoute:false,
@@ -31,6 +33,11 @@ const mutations ={
         state.level = level
         // 把登录的用户权限保存到localStorage中，防止页面刷新，导致vuex重新启动，用户名就成为初始值（初始值为空）的情况
         localStorage.setItem('username', level)
+    },
+    //存储用户ID
+    handleUserId: (state, userId) =>{
+        state.userId = userId
+        localStorage.setItem('userId', userId)
     },
     setUserState (state, data) {
         state.userState +=data
@@ -64,7 +71,8 @@ const getters = {
         return data;
     },
     username: (state) => state.username,
-    level: (state) => state.level
+    level: (state) => state.level,
+    userId: (state) => state.userId
 }
 export default new Vuex.Store({
     state,
