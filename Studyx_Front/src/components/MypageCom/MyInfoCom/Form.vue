@@ -25,17 +25,6 @@
       </label>
 
       <label>
-        <span>邮箱:</span>
-        <input
-          id="email"
-          type="email"
-          name="mail"
-          placeholder="请输入合法的邮箱地址"
-          required
-          pattern="^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"
-        />
-      </label>
-      <label>
         <span>手机:</span>
         <input
           onkeyup="this.value=this.value.replace(/\D/g,'')"
@@ -128,24 +117,53 @@ export default {
       var formData = new FormData(myform); // form为表单对象
       if (formData.get("password") != formData.get("re-password")) {
         _this.$message("两次密码不一致，请重新输入");
+      }
+      else {
+        this.$axios
+            .post("/user/editinfo", {
+              id: _this.$store.state.userId,
+              password: formData.get("password"),
+              phone: formData.get("phone"),
+              gender: formData.get("gender"),
+              information: formData.get("detail"),
+              school: formData.get("school"),
+              age: formData.get("age"),
+              photo:_this.url,
+            })
+            .then(successResponse => {
+              if (successResponse.data.code === 200) {
+                this.$message.success("已成功修改信息");
+              }
+              else{
+                this.$message.error("个人信息修改失败");
+              }
+            }).catch(failResponse => {
+          this.$message.error("修改失败");
+        })
+      }
+
+
+      /*var _this = this;
+      var formData = new FormData(myform); // form为表单对象
+      if (formData.get("password") != formData.get("re-password")) {
+        _this.$message("两次密码不一致，请重新输入");
       } else {
-        _this.$axios.post("/user/edituserinfo", {
-          id: _this.$myglobal.nowuserid,
+        _this.$axios.post("/user/editinfo", {
+          id: _this.$store.state.userId,
           password: formData.get("password"),
           phone: formData.get("phone"),
-          mail: formData.get("mail"),
           gender: formData.get("gender"),
-          detail: formData.get("detail"),
+          information: formData.get("detail"),
           school: formData.get("school"),
           age: formData.get("age"),
-          url:_this.url,
+          photo:_this.url,
         });
         this.$message({
           message: "已成功修改信息",
           type: "success",
         });
         this.$router.go(0);
-      }
+      }*/
     },
   },
 };

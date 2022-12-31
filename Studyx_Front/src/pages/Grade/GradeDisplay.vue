@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div>成绩展示</div>
 </template>
 
 <script>

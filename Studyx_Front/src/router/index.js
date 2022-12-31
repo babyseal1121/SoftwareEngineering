@@ -98,6 +98,10 @@ import ManageExperimentFile from '@/pages/StudyFile/ManageExperimentFile.vue'
         component: GradeSet,
       },
       {
+        path: '/gradedisplay',
+        component: GradeDisplay,
+      },
+      {
         path: '/userlist',
         component: UserList,
       },
@@ -253,6 +257,10 @@ export default new Router({
         {
           path: '/gradeset',
           component: GradeSet,
+        },
+        {
+          path: '/gradedisplay',
+          component: GradeDisplay,
         },
         /*{
           path: '/userlist',

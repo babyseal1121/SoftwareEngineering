@@ -1,21 +1,21 @@
 <template>
   <div>
+
     <!-- 名片分三大块
     最外层的一块a
     文字一大块b
     平面圆柱一块c -->
     <div class="a">
       <div class="b">
-        <a href="#">{{ username }}</a>
+        <a href="#">{{ $store.getters.username }}</a>
         <!-- <h2>个人信息卡片</h2> -->
         <div class="infouser">性别：{{ gender }}</div>
         <div class="infouser">年龄：{{ age }}</div>
         <div class="infouser">邮箱：{{ mail }}</div>
         <div class="infouser">手机：{{ phone }}</div>
         <div class="infouser">学校：{{ school }}</div>
-        <div class="infouser">个人积分：{{ integration }}</div>
-        <div class="infouser">用户状态：{{ status }}</div>
-        <div class="infouser">个人介绍：{{ detail }}</div>
+        <div class="infouser">用户权限：{{ level }}</div>
+        <div class="infouser">个人介绍：{{ information }}</div>
       </div>
       <div class="c">
         <!-- --i是用来计算平面圆柱的动效延迟和距离的
@@ -53,7 +53,6 @@
         </svg>
       </div>
     </div>
-    <div id="share"><Share></Share></div>
   </div>
 </template>
 
@@ -74,10 +73,10 @@ export default {
       mail: "",
       school: "",
       phone: "",
-      detail: "",
+      information: "",
       age: "",
       integration: "",
-      status: "",
+      level: "",
     };
   },
   mounted() {
@@ -86,11 +85,34 @@ export default {
   methods: {
     getlist() {
       var _this = this;
-      //this.username = this.$myglobal.nowuserid; //当前用户
+      this.$axios
+          .post("/user/getuserinfo", {
+            id: this.$store.state.userId,
+           })
+          .then(successResponse => {
+            if (successResponse.data.code === 200) {
+              this.$message.success("个人信息"+successResponse.data.result.mail);
+              this.mail = successResponse.data.result.mail;
+              this.gender = successResponse.data.result.gender;
+              this.information = successResponse.data.result.information;
+              this.age = successResponse.data.result.age;
+              this.phone = successResponse.data.result.phone;
+              this.school = successResponse.data.result.school;
+              this.level = successResponse.data.result.level;
+              this.photo = successResponse.data.result.photo;
+            }
+            else{
+              this.$message.error("个人信息获取失败");
+            }
+          }).catch(failResponse => {
+        this.$message.error("失败");
+      })
+
+      /*var _this = this;
       this.$axios({
         url: "/user/getuserinfo",
         method: "post",
-        data: _this.$myglobal.nowuserid,
+        data: this.$store.getters.userId,
         headers: {
           "Content-Type": "text/plain",
         },
@@ -104,7 +126,7 @@ export default {
         this.age = res.data.age;
         this.integration = res.data.integration;
         this.status = res.data.status;
-      });
+      });*/
     },
   },
 }
@@ -279,12 +301,12 @@ export default {
   text-align: left;
 }
 .a {
-  position: relative;
+  position: absolute;
   width: 800px;
   height: 400px;
   border: #fff 10px solid;
   background-color: rgb(120, 140, 200);
-  top: -450px;
+  top: 120px;
   border-radius: 20px;
   overflow: hidden;
   left: 400px;

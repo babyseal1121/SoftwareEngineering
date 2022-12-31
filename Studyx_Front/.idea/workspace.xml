@@ -2,60 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../StudyX/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/adler-32/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/adler-32/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/adler-32/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/adler-32/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/adler-32/adler32.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/adler-32/adler32.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/adler-32/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/adler-32/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/adler-32/types/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/adler-32/types/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/adler-32/types/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/adler-32/types/tslint.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/codepage/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/codepage/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/codepage/cptable.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/cptable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/codepage/cputils.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/cputils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/codepage/dist/cpexcel.full.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/dist/cpexcel.full.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/codepage/dist/sbcs.full.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/dist/sbcs.full.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cfb/node_modules/adler-32/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cfb/node_modules/adler-32/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/cfb/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cfb/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/codepage/node_modules/commander/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/node_modules/commander/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/codepage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/codepage/types/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/codepage/types/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/ssf/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ssf/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/crc-32/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/crc-32/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/exit-on-epipe/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/exit-on-epipe/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/file-saver/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/file-saver/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/frac/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/frac/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mockjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/mockjs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/printj/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/printj/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/ssf/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ssf/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/ssf/ssf.flow.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ssf/ssf.flow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/ssf/ssf.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/ssf/ssf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/word/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/word/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/word/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/word/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/word/word.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/bin/xlsx.njs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/bin/xlsx.njs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/bower.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/cpexcel.full.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/cpexcel.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/dist/cpexcel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.core.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.core.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.core.min.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.core.min.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.extendscript.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.extendscript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.full.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.full.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.full.min.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.full.min.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.mini.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.mini.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.mini.min.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.mini.min.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.zahl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/dist/xlsx.zahl.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/formats.png" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/formats.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/legend.png" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/legend.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/wmf/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/wmf/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/node_modules/commander/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/node_modules/commander/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/xlsx/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/types/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/xlsx.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/xlsx.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/xlsx.mjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/xlsx/xlsxworker.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/xlsx/xlsxworker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/User/AddUser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/User/AddUser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/Form.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/Form.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/TDButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MypageCom/MyInfoCom/TDButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mock/mock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mock/mock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Grade/GradeDisplay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Grade/GradeDisplay.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/MyInfo/MyInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,19 +52,19 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Desktop/se/SoftwareEngineering/Studyx_Front/src/components/MyPageCom",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Desktop/se/SoftwareEngineering/StudyX&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Desktop\se\SoftwareEngineering\Studyx_Front\src\components\MyPageCom" />
@@ -119,7 +89,10 @@
       <workItem from="1671009960999" duration="1912000" />
       <workItem from="1672056697187" duration="3938000" />
       <workItem from="1672071692750" duration="6781000" />
-      <workItem from="1672271789023" duration="23736000" />
+      <workItem from="1672271789023" duration="24241000" />
+      <workItem from="1672314094818" duration="1584000" />
+      <workItem from="1672387800512" duration="2129000" />
+      <workItem from="1672495814831" duration="5873000" />
     </task>
     <servers />
   </component>

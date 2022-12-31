@@ -1,11 +1,11 @@
 package com.example.studyx.controller;
 
 import com.example.studyx.dao.UserDAO;
-import com.example.studyx.pojo.Exercise;
 import com.example.studyx.pojo.User;
 import com.example.studyx.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import com.example.studyx.result.Result;
 import com.example.studyx.result.ResultFactory;
 import org.apache.shiro.crypto.hash.SimpleHash;
@@ -70,6 +70,68 @@ public class UserController {
 
         return new Result(200,"权限修改成功",user1);
 
+    }
+
+
+    @CrossOrigin
+    @PostMapping(value = "/api/user/getuserinfo")
+    public Result getuserinfo(@RequestBody User user) {
+        System.out.println("用户："+user.getId());
+        User user1 = userDAO.getById(Integer.valueOf(user.getId()));
+        return new Result(200,"权限修改成功",user1);
+
+    }
+
+    @CrossOrigin
+    @PostMapping(value = "/api/user/editinfo")
+    public Result edituserinfo(@RequestBody User user) {
+       // Integer id = Integer.valueOf(user.getId());
+        User usera = userDAO.getById(user.getId());
+        if (user.getPassword() != "") {
+            // 默认生成 16 位盐，干扰数据
+            String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+            int times = 2;
+            usera.setSalt(salt);
+            String encodedPassword = new SimpleHash("md5", user.getPassword(), salt, times).toString();
+            usera.setPassword(encodedPassword);
+        }
+        else
+            usera.setPassword(usera.getPassword());
+
+        if (user.getAge() != "") {
+            usera.setAge(user.getAge());
+        }
+        else
+            usera.setAge(usera.getAge());
+        if (user.getGender() != "") {
+            usera.setGender(user.getGender());
+        }
+        else
+            usera.setInformation(usera.getInformation());
+        if (user.getInformation() != "") {
+            usera.setInformation(user.getInformation());
+        }
+        else
+            usera.setPhone(usera.getPhone());
+        if (user.getPhone() != "") {
+            usera.setPhone(user.getPhone());
+        }
+        else
+            usera.setPhone(usera.getPhone());
+        if (user.getSchool() != "") {
+            usera.setSchool(user.getSchool());
+        }
+        else
+            usera.setSchool(usera.getSchool());
+        if (user.getPhoto() != "") {
+            usera.setPhoto(user.getPhoto());
+        }
+        else
+            usera.setPhoto(usera.getPhoto());
+        userDAO.save(usera);
+        System.out.println(usera.getGender());
+        System.out.println(user.getGender());
+        return new Result(200,"修改成功",usera);
     }
 
 }

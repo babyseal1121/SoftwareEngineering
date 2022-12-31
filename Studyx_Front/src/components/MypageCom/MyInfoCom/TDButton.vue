@@ -10,7 +10,7 @@ export default {};
 
 #button3D{
     position:absolute;
-    margin-top:-900px;
+    margin-top:120px;
     margin-left:1000px;
 }
 .button-3d-1{
@@ -29,20 +29,20 @@ export default {};
     width: 0;
     height: 0;
     position: absolute;
-    top: 0;
+    top:120;
     left: -6px;
     border: 6px solid transparent;
     border-right: 6px solid hsl(125, 50%, 69%);
     border-left-width: 0px;
   }
-  
+
   .button-3d-1::after {
     content: "";
     display: block;
     width: 0;
     height: 0;
     position: absolute;
-    bottom: -6px;
+    bottom: 120px;
     right: 0;
     border: 6px solid transparent;
     border-top: 6px solid hsl(117, 29%, 62%);
@@ -60,7 +60,7 @@ export default {};
     border-left-width: 0px;
     left: -3px;
   }
-  
+
   .button-3d-1:active::after {
     border: 3px solid transparent;
     border-top: 3px solid hsl(16, 100%, 30%);

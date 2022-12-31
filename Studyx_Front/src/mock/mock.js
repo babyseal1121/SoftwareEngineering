@@ -43,8 +43,8 @@ Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
         {
             name: '成绩管理',
             icon: 'el-icon-setting',
-            path: '/myinfo',
-            component:"MyInfo",
+            path: '/gradeset',
+            component:"GradeSet",
             child: [
                 {
                     name: '成绩权重设置',
@@ -55,8 +55,8 @@ Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
                 {
                     name: '查看成绩',
                     icon: 'el-icon-help',
-                    path: '/myinfo',
-                    component:"MyInfo",
+                    path: '/gradedisplay',
+                    component: "GradeDisplay",
                 }
             ]
         },
@@ -188,8 +188,8 @@ Mock.mock('http://localhost:8443/api/teachermenu','get',function(){
                 {
                     name: '查看成绩',
                     icon: 'el-icon-help',
-                    path: '/myinfo',
-                    component:"MyInfo",
+                    path: '/gradedisplay',
+                    component: "GradeDisplay",
                 }
             ]
         },
@@ -308,8 +308,8 @@ Mock.mock('http://localhost:8443/api/tutormenu','get',function(){
                 {
                     name: '查看成绩',
                     icon: 'el-icon-help',
-                    path: '/myinfo',
-                    component:"MyInfo",
+                    path: '/gradedisplay',
+                    component: "GradeDisplay",
                 }
             ]
         },
@@ -390,8 +390,8 @@ Mock.mock('http://localhost:8443/api/studentmenu','get',function(){
                 {
                     name: '查看成绩',
                     icon: 'el-icon-help',
-                    path: '/myinfo',
-                    component:"MyInfo",
+                    path: '/gradedisplay',
+                    component: "GradeDisplay",
                 }
             ]
         },
