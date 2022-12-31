@@ -18,6 +18,8 @@ public interface StudyMaterialDAO extends JpaRepository<StudyMaterial,Integer> {
 
     List<StudyMaterial> findByMaterialpath(String path);
 
+    StudyMaterial findByMaterialpathAndMaterialname(String path, String name);
+
     @NotNull
     List<StudyMaterial> findAll();
 

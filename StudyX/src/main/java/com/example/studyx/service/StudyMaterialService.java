@@ -26,6 +26,9 @@ public class StudyMaterialService {
     //上传文件
     public void submitStudyMaterial(MultipartFile studyFile, String fileName, String pathName, String uploadTime){
 
+        //文件的编号
+        int fileNo = 0;
+        
         try {
             //完整文件地址
             String fullDirPath = rootDirPath + pathName;
@@ -37,6 +40,14 @@ public class StudyMaterialService {
 
                 fileDir.mkdir();
             }
+            //验证是否存在同名文件
+            else{
+                StudyMaterial material = studyMaterialDAO.findByMaterialpathAndMaterialname(pathName,fileName);
+                //如果有同名文件就进行更新
+                if(null != material){
+                    fileNo = material.getMaterialno();
+                }
+            }
 
             //存储文件
             File file = new File(fullDirPath + fileName);
@@ -46,7 +57,7 @@ public class StudyMaterialService {
             throw new RuntimeException(e);
         }
 
-        studyMaterialDAO.save(new StudyMaterial(0, fileName, pathName, uploadTime));
+        studyMaterialDAO.save(new StudyMaterial(fileNo, fileName, pathName, uploadTime));
 
     }
 
