@@ -131,8 +131,8 @@ export default[
             {
                 name: '资料列表',
                 icon: 'el-icon-files',
-                path: '/userlist',
-                component:"UserList",
+                path: '/showstudyfile',
+                component: "ShowStudyFile"
             },
             {
                 name: '资料管理',

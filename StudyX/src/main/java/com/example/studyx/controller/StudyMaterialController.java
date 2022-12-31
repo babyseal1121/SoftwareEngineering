@@ -87,10 +87,10 @@ public class StudyMaterialController {
     //获取文件信息列表
     @CrossOrigin
     @GetMapping(value = "/api/studymaterial/getstudymateriallist")
-    public Result getStudyMaterialList(){
+    public Result getStudyMaterialList(@RequestParam String experimentName){
 
         try {
-            List<StudyMaterial> list = studyMaterialService.getStudyMaterialList();
+            List<StudyMaterial> list = studyMaterialService.getStudyMaterialList(experimentName);
 
             return new Result(200,"success", list);
         }

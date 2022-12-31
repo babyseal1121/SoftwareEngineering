@@ -159,8 +159,8 @@ Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
                 {
                     name: '资料列表',
                     icon: 'el-icon-files',
-                    path: '/userlist',
-                    component:"UserList",
+                    path: '/showstudyfile',
+                    component: "ShowStudyFile"
                 },
                 {
                     name: '资料管理',
@@ -280,8 +280,8 @@ Mock.mock('http://localhost:8443/api/teachermenu','get',function(){
                 {
                     name: '资料列表',
                     icon: 'el-icon-files',
-                    path: '/userlist',
-                    component:"UserList",
+                    path: '/showstudyfile',
+                    component: "ShowStudyFile"
                 },
                 {
                     name: '资料管理',
@@ -368,8 +368,8 @@ Mock.mock('http://localhost:8443/api/tutormenu','get',function(){
                 {
                     name: '资料列表',
                     icon: 'el-icon-files',
-                    path: '/userlist',
-                    component:"UserList",
+                    path: '/showstudyfile',
+                    component: "ShowStudyFile"
                 },
             ]
         },
@@ -457,8 +457,8 @@ Mock.mock('http://localhost:8443/api/studentmenu','get',function(){
                 {
                     name: '资料列表',
                     icon: 'el-icon-files',
-                    path: '/userlist',
-                    component:"UserList",
+                    path: '/showstudyfile',
+                    component: "ShowStudyFile"
                 },
             ]
         },
@@ -603,8 +603,8 @@ Mock.mock('http://localhost:8443/api/fullsidebar','get',function(){
                 {
                     name: '资料列表',
                     icon: 'el-icon-files',
-                    path: '/userlist',
-                    component:"UserList",
+                    path: '/showstudyfile',
+                    component: "ShowStudyFile"
                 },
                 {
                     name: '资料管理',

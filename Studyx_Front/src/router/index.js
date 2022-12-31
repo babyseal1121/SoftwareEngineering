@@ -54,7 +54,9 @@ import ClassExperiment from '@/pages/ExperimentClass/ClassExperiment.vue'
 import ClassStudent from '@/pages/ExperimentClass/ClassStudent.vue'
 import MyClass from '@/pages/ExperimentClass/MyClass.vue'
 
-
+//文件
+import ShowStudyFile from '@/pages/StudyFile/ShowStudyFile.vue'
+import ExperimentFile from '@/pages/StudyFile/ExperimentFile.vue'
 
 //导入外部数据
 //import navData from "@/utils/navData";
@@ -342,6 +344,14 @@ export default new Router({
           path: '/myclass',
           component: MyClass
         },
+        {
+          path: '/showstudyfile',
+          component: ShowStudyFile
+        },
+        {
+          path: '/experimentfile',
+          component: ExperimentFile
+        }
       ],
       props: true
     },

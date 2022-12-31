@@ -182,9 +182,9 @@ public class StudyMaterialService {
     }
 
     //获取文件信息列表
-    public List<StudyMaterial> getStudyMaterialList(){
+    public List<StudyMaterial> getStudyMaterialList(String experimentName){
 
-        return studyMaterialDAO.findAll();
+        return studyMaterialDAO.findByMaterialpath(experimentName);
     }
 
 }
