@@ -165,8 +165,8 @@ Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
                 {
                     name: '资料管理',
                     icon: 'el-icon-folder-checked',
-                    path: '/userlist',
-                    component:"UserList",
+                    path: '/managefile',
+                    component: "ManageFile"
                 },
             ]
         },
@@ -286,8 +286,8 @@ Mock.mock('http://localhost:8443/api/teachermenu','get',function(){
                 {
                     name: '资料管理',
                     icon: 'el-icon-folder-checked',
-                    path: '/userlist',
-                    component:"UserList",
+                    path: '/managefile',
+                    component: "ManageFile"
                 },
             ]
         },
@@ -609,8 +609,8 @@ Mock.mock('http://localhost:8443/api/fullsidebar','get',function(){
                 {
                     name: '资料管理',
                     icon: 'el-icon-folder-checked',
-                    path: '/userlist',
-                    component:"UserList",
+                    path: '/managefile',
+                    component: "ManageFile"
                 },
             ]
         },

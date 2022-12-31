@@ -197,7 +197,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
 .upload-button{
     position:relative;
     left: -43.5%;

@@ -137,8 +137,8 @@ export default[
             {
                 name: '资料管理',
                 icon: 'el-icon-folder-checked',
-                path: '/userlist',
-                component:"UserList",
+                path: '/managefile',
+                component: "ManageFile"
             },
         ]
     },
