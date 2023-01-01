@@ -15,6 +15,7 @@
           <el-dropdown-item>您好，{{$store.getters.username}}</el-dropdown-item>
           <el-dropdown-item icon="el-icon-s-home" @click.native="mypage()" >个人中心</el-dropdown-item>
           <el-dropdown-item @click.native="logout()"><i class="el-icon-switch-button"></i>退出登录</el-dropdown-item>
+          <el-dropdown-item @click.native="attendance()"><i class="el-icon-s-help"></i>我要签到</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -40,6 +41,11 @@ export default {
       this.$router.push({
         path: "/login",
       });
+
+    },
+    attendance(){
+      this.$axios.post("addattendance");
+      this.$message.success("签到成功！");
     }
   }
 }

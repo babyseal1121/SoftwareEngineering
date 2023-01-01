@@ -43,6 +43,12 @@ public class GradeController {
     }
 
     @CrossOrigin
+    @GetMapping("/api/gradelist")
+    public Result listGrades() {
+        return ResultFactory.buildSuccessResult(gradeService.listofgrade());
+    }
+
+    @CrossOrigin
     @PostMapping(value = "/api/changegradeset")
     public Result changegradeset(@RequestBody GradeSet gradeset) {
         // Integer id = Integer.valueOf(user.getId());

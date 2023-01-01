@@ -20,6 +20,16 @@ public class Grade {
     double experimentgrade;
     double totalgrade;
 
+    Integer classno;
+
+    public Integer getClassno() {
+        return classno;
+    }
+
+    public void setClassno(Integer classno) {
+        this.classno = classno;
+    }
+
     public Integer getUserid() {
         return userid;
     }

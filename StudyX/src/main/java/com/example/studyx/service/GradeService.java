@@ -21,8 +21,16 @@ public class GradeService {
     @Autowired
     GradeSetDAO gradesetDAO;
 
+    @Autowired
+    GradeDAO gradeDAO;
+
     public List<GradeSet> list() {
         //Sort sort = new Sort(Sort.Direction.DESC, "isbn");
         return gradesetDAO.findAll(Sort.by(Sort.Direction.DESC, "classno"));
+    }
+
+    public List<Grade> listofgrade() {
+        //Sort sort = new Sort(Sort.Direction.DESC, "isbn");
+        return gradeDAO.findAll(Sort.by(Sort.Direction.DESC, "userid"));
     }
 }
