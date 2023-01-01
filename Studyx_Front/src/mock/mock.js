@@ -37,6 +37,16 @@ Mock.mock('http://localhost:8443/api/adminmenu','get',function(){
         menu_data
     }
 });
+//未激活
+Mock.mock('http://localhost:8443/api/startmenu','get',function(){
+    const menu_data = [
+
+    ]
+
+    return{
+        menu_data
+    }
+});
 //责任教师
 Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
     const menu_data = [

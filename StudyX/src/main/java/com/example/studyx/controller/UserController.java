@@ -107,12 +107,12 @@ public class UserController {
             usera.setGender(user.getGender());
         }
         else
-            usera.setInformation(usera.getInformation());
+            usera.setGender(usera.getGender());
         if (user.getInformation() != "") {
             usera.setInformation(user.getInformation());
         }
         else
-            usera.setPhone(usera.getPhone());
+            usera.setInformation(usera.getInformation());
         if (user.getPhone() != "") {
             usera.setPhone(user.getPhone());
         }

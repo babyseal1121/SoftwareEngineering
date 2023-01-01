@@ -107,26 +107,6 @@ export default {
           }).catch(failResponse => {
         this.$message.error("失败");
       })
-
-      /*var _this = this;
-      this.$axios({
-        url: "/user/getuserinfo",
-        method: "post",
-        data: this.$store.getters.userId,
-        headers: {
-          "Content-Type": "text/plain",
-        },
-      }).then((res) => {
-        this.username = res.data.username;
-        this.gender = res.data.gender;
-        this.detail = res.data.detail;
-        this.mail = res.data.mail;
-        this.phone = res.data.phone;
-        this.school = res.data.school;
-        this.age = res.data.age;
-        this.integration = res.data.integration;
-        this.status = res.data.status;
-      });*/
     },
   },
 }

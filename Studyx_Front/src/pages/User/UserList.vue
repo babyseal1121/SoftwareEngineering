@@ -157,6 +157,9 @@ export default {
       }, {
         value: '学生',
         label: '学生'
+      },{
+        value: '未激活',
+        label: '未激活'
       }],
       value: '',
       dialogFormVisible: false,

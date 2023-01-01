@@ -439,97 +439,114 @@ export default {
       if (loginv1 != v1) {
         _this.$message.error("验证码错误！");
       } else {
-        _this.$axios
-            .post("/login", {
-              mail: _this.loginForm.mail,
-              password: _this.loginForm.password,
-            })
-            .then((res) => {
-              // console.log(res.data)
-              if (res.data.code == "200") {
-                _this.$myglobal.setnowmail = _this.loginForm.mail;
-                localStorage.setItem('token',res.data.token)
-                // 将登录名使用vuex传递到Home页面
-                this.$store.commit('handleUserName',res.data.result.username);
-                //将用户权限使用vuex传递到Home页面
-                this.$store.commit('handleLevel',res.data.result.level);
-                //存储用户ID
-                this.$store.commit('handleUserId', res.data.result.id)
-                _this.$message.success({
-                  message: "登录成功！"+res.data.result.username+"权限："+res.data.result.level,
-                  duration: "500",
-                });
-                var that = _this;
-                _this
-                    .$axios({
-                      url: "/getuserid",
-                      method: "post",
-                      data: that.loginForm.mail,
-                      headers: {
-                        "Content-Type": "text/plain",
-                      },
+        //首先调用接口判断权限
+        //获取权限
+        //如果权限为“未激活”
+        if(0)
+        {
+          //打开对话框
+          //输入激活码
+          //后端接口，修改权限为“未授权”
+          //跳转到对应页面
+        }
+        else {
+          _this.$axios
+              .post("/login", {
+                mail: _this.loginForm.mail,
+                password: _this.loginForm.password,
+              })
+              .then((res) => {
+                // console.log(res.data)
+                if (res.data.code == "200") {
+                  _this.$myglobal.setnowmail = _this.loginForm.mail;
+                  localStorage.setItem('token',res.data.token)
+                  // 将登录名使用vuex传递到Home页面
+                  this.$store.commit('handleUserName',res.data.result.username);
+                  //将用户权限使用vuex传递到Home页面
+                  this.$store.commit('handleLevel',res.data.result.level);
+                  //存储用户ID
+                  this.$store.commit('handleUserId', res.data.result.id)
+                  _this.$message.success({
+                    message: "登录成功！"+res.data.result.username+"权限："+res.data.result.level,
+                    duration: "500",
+                  });
+                  var that = _this;
+                  _this
+                      .$axios({
+                        url: "/getuserid",
+                        method: "post",
+                        data: that.loginForm.mail,
+                        headers: {
+                          "Content-Type": "text/plain",
+                        },
+                      })
+                      .then((res) => {
+                        that.$myglobal.setnowuserid(res.data); //改变全局nowusername
+                        alert(res.data + ":" + that.$.nowuserid);
+                        // console.log( _this.$myglobal.nowuserid)
+                      });
+                  if(res.data.result.level=="管理员")
+                  {
+                    this.$axios.get("/adminmenu").then(res=>{
+                      this.$store.commit('setMenuData',res.data.menu_data)
+                      console.log(res.data.menu_data)
                     })
-                    .then((res) => {
-                      that.$myglobal.setnowuserid(res.data); //改变全局nowusername
-                      alert(res.data + ":" + that.$.nowuserid);
-                      // console.log( _this.$myglobal.nowuserid)
+                    this.$router.push({
+                      path: "/userlist",
                     });
-                if(res.data.result.level=="管理员")
-                {
-                  this.$axios.get("/adminmenu").then(res=>{
-                    this.$store.commit('setMenuData',res.data.menu_data)
-                    console.log(res.data.menu_data)
-                  })
-                  this.$router.push({
-                    path: "/userlist",
-                  });
+                  }
+                  else if(res.data.result.level=="责任教师"){
+                    this.$axios.get("/instructormenu").then(res=>{
+                      this.$store.commit('setMenuData',res.data.menu_data)
+                      console.log(res.data.menu_data)
+                    })
+                    this.$router.push({
+                      path: "/userlist",
+                    });
+                  }
+                  else if(res.data.result.level=="教师"){
+                    this.$axios.get("/teachermenu").then(res=>{
+                      this.$store.commit('setMenuData',res.data.menu_data)
+                      console.log(res.data.menu_data)
+                    })
+                    this.$router.push({
+                      path: "/userlist",
+                    });
+                  }
+                  else if(res.data.result.level=="助教"){
+                    this.$axios.get("/tutormenu").then(res=>{
+                      this.$store.commit('setMenuData',res.data.menu_data)
+                      console.log(res.data.menu_data)
+                    })
+                    this.$router.push({
+                      path: "/userlist",
+                    });
+                  }
+                  else if(res.data.result.level=="学生")
+                  {
+                    this.$axios.get("/studentmenu").then(res=>{
+                      this.$store.commit('setMenuData',res.data.menu_data)
+                      console.log(res.data.menu_data)
+                    })
+                    this.$router.push({
+                      path: "/userlist",
+                    });
+                  }
+                  else if(res.data.result.level=="未激活"){
+                    this.$axios.get("/startmenu").then(res=>{
+                      this.$store.commit('setMenuData',res.data.menu_data)
+                      console.log(res.data.menu_data)
+                    })
+                    this.$router.push({
+                      path: "/index",
+                    });
+                  }
+                } else {
+                  this.$message.error("用户名或密码错误！");
                 }
-                else if(res.data.result.level=="责任教师"){
-                  this.$axios.get("/instructormenu").then(res=>{
-                    this.$store.commit('setMenuData',res.data.menu_data)
-                    console.log(res.data.menu_data)
-                  })
-                  this.$router.push({
-                    path: "/userlist",
-                  });
-                }
-                else if(res.data.result.level=="教师"){
-                  this.$axios.get("/teachermenu").then(res=>{
-                    this.$store.commit('setMenuData',res.data.menu_data)
-                    console.log(res.data.menu_data)
-                  })
-                  this.$router.push({
-                    path: "/userlist",
-                  });
-                }
-                else if(res.data.result.level=="助教"){
-                  this.$axios.get("/tutormenu").then(res=>{
-                    this.$store.commit('setMenuData',res.data.menu_data)
-                    console.log(res.data.menu_data)
-                  })
-                  this.$router.push({
-                    path: "/userlist",
-                  });
-                }
-                else if(res.data.result.level=="学生")
-                {
-                  this.$axios.get("/studentmenu").then(res=>{
-                    this.$store.commit('setMenuData',res.data.menu_data)
-                    console.log(res.data.menu_data)
-                  })
-                  this.$router.push({
-                    path: "/userlist",
-                  });
-                }
-                else {
-                  this.$router.push({
-                    path: "/index",
-                  });
-                }
-              } else {
-                this.$message.error("用户名或密码错误！");
-              }
-            });
+              });
+
+        }
       }
     },
     //用户注册
