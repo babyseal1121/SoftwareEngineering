@@ -501,7 +501,7 @@ export default {
                       console.log(res.data.menu_data)
                     })
                     this.$router.push({
-                      path: "/userlist",
+                      path: "/gradeset",
                     });
                   }
                   else if(res.data.result.level=="教师"){
@@ -510,7 +510,7 @@ export default {
                       console.log(res.data.menu_data)
                     })
                     this.$router.push({
-                      path: "/userlist",
+                      path: "/gradedisplay",
                     });
                   }
                   else if(res.data.result.level=="助教"){
@@ -519,7 +519,7 @@ export default {
                       console.log(res.data.menu_data)
                     })
                     this.$router.push({
-                      path: "/userlist",
+                      path: "/gradedisplay",
                     });
                   }
                   else if(res.data.result.level=="学生")
@@ -529,7 +529,7 @@ export default {
                       console.log(res.data.menu_data)
                     })
                     this.$router.push({
-                      path: "/userlist",
+                      path: "/index",
                     });
                   }
                   else if(res.data.result.level=="未激活"){

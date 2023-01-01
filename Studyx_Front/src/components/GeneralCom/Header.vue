@@ -27,6 +27,7 @@ export default {
   name: "Header",
   data() {
     return {
+      attendancenum:"",
       avatar: require('@/assets/image/touxiang.jpg')
     }
   },
@@ -45,7 +46,7 @@ export default {
     },
     attendance(){
       this.$axios.post("addattendance");
-      this.$message.success("签到成功！");
+      this.$message.success("签到成功！当前签到次数："+this.attendancenum+"次");
     }
   }
 }

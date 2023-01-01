@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/GradeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/GradeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/Grade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/GradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/GradeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/GeneralCom/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GeneralCom/Header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Grade/GradeDisplay.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Grade/GradeDisplay.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login/Login.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +72,7 @@
       <workItem from="1672271789023" duration="24241000" />
       <workItem from="1672314094818" duration="1584000" />
       <workItem from="1672387800512" duration="2129000" />
-      <workItem from="1672495814831" duration="14272000" />
+      <workItem from="1672495814831" duration="15280000" />
     </task>
     <servers />
   </component>

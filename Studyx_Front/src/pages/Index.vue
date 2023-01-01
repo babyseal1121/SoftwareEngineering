@@ -1,12 +1,6 @@
 <template>
   <div>
-    <el-button @click="getTest">get数据</el-button>
-    <h1>{{$store.state.username}}</h1>
-    数据状态：{{$store.state.userState}}
-    计算数据状态：{{$store.getters.getUserState}}
-    <el-button @click="addState">状态+1</el-button>
-    <el-button @click="getTest">get数据</el-button>
-    <el-button @click="postTest">post测试1</el-button>
+   首页
   </div>
 </template>
 
