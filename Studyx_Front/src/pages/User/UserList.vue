@@ -8,7 +8,7 @@
       <el-table
           :data="tableData"
           style="width: 100%"
-          :default-sort="{ prop: 'date', order: 'descending' }"
+          :default-sort="{ prop: 'id', order: 'descending' }"
       >
         <el-table-column prop="id" label="用户id" sortable width="150">
         </el-table-column>

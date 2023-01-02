@@ -9,7 +9,18 @@
         style="width: 100%"
         :default-sort="{ prop: 'date', order: 'descending' }"
     >
-      <el-table-column prop="classno" label="班级号" sortable width="150">
+      <el-table-column
+          prop="classno"
+          label="班级号"
+          width="150"
+          :filters="[
+            { text: '5班', value: 5 },
+            { text: '6班', value: 6 },
+          ]"
+          :filter-method="filterTag"
+          filter-placement="bottom-end"
+      >
+
       </el-table-column>
       <el-table-column prop="userid" label="学生id" width="120">
       </el-table-column>
@@ -109,7 +120,7 @@ export default {
     },
 
     filterTag(value, row) {
-      return row.status === value;
+      return row.classno === value;
     },
   },
 
