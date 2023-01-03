@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface GradeDAO extends JpaRepository<Grade,Integer>{
     Grade getByUserid(Integer userid);
+    List<Grade> findByClassno(Integer classno);
     //User findById(Integer id);
     /*User findByMail(String mail);
 

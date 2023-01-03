@@ -33,4 +33,11 @@ public class GradeService {
         //Sort sort = new Sort(Sort.Direction.DESC, "isbn");
         return gradeDAO.findAll(Sort.by(Sort.Direction.DESC, "userid"));
     }
+
+    public List<Grade> StudentofClass(Integer classno) {
+        //Sort sort = new Sort(Sort.Direction.DESC, "isbn");
+        return gradeDAO.findByClassno(classno);
+    }
+
+
 }

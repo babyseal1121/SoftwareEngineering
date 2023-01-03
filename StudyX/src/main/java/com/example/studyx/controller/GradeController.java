@@ -34,6 +34,8 @@ public class GradeController {
 
     @Autowired
     GradeSetDAO gradesetDAO;
+    @Autowired
+    GradeDAO gradeDAO;
 
     @Autowired
     GradeService gradeService;
@@ -43,12 +45,12 @@ public class GradeController {
     //增加考勤次数
     @CrossOrigin
     @PostMapping("/api/addattendance")
-    public Result addattendance(@RequestBody StudentRecord studentrecord) {
+    public Result addattendance(@RequestBody Grade grade) {
         //获取权重集合
-        StudentRecord a = studentrecordDAO.getByUserid(studentrecord.getUserid());
+        Grade a = gradeDAO.getByUserid(grade.getUserid());
         //计算考勤分数
-        a.setAttendancenum(a.getAttendancenum()+1);
-        studentrecordDAO.save(a);
+        a.setAttendancenum(a.getAttendancenum()+1.0);
+        gradeDAO.save(a);
         System.out.println(a.getAttendancenum());
         //计算实验分数
         return ResultFactory.buildSuccessResult(a);
@@ -84,9 +86,28 @@ public class GradeController {
     public Result CalculateGrades(@RequestBody GradeSet gradeset) {
         //获取权重集合
         GradeSet gradeseta = gradesetDAO.getByClassno(gradeset.getClassno());
+        double attweight=gradeseta.getAttandanceweight();
+        int attnum=gradeseta.getAttandancenum();
+        //返回对应班级中的所有学生的成绩表
+        List<Grade> gradelist=gradeService.StudentofClass(gradeseta.getClassno());
         //计算考勤分数
+        //拿其中一个孩子举例：
+        //考勤分数=100*考勤权重*（学生的考勤次数/考勤次数）
+       /* gradelist.forEach(p -> p.setAttandancegrade(100*attweight*(p.getAttendancenum()/attnum)));
+        gradelist.forEach(p->System.out.println("考勤："+p.getAttandancegrade()));*/
+        for(int i=0;i<gradelist.size();i++){
+            Grade test=gradelist.get(i);
+            double g1=100*attweight*(test.getAttendancenum()/attnum);
+            test.setAttandancegrade(g1);
+            test.setTotalgrade(test.getTotalgrade()+g1);
+            System.out.println(100*attweight*(test.getAttendancenum()/attnum));
+            gradeDAO.save(test);
+        }
+        System.out.println("考勤权重："+attweight);
+
+
         //计算实验分数
-        return ResultFactory.buildSuccessResult(gradeseta);
+        return ResultFactory.buildSuccessResult(gradelist);
     }
 
     @CrossOrigin

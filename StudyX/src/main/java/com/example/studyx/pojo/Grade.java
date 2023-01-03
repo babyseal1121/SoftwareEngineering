@@ -22,6 +22,16 @@ public class Grade {
 
     Integer classno;
 
+    Double attendancenum;
+
+    public Double getAttendancenum() {
+        return attendancenum;
+    }
+
+    public void setAttendancenum(Double attendancenum) {
+        this.attendancenum = attendancenum;
+    }
+
     public Integer getClassno() {
         return classno;
     }

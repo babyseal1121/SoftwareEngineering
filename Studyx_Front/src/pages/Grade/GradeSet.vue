@@ -195,7 +195,7 @@ export default {
             })
           .then(successResponse => {
             if (successResponse.data.code === 200) {
-              this.$message.success("计算成功："+successResponse.data.result.classno+"班");
+              this.$message.success("计算成功!共"+successResponse.data.result.length+"人");
               this.getdata();
             }
             else{
