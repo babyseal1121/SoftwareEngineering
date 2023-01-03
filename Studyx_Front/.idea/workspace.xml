@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="43b95de9-9ce0-42be-87d8-859f26ba8fdc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/GradeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/controller/GradeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/dao/GradeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/dao/GradeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/pojo/Grade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/GradeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../StudyX/src/main/java/com/example/studyx/service/GradeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Grade/GradeSet.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Grade/GradeSet.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
