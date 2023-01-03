@@ -10,4 +10,6 @@ public interface ExperimentReportDAO extends JpaRepository<ExperimentReport,Inte
     ExperimentReport findById (int id);
 
     List<ExperimentReport> findByUserid(int userid);
+
+   // List<Double>
 }
