@@ -189,6 +189,8 @@ export default {
         this.reportInfo.experimentname = this.$route.query.experimentname
         //获取实验人编号
         this.reportInfo.userid = this.$route.query.userId
+        //获取实验人名称
+        this.reportInfo.username = this.$store.getters.username
         //获取实验详情
         this.getExperimentDetail()
     }
