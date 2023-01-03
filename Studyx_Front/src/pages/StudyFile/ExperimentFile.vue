@@ -96,7 +96,7 @@ export default {
         handleEdit(row) {
             let link = document.createElement('a');
             link.style.display = 'none';
-            link.href = "http://1.117.227.19:8443/api/studymaterial/getstudymaterial?materialNo=" + row.materialno;
+            link.href = "http://localhost:8443/api/studymaterial/getstudymaterial?materialNo=" + row.materialno;
             link.download = row.materialname;
             //document.body.appendChild(link);
             link.click();

@@ -3,7 +3,7 @@
     <!-- 到时候需要改这里的接口 -->
     <!-- <el-upload
       class="avatar-uploader"
-      action="http://1.117.227.19:8443/api/user/covers"
+      action="http://localhost:8443/api/user/covers"
       :show-file-list="false"
       :auto-upload="false"
       accept=".jpg,.png"
@@ -25,7 +25,7 @@
     </div> -->
     <el-upload
       class="upload-demo"
-      action="http://1.117.227.19:8443/api/user/covers"
+      action="http://localhost:8443/api/user/covers"
       :data="upload_data"
       :on-preview="handlePreview"
       :on-remove="handleRemove"
