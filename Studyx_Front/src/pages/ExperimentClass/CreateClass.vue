@@ -6,6 +6,22 @@
         </el-breadcrumb>
         <br/>
 
+        <h1 class="experiment-title">课程开始时间</h1>
+        <el-input
+        type="textarea"
+        :rows="3"
+        placeholder="描述课程开始时间，推荐格式为：年份 + 学期 + 第几周 + 上课时间(小于50字)"
+        v-model="classStartTime">
+        </el-input>
+
+        <h1 class="experiment-title">课程名称</h1>
+        <el-input
+        type="textarea"
+        :rows="3"
+        placeholder="描述课程名称，推荐格式为：学年 + 上/下 + 课程名 + 教师名 + 附加信息(小于50字)"
+        v-model="className">
+        </el-input>
+
         <h1 class="experiment-title">选择课程的教师</h1>
         <el-table
         :data="teacherTableData.filter(data => !searchTeacher || data.username.toLowerCase().includes(searchTeacher.toLowerCase()))"
@@ -156,22 +172,6 @@
             </template>
             </el-table-column>
         </el-table>
-
-        <h1 class="experiment-title">课程开始时间</h1>
-        <el-input
-        type="textarea"
-        :rows="3"
-        placeholder="描述课程开始时间，推荐格式为：年份 + 学期 + 第几周 + 上课时间(小于50字)"
-        v-model="classStartTime">
-        </el-input>
-
-        <h1 class="experiment-title">课程名称</h1>
-        <el-input
-        type="textarea"
-        :rows="3"
-        placeholder="描述课程名称，推荐格式为：学年 + 上/下 + 课程名 + 教师名 + 附加信息(小于50字)"
-        v-model="className">
-        </el-input>
 
         <br/>
         <br/>
