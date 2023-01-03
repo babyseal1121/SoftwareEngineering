@@ -185,6 +185,28 @@ export default {
       this.dialogFormVisible = true;
       this.modFlag = true;
     },
+    calculate(row){
+      //将选中的行内容赋值给表单对象
+      //显示编辑窗口
+      var _this = this;
+      this.$axios
+          .post("/calculate", {
+            classno: row.classno,
+            })
+          .then(successResponse => {
+            if (successResponse.data.code === 200) {
+              this.$message.success("计算成功："+successResponse.data.result.classno+"班");
+              this.getdata();
+            }
+            else{
+              this.$message.error("计算失败");
+            }
+          }).catch(failResponse => {
+        this.$message.error("接口调用失败！");
+      })
+      this.dialogFormVisible = false;
+
+    },
     handleClose(done) {
       this.$confirm('确认修改用户权限？')
           .then(_ => {

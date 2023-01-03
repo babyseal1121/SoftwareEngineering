@@ -45,8 +45,23 @@ export default {
 
     },
     attendance(){
-      this.$axios.post("addattendance");
-      this.$message.success("签到成功！当前签到次数："+this.attendancenum+"次");
+      var _this = this;
+      this.$axios
+          .post("/addattendance", {
+            userid: this.$store.state.userId,
+            })
+          .then(successResponse => {
+            if (successResponse.data.code === 200) {
+              this.attendancenum=successResponse.data.result.attendancenum
+              this.$message.success("签到成功！当前签到次数："+this.attendancenum+"次");
+              this.getdata();
+            }
+            else{
+              this.$message.error("签到失败");
+            }
+          }).catch(failResponse => {
+        
+      })
     }
   }
 }
