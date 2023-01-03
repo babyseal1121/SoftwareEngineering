@@ -1,7 +1,7 @@
 //引入mockjs
 import Mock from 'mockjs'
 //使用mockjs模拟数据
-Mock.mock('http://localhost:8443/api/test123456', {
+Mock.mock('http://1.117.227.19:8443/api/test123456', {
     "res":0,
     "data":
         {
@@ -10,7 +10,7 @@ Mock.mock('http://localhost:8443/api/test123456', {
             "name": "@cname",//随机生成中文名字
         }
 });
-Mock.mock('http://localhost:8443/api/adminmenu','get',function(){
+Mock.mock('http://1.117.227.19:8443/api/adminmenu','get',function(){
     const menu_data = [
         {
             name: '用户管理',
@@ -38,7 +38,7 @@ Mock.mock('http://localhost:8443/api/adminmenu','get',function(){
     }
 });
 //未激活
-Mock.mock('http://localhost:8443/api/startmenu','get',function(){
+Mock.mock('http://1.117.227.19:8443/api/startmenu','get',function(){
     const menu_data = [
 
     ]
@@ -48,7 +48,7 @@ Mock.mock('http://localhost:8443/api/startmenu','get',function(){
     }
 });
 //责任教师
-Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
+Mock.mock('http://1.117.227.19:8443/api/instructormenu','get',function(){
     const menu_data = [
         {
             name: '成绩管理',
@@ -181,7 +181,7 @@ Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
     }
 });
 //教师
-Mock.mock('http://localhost:8443/api/teachermenu','get',function(){
+Mock.mock('http://1.117.227.19:8443/api/teachermenu','get',function(){
     const menu_data = [
         {
             name: '成绩管理',
@@ -307,7 +307,7 @@ Mock.mock('http://localhost:8443/api/teachermenu','get',function(){
         menu_data
     }
 });
-Mock.mock('http://localhost:8443/api/tutormenu','get',function(){
+Mock.mock('http://1.117.227.19:8443/api/tutormenu','get',function(){
     const menu_data = [
         {
             name: '成绩管理',
@@ -389,7 +389,7 @@ Mock.mock('http://localhost:8443/api/tutormenu','get',function(){
         menu_data
     }
 });
-Mock.mock('http://localhost:8443/api/studentmenu','get',function(){
+Mock.mock('http://1.117.227.19:8443/api/studentmenu','get',function(){
     const menu_data = [
         {
             name: '成绩管理',
@@ -479,7 +479,7 @@ Mock.mock('http://localhost:8443/api/studentmenu','get',function(){
     }
 });
 //完整版侧边栏导航
-Mock.mock('http://localhost:8443/api/fullsidebar','get',function(){
+Mock.mock('http://1.117.227.19:8443/api/fullsidebar','get',function(){
     const menu_data = [
         {
             name: '成绩管理',
