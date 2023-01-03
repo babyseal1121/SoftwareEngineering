@@ -1,14 +1,17 @@
 package com.example.studyx.controller;
 
 import com.example.studyx.dao.GradeDAO;
+import com.example.studyx.dao.ExperimentReportDAO;
 import com.example.studyx.dao.StudentRecordDAO;
 import com.example.studyx.dao.UserDAO;
 import com.example.studyx.pojo.Grade;
+import com.example.studyx.pojo.ExperimentReport;
 import com.example.studyx.pojo.StudentRecord;
 import com.example.studyx.pojo.GradeSet;
 import com.example.studyx.dao.GradeSetDAO;
 import com.example.studyx.pojo.User;
 import com.example.studyx.service.GradeService;
+import com.example.studyx.service.ExperimentReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
@@ -39,6 +42,12 @@ public class GradeController {
 
     @Autowired
     GradeService gradeService;
+
+    @Autowired
+    ExperimentReportDAO experimentreportDAO;
+
+    @Autowired
+    ExperimentReportService experimentreportService;
 
     @Autowired
     StudentRecordDAO studentrecordDAO;
@@ -88,6 +97,9 @@ public class GradeController {
         GradeSet gradeseta = gradesetDAO.getByClassno(gradeset.getClassno());
         double attweight=gradeseta.getAttandanceweight();
         int attnum=gradeseta.getAttandancenum();
+
+        double expweight=gradeseta.getExperimentweight();
+        int expnum=gradeseta.getExperimentnum();
         //返回对应班级中的所有学生的成绩表
         List<Grade> gradelist=gradeService.StudentofClass(gradeseta.getClassno());
         //计算考勤分数
@@ -97,10 +109,36 @@ public class GradeController {
         gradelist.forEach(p->System.out.println("考勤："+p.getAttandancegrade()));*/
         for(int i=0;i<gradelist.size();i++){
             Grade test=gradelist.get(i);
-            double g1=100*attweight*(test.getAttendancenum()/attnum);
+
+            //考勤分数
+            double g1;
+            if(test.getAttendancenum()>=attnum){
+                g1=100*attweight;
+            }
+            else {
+                g1=100*attweight*(test.getAttendancenum()/attnum);
+            }
             test.setAttandancegrade(g1);
             test.setTotalgrade(test.getTotalgrade()+g1);
-            System.out.println(100*attweight*(test.getAttendancenum()/attnum));
+
+            //实验分数
+            double g2=0;
+            //获取该学生写过的所有实验报告
+            List<ExperimentReport> ser=experimentreportDAO.findByUserid(test.getUserid());
+            for(int j=0;j<ser.size();j++){
+                g2=g2+ser.get(j).getExperimentgrade();
+            }
+            //实验分数=
+            if(g2>=100*expweight){
+                g2=100*expweight;
+            }
+            else {
+                g2=100*expweight*g2;
+            }
+            test.setExperimentgrade(g2);
+            test.setTotalgrade(test.getTotalgrade()+g2);
+            //System.out.println(100*attweight*(test.getAttendancenum()/attnum));
+
             gradeDAO.save(test);
         }
         System.out.println("考勤权重："+attweight);
