@@ -60,6 +60,20 @@ import ExperimentFile from '@/pages/StudyFile/ExperimentFile.vue'
 import ManageFile from '@/pages/StudyFile/ManageFile.vue'
 import ManageExperimentFile from '@/pages/StudyFile/ManageExperimentFile.vue'
 
+//公告板
+import BoardDiaplay from '@/pages/BulletinBoard/BoardDiaplay.vue'
+import BoardDiaplayview from '@/pages/BulletinBoard/BoardDiaplayview.vue'
+import CourseInformationManagement from '@/pages/BulletinBoard/CourseInformationManagement.vue'
+import CreatLearningFeedback from '@/pages/BulletinBoard/CreatLearningFeedback.vue'
+import LearningFeedback from '@/pages/BulletinBoard/LearningFeedback.vue'
+import LearningFeedbackview from '@/pages/BulletinBoard/LearningFeedbackview.vue'
+
+//笔记管理
+import CreatNewNotes from '@/pages/Notes/CreatNewNotes.vue'
+import MyNotes from '@/pages/Notes/MyNotes.vue'
+
+
+
 //导入外部数据
 //import navData from "@/utils/navData";
 /*const routes = [
@@ -369,7 +383,40 @@ export default new Router({
         {
           path: '/manageexperimentfile',
           component: ManageExperimentFile
-        }
+        },
+        {
+          path: '/boarddiaplay',
+          component: BoardDiaplay
+        },
+        {
+          path: '/boarddiaplayview',
+          component: BoardDiaplayview
+        },
+        {
+          path: '/courseinformationmanagement',
+          component: CourseInformationManagement
+        },
+        {
+          path: '/creatlearningfeedback',
+          component: CreatLearningFeedback
+        },
+        {
+          path: '/learningfeedback',
+          component: LearningFeedback
+        },
+        {
+          path: '/learningfeedbackview',
+          component: LearningFeedbackview
+        },
+        {
+          path: '/mynotes',
+          component: MyNotes
+        },
+        {
+          path: '/creatnewnotes',
+          component: CreatNewNotes
+        },
+
       ],
       props: true
     },

@@ -174,6 +174,25 @@ Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
                 },
             ]
         },
+        {
+            name: '公告板',
+            icon: 'el-icon-notebook-2',
+            path: '/board',
+            child: [
+                {
+                    name: '课程信息管理',
+                    icon: 'el-icon-files',
+                    path: '/boarddiaplay',
+                    component: "BoardDiaplay"
+                },
+                {
+                    name: '学生反馈信息',
+                    icon: 'el-icon-folder-checked',
+                    path: '/learningfeedbackview',
+                    component: "LearningFeedbackview"
+                },
+            ]
+        },
     ]
 
     return{
@@ -301,6 +320,25 @@ Mock.mock('http://localhost:8443/api/teachermenu','get',function(){
                 },
             ]
         },
+        {
+            name: '公告板',
+            icon: 'el-icon-notebook-2',
+            path: '/board',
+            child: [
+                {
+                    name: '课程信息管理',
+                    icon: 'el-icon-files',
+                    path: '/boarddiaplay',
+                    component: "BoardDiaplay"
+                },
+                {
+                    name: '学生反馈信息',
+                    icon: 'el-icon-folder-checked',
+                    path: '/learningfeedbackview',
+                    component: "LearningFeedbackview"
+                },
+            ]
+        },
     ]
 
     return{
@@ -380,6 +418,25 @@ Mock.mock('http://localhost:8443/api/tutormenu','get',function(){
                     icon: 'el-icon-files',
                     path: '/showstudyfile',
                     component: "ShowStudyFile"
+                },
+            ]
+        },
+        {
+            name: '公告板',
+            icon: 'el-icon-notebook-2',
+            path: '/board',
+            child: [
+                {
+                    name: '课程信息管理',
+                    icon: 'el-icon-files',
+                    path: '/boarddiaplay',
+                    component: "BoardDiaplay"
+                },
+                {
+                    name: '学生反馈信息',
+                    icon: 'el-icon-folder-checked',
+                    path: '/learningfeedbackview',
+                    component: "LearningFeedbackview"
                 },
             ]
         },
@@ -470,6 +527,39 @@ Mock.mock('http://localhost:8443/api/studentmenu','get',function(){
                     path: '/showstudyfile',
                     component: "ShowStudyFile"
                 },
+            ]
+        },
+        {
+            name: '公告板',
+            icon: 'el-icon-notebook-2',
+            path: '/board',
+            child: [
+                {
+                    name: '课程信息管理',
+                    icon: 'el-icon-files',
+                    path: '/boarddiaplayview',
+                    component: "BoardDiaplayview"
+                },
+                {
+                    name: '学生反馈信息',
+                    icon: 'el-icon-folder-checked',
+                    path: '/learningfeedback',
+                    component: "LearningFeedback"
+                },
+            ]
+        },
+        {
+            name: '笔记管理',
+            icon: 'el-icon-notebook-2',
+            path: '/board',
+            child: [
+                {
+                    name: '查看学习笔记',
+                    icon: 'el-icon-files',
+                    path: '/mynotes',
+                    component: "MyNotes"
+                },
+
             ]
         },
     ]
