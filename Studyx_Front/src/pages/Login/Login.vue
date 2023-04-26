@@ -20,7 +20,7 @@
                     padding: 0px;
                     margin-top: 30px;
                   "
-                  >SIGN IN</span
+                  >登 录</span
                 >
                 <br />
 
@@ -39,7 +39,7 @@
                     <el-input
                       v-model="loginForm.mail"
                       style="width: 230px"
-                      placeholder="Mail"
+                      placeholder="邮箱/学号"
                       size="meddle"
                       autocomplete="off"
                     ></el-input>
@@ -50,7 +50,7 @@
                       show-password
                       v-model="loginForm.password"
                       style="width: 230px"
-                      placeholder="Password"
+                      placeholder="密码"
                       autocomplete="off"
                     ></el-input>
                   </el-form-item>
@@ -61,7 +61,7 @@
                         <el-input
                           v-model="loginForm.validCode"
                           style="width: 140px"
-                          placeholder="Verification code"
+                          placeholder="验证码"
                         ></el-input>
                       </el-form-item>
                     </el-col>
@@ -81,7 +81,7 @@
               type="info"
               @click="forgetPassword()"
               style="margin: 5px; padding: 0px"
-              >FORGET PASSWORD</el-link
+              >忘 记 密 码</el-link
             >
             <transition
               name="animate__animated animate__bounce"
@@ -91,7 +91,7 @@
             >
               <Sentbutton
                 v-show="isShow"
-                infor="confirm"
+                infor="确认登录"
                 @click.native="Login"
               ></Sentbutton>
             </transition>
@@ -184,12 +184,12 @@
                   height: 100%;
                 "
               >
-                <div style="flex: 2">
+                <!-- <div style="flex: 2">
                   <Loadingbutton
                     infor="to SIGN UP"
                     @click.native="changeToRegiest"
                   ></Loadingbutton>
-                </div>
+                </div> -->
               </div>
             </transition>
             <transition
@@ -680,6 +680,7 @@ input {
   background-size: 100%;
   background-image: url("../../assets/background.png");
   background-repeat: no-repeat;
+  background-size:100% 100%;
 }
 .base {
   top: 0;
@@ -735,7 +736,7 @@ input {
   z-index: 2;
   top: 0;
   right: 0;
-  background-image: url("../../assets/welcome.png");
+  background-image: url("../../assets/welcome2.png");
   background-size: 90%;
 }
 .showInfo:hover {
