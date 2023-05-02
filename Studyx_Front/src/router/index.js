@@ -33,6 +33,7 @@ import CreateExperimentProject from '@/pages/ExperimentProject/CreateExperimentP
 import SubmitReport from '@/pages/ExperimentReport/SubmitReport.vue'
 import FinishReport from '@/pages/ExperimentReport/FinishReport.vue'
 import CorrectReport from '@/pages/ExperimentReport/CorrectReport.vue'
+import CorrectReportUpdate from '@/pages/ExperimentReport/CorrectReportUpdate.vue'
 import CorrectReportDetail from '@/pages/ExperimentReport/CorrectReportDetail.vue'
 import MyReport from '@/pages/ExperimentReport/MyReport.vue'
 import ReportDetail from '@/pages/ExperimentReport/ReportDetail.vue'
@@ -416,7 +417,10 @@ export default new Router({
           path: '/creatnewnotes',
           component: CreatNewNotes
         },
-
+        {
+          path: '/correctreportupdate',
+          component: CorrectReportUpdate
+        }
       ],
       props: true
     },

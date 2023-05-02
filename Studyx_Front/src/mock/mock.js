@@ -92,8 +92,10 @@ Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
                 {
                     name: '批改实验报告',
                     icon: 'el-icon-document-checked',
-                    path: '/correctreport',
-                    component:"CorrectReport",
+                    // path: '/correctreport',
+                    // component:"CorrectReport",
+                    path: '/correctreportupdate',
+                    component: 'CorrectReportUpdate',
 
                 },
                 {
@@ -238,8 +240,10 @@ Mock.mock('http://localhost:8443/api/teachermenu','get',function(){
                 {
                     name: '批改实验报告',
                     icon: 'el-icon-document-checked',
-                    path: '/correctreport',
-                    component:"CorrectReport",
+                    // path: '/correctreport',
+                    // component:"CorrectReport",
+                    path: '/correctreportupdate',
+                    component: 'CorrectReportUpdate',
 
                 },
                 {
@@ -477,8 +481,10 @@ Mock.mock('http://localhost:8443/api/studentmenu','get',function(){
                 {
                     name: '批改实验报告',
                     icon: 'el-icon-document-checked',
-                    path: '/correctreport',
-                    component:"CorrectReport",
+                    // path: '/correctreport',
+                    // component:"CorrectReport",
+                    path: '/correctreportupdate',
+                    component: "CorrectReportUpdate",
 
                 },
                 {
@@ -626,8 +632,10 @@ Mock.mock('http://localhost:8443/api/fullsidebar','get',function(){
                 {
                     name: '批改实验报告',
                     icon: 'el-icon-document-checked',
-                    path: '/correctreport',
-                    component:"CorrectReport",
+                    // path: '/correctreport',
+                    // component:"CorrectReport",
+                    path: '/correctreportupdate',
+                    component: 'CorrectReportUpdate',
 
                 },
                 {

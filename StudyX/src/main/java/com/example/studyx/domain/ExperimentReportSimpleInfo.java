@@ -23,6 +23,9 @@ public class ExperimentReportSimpleInfo {
     //报告编号
     Integer experimentreportno;
 
+    //报告成绩
+    Integer experimentgrade;
+
     public ExperimentReportSimpleInfo(ExperimentReport experimentReport) {
 
         experimentno = experimentReport.getExperimentno();
@@ -30,5 +33,6 @@ public class ExperimentReportSimpleInfo {
         userid = experimentReport.getUserid();
         username = experimentReport.getUsername();
         experimentreportno = experimentReport.getExperimentreportno();
+        experimentgrade = experimentReport.getExperimentgrade();
     }
 }
