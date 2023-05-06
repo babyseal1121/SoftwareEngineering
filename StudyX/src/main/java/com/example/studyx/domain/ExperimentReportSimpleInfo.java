@@ -26,6 +26,9 @@ public class ExperimentReportSimpleInfo {
     //报告成绩
     Integer experimentgrade;
 
+    // 报告批改状态
+    boolean correctstate;
+
     public ExperimentReportSimpleInfo(ExperimentReport experimentReport) {
 
         experimentno = experimentReport.getExperimentno();
@@ -34,5 +37,6 @@ public class ExperimentReportSimpleInfo {
         username = experimentReport.getUsername();
         experimentreportno = experimentReport.getExperimentreportno();
         experimentgrade = experimentReport.getExperimentgrade();
+        correctstate = experimentReport.isCorrectstate();
     }
 }
