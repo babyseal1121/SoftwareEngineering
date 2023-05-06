@@ -100,7 +100,8 @@ export default {
                 experimentcomments:"",
                 experimentsubmissontime:"",
                 experimentreportno:0,
-                experimentname:""
+                experimentname:"",
+                correctstate:false
             }
         }
     },
