@@ -349,6 +349,8 @@ Mock.mock('http://localhost:8443/api/teachermenu','get',function(){
         menu_data
     }
 });
+
+// 助教
 Mock.mock('http://localhost:8443/api/tutormenu','get',function(){
     const menu_data = [
         {
@@ -375,6 +377,15 @@ Mock.mock('http://localhost:8443/api/tutormenu','get',function(){
                     icon: 'el-icon-document-add',
                     path: '/submitreport',
                     component:"SubmitReport",
+
+                },
+                {
+                    name: '批改实验报告',
+                    icon: 'el-icon-document-checked',
+                    // path: '/correctreport',
+                    // component:"CorrectReport",
+                    path: '/correctreportupdate',
+                    component: "CorrectReportUpdate",
 
                 },
                 {
@@ -450,6 +461,8 @@ Mock.mock('http://localhost:8443/api/tutormenu','get',function(){
         menu_data
     }
 });
+
+
 Mock.mock('http://localhost:8443/api/studentmenu','get',function(){
     const menu_data = [
         {
@@ -476,15 +489,6 @@ Mock.mock('http://localhost:8443/api/studentmenu','get',function(){
                     icon: 'el-icon-document-add',
                     path: '/submitreport',
                     component:"SubmitReport",
-
-                },
-                {
-                    name: '批改实验报告',
-                    icon: 'el-icon-document-checked',
-                    // path: '/correctreport',
-                    // component:"CorrectReport",
-                    path: '/correctreportupdate',
-                    component: "CorrectReportUpdate",
 
                 },
                 {

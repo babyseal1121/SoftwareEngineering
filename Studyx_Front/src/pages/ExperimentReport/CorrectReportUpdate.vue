@@ -87,11 +87,14 @@ export default {
             //用于存放实验信息
             experimentInfo: [],
        
-            //用于搜素指定实验项目
-            search: '',
             //存放用户Id
-            userId: this.$store.getters.userId
+            userId: this.$store.getters.userId,
+
+            //用于搜素指定实验项目
+            search: ''
         }
+
+
     },
 
      //函数
@@ -183,7 +186,11 @@ export default {
                 for(eachOne in this.experimentReportInfo)
                 {
                     if(this.experimentReportInfo[eachOne]["experimentno"] == this.experimentInfo[each]["experimentno"])
+                    {
+                        this.experimentReportInfo[eachOne]["experimentno"] = null;
+                        this.experimentReportInfo[eachOne]["experimentname"] = null;
                         this.experimentInfo[each]["children"].push(this.experimentReportInfo[eachOne])
+                    }
                 }
 
                 this.tableData = this.experimentInfo;
