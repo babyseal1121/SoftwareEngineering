@@ -33,12 +33,18 @@ public class ExperimentReport {
 
     String experimentsubmissontime;
 
+    boolean correctstate;
+
     @Id
     @Column(name = "experimentreportno")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer experimentreportno;
 
     String experimentname;
+
+    public void setCorrectstate(boolean correctstate) {
+        this.correctstate = correctstate;
+    }
 
     public Integer getExperimentreportno() {
         return experimentreportno;
