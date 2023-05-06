@@ -30,6 +30,8 @@ public class ExperimentReportService {
         experimentReport.setExperimentgrade(experimentGrade);
         //修改报告的评语
         experimentReport.setExperimentcomments(experimentComments);
+        //修改报告的批改状态
+        experimentReport.setCorrectstate(true);
         //更新
         experimentReportDAO.save(experimentReport);
     }
