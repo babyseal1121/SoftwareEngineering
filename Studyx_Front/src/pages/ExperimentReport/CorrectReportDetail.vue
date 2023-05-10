@@ -183,10 +183,13 @@ export default {
             .then(response => {
                 //如果请求成功
                if(200 == response.data.code){
-                //获取数据
-                   this.reportInfo = response.data.result;
-                   this.experimentGrade = this.reportInfo.experimentgrade
-                   this.experimentComments = this.reportInfo.experimentcomments
+                    //获取数据
+                    this.reportInfo = response.data.result;
+                    this.experimentNo = this.reportInfo.experimentno
+                    this.experimentGrade = this.reportInfo.experimentgrade
+                    this.experimentComments = this.reportInfo.experimentcomments
+                    //获取实验项目内容
+                    this.getExperimentDetail()
                }
                else{
                     this.$message.error("报告数据获取失败");
@@ -199,12 +202,8 @@ export default {
         }
     },
     mounted(){
-        //获取实验编号
-        this.experimentNo = this.$route.query.experimentno
         //获取实验报告编号
         this.experimentReportNo = this.$route.query.experimentreportno
-        //获取实验项目内容
-        this.getExperimentDetail()
         //获取实验报告内容
         this.getExperimentReportDetail()
     }

@@ -255,13 +255,16 @@ export default {
                 var userInfo = []
                 for(eachUser in this.classUserTable)
                 {
-                    userInfo.push(this.classUserTable[eachUser])
+                    if(this.classUserTable[eachUser].userid != this.userId)
+                        userInfo.push(this.classUserTable[eachUser])
                 }
                 eachUser = 0;
 
                 // 查找对应的报告并加入
                 for(eachOne in this.experimentReportInfo)
                 {
+                    if(this.experimentReportInfo[eachOne]["userid"] == this.userId)
+                        continue
                     if(this.experimentReportInfo[eachOne]["experimentno"] == this.experimentInfo[each]["experimentno"])
                     {
                         eachUser = 0;
