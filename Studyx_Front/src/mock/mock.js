@@ -150,6 +150,12 @@ Mock.mock('http://localhost:8443/api/instructormenu','get',function(){
                     component:"ClassExperiment",
                 },
                 {
+                    name: '人员管理',
+                    icon: 'el-icon-s-custom',
+                    path: '/classstudent',
+                    component:"ClassStudent",
+                },
+                {
                     name: '班级管理',
                     icon: 'el-icon-collection-tag',
                     path: '/classmanagement',

@@ -1,7 +1,7 @@
 <template>
     <div>
         <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/correctreport'}">返回</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/correctreportupdate'}">返回</el-breadcrumb-item>
             <el-breadcrumb-item>实验报告详情</el-breadcrumb-item>
         </el-breadcrumb>
         <br/>
