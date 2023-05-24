@@ -1,15 +1,7 @@
 package com.example.studyx.controller;
 
-import com.example.studyx.dao.GradeDAO;
-import com.example.studyx.dao.ExperimentReportDAO;
-import com.example.studyx.dao.StudentRecordDAO;
-import com.example.studyx.dao.UserDAO;
-import com.example.studyx.pojo.Grade;
-import com.example.studyx.pojo.ExperimentReport;
-import com.example.studyx.pojo.StudentRecord;
-import com.example.studyx.pojo.GradeSet;
-import com.example.studyx.dao.GradeSetDAO;
-import com.example.studyx.pojo.User;
+import com.example.studyx.dao.*;
+import com.example.studyx.pojo.*;
 import com.example.studyx.service.GradeService;
 import com.example.studyx.service.ExperimentReportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +31,9 @@ public class GradeController {
     GradeSetDAO gradesetDAO;
     @Autowired
     GradeDAO gradeDAO;
+
+    @Autowired
+    ExperimentInClassDAO experimentInClassDAO;
 
     @Autowired
     GradeService gradeService;
@@ -95,6 +90,7 @@ public class GradeController {
     public Result CalculateGrades(@RequestBody GradeSet gradeset) {
         //获取权重集合
         GradeSet gradeseta = gradesetDAO.getByClassno(gradeset.getClassno());
+
         double attweight=gradeseta.getAttandanceweight();
         int attnum=gradeseta.getAttandancenum();
 
@@ -110,6 +106,8 @@ public class GradeController {
         for(int i=0;i<gradelist.size();i++){
             Grade test=gradelist.get(i);
 
+            // 总分数
+            double gtotal = 0;
             //考勤分数
             double g1;
             if(test.getAttendancenum()>=attnum){
@@ -119,7 +117,8 @@ public class GradeController {
                 g1=100*attweight*(test.getAttendancenum()/attnum);
             }
             test.setAttandancegrade(g1);
-            test.setTotalgrade(test.getTotalgrade()+g1);
+            gtotal += g1;
+            //test.setTotalgrade(test.getTotalgrade()+g1);
 
             //实验分数
             double g2=0;
@@ -128,15 +127,24 @@ public class GradeController {
             for(int j=0;j<ser.size();j++){
                 g2=g2+ser.get(j).getExperimentgrade();
             }
+
+            // 获取当前报告的总分
+            List<ExperimentInClass> experimentInClassList =  experimentInClassDAO.findByExperimentclassno(gradeset.getClassno());
+            // 每个报告满分10分
+            double experimentTotal = experimentInClassList.size() * 10;
+            System.out.println(experimentTotal);
+
             //实验分数=
             if(g2>=100*expweight){
                 g2=100*expweight;
             }
             else {
-                g2=100*expweight*g2;
+                // g2=100*expweight*g2;
+                g2 = 100 * expweight * (g2 / experimentTotal);
             }
             test.setExperimentgrade(g2);
-            test.setTotalgrade(test.getTotalgrade()+g2);
+            gtotal += g2;
+            test.setTotalgrade(gtotal);
             //System.out.println(100*attweight*(test.getAttendancenum()/attnum));
 
             gradeDAO.save(test);
