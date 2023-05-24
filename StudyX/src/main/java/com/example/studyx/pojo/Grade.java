@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Grade {
     @Id
     @Column(name = "userid")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     Integer userid;
     double attandancegrade;
     double experimentgrade;
@@ -77,9 +77,9 @@ public class Grade {
     {
         this.userid = userIdIn;
         this.classno = experimentClassNoIn;
-        this.attandancegrade = 0;
-        this.experimentgrade = 0;
-        this.totalgrade = 0;
+        this.attandancegrade = 0.0;
+        this.experimentgrade = 0.0;
+        this.totalgrade = 0.0;
         this.attendancenum = 0.0;
     }
 }
