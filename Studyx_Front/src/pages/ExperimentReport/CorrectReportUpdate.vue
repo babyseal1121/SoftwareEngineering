@@ -22,8 +22,6 @@
                         prop="username"
                         label="学生姓名"
                         width="150"
-                        :filters="[
-                        { text: '教师', value: '教师' },]"
                         filter-placement="bottom-end">
                             <template slot-scope="scope">
                                 <el-tag
@@ -76,6 +74,7 @@
                         { text: '未批改', value: '未批改' },
                         { text: '未完成', value: '未完成' },
                         ]"
+                        :filter-method="filterTag"
                         filter-placement="bottom-end">
                             <template slot-scope="scope">
                                 <el-tag
@@ -154,6 +153,12 @@ export default {
 
      //函数
      methods:{
+
+        // 筛选功能
+        filterTag(value, row) {
+
+            return row.tag === value;
+        },
 
         // 判断是否高亮
         tableRowClassName({row, rowIndex}) {
@@ -331,7 +336,7 @@ export default {
                 }
                 this.colTableDatas.push(datas)
             }
-            console.log(this.colTableDatas)
+            // console.log(this.colTableDatas)
         },
 
         //处理实验报告的数据
