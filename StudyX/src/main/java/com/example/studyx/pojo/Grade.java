@@ -71,4 +71,15 @@ public class Grade {
     public void setTotalgrade(double totalgrade) {
         this.totalgrade = totalgrade;
     }
+
+    // 利用班级以及人员信息生成成绩对象
+    public Grade(int userIdIn, int experimentClassNoIn)
+    {
+        this.userid = userIdIn;
+        this.classno = experimentClassNoIn;
+        this.attandancegrade = 0;
+        this.experimentgrade = 0;
+        this.totalgrade = 0;
+        this.attendancenum = 0.0;
+    }
 }

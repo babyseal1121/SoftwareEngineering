@@ -96,6 +96,7 @@ public class GradeController {
 
         double expweight=gradeseta.getExperimentweight();
         int expnum=gradeseta.getExperimentnum();
+
         //返回对应班级中的所有学生的成绩表
         List<Grade> gradelist=gradeService.StudentofClass(gradeseta.getClassno());
         //计算考勤分数

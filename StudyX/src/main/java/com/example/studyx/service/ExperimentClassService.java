@@ -28,6 +28,8 @@ public class ExperimentClassService {
     private ExperimentProjectDAO experimentProjectDAO;
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    GradeDAO gradeDAO;
 
     //创建新的班级
     public void createExperimentClass(ExperimentClassInfo experimentClassInfo){
@@ -138,7 +140,10 @@ public class ExperimentClassService {
     //向班级内添加人员
     public void addClassMember(int userId, int experimentClassNo){
 
+        // 在班级表内添加人员
         memberInClassDAO.save(new MemberInClass(userId, experimentClassNo));
+        // 在成绩单内添加人员
+        gradeDAO.save(new Grade(userId, experimentClassNo));
     }
 
     //向班级内删除人员
