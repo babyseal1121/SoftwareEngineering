@@ -143,7 +143,7 @@ public class ExperimentClassService {
         // 在班级表内添加人员
         memberInClassDAO.save(new MemberInClass(userId, experimentClassNo));
         // 在成绩单内添加人员
-        gradeDAO.save(new Grade(userId, experimentClassNo));
+        // gradeDAO.save(new Grade(userId, experimentClassNo));
     }
 
     //向班级内删除人员
