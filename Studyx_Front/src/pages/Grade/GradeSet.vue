@@ -64,7 +64,7 @@
                 />
               </label>
 
-              <label>
+              <!-- <label>
                 <span>实验次数:</span>
                 <input
                     v-model="dataForm.experimentnum"
@@ -73,7 +73,7 @@
                     name="experimentnum"
                     placeholder="请输入该班级的实验次数"
                 />
-              </label>
+              </label> -->
 
 
               <label>

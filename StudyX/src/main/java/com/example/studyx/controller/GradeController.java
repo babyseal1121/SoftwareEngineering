@@ -177,11 +177,16 @@ public class GradeController {
         else
             gradeseta.setAttandanceweight(gradeseta.getAttandanceweight());
 
-        if (gradeset.getExperimentnum() != null) {
-            gradeseta.setExperimentnum(gradeset.getExperimentnum());
-        }
-        else
-            gradeseta.setExperimentnum(gradeseta.getExperimentnum());
+//        if (gradeset.getExperimentnum() != null) {
+//            gradeseta.setExperimentnum(gradeset.getExperimentnum());
+//
+//        }
+//        else
+//            gradeseta.setExperimentnum(gradeseta.getExperimentnum());
+        // 改为根据当前试验次数来确定显示的次数
+        // 获取当前报告的总数
+        List<ExperimentInClass> experimentInClassList =  experimentInClassDAO.findByExperimentclassno(gradeset.getClassno());
+        gradeseta.setExperimentnum(experimentInClassList.size());
 
         if (gradeset.getExperimentweight() != null) {
             gradeseta.setExperimentweight(gradeset.getExperimentweight());

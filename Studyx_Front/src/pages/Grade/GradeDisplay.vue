@@ -4,6 +4,9 @@
       <el-breadcrumb-item >责任教师页面</el-breadcrumb-item>
       <el-breadcrumb-item><a href="/admin/adminborrow">查看成绩</a></el-breadcrumb-item>
     </el-breadcrumb>
+
+    <h4>当前成绩计算公式: 100 * 当前出勤分占比 * (出勤次数 / 总次数) + 100 * 当前出勤分占比 * (当前分数 / 总分数)</h4>
+
     <el-table
         :data="tableData"
         style="width: 100%"
