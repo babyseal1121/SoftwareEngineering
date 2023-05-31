@@ -63,12 +63,28 @@
                 </el-col> 
                 <el-col :span="22">
                     <br/>
-                    <el-button 
-                    type="primary" 
-                    plain 
-                    class="experiment-button"
-                    @click="submitExperimentReport"
-                    >提交实验报告</el-button>    
+                    <div style="text-align: center;">
+                        <el-button 
+                        type="primary" 
+                        plain 
+                        class="experiment-button1"
+                        @click="submitExperimentReport"
+                        >提交实验报告</el-button>    
+
+                        <el-upload
+                        class="upload-button"
+                        ref="upload"
+                        action=""
+                        :limit="1"
+                        :on-exceed="handleExceed"
+                        :file-list="fileList"
+                        :http-request="onUpload"
+                        :auto-upload="false">
+                            <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+                            <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传</el-button>
+                            <div slot="tip" class="el-upload__tip">文件不要超过10Mb</div>
+                        </el-upload>    
+                    </div>
                 </el-col> 
             </el-row>       
         </div>
@@ -89,6 +105,8 @@ export default {
             experimentNo:0,
             //实验细节
             experimentDetail:{},
+            //存放当前上传文件列表
+            fileList:[],
             //报告内容
             reportInfo:{
                 experimentno:0,
@@ -99,17 +117,65 @@ export default {
                 experimentgrade:0,
                 experimentcomments:"",
                 experimentsubmissontime:"",
+                correctstate:false,
+                reportpath:"none",
                 experimentreportno:0,
-                experimentname:"",
-                correctstate:false
+                experimentname:""
             }
         }
     },
     //函数
     methods: {
+
+        //限制只能上传一个文件
+        handleExceed(){
+            this.$message.warning("每次只能上传一个文件");
+        },
+
+        //选择上传文件
+        submitUpload(){
+            this.$refs.upload.submit();
+        },
+
+        //处理上传文件
+        onUpload(file){
+            //获取上传文件内容
+            let formData = new FormData();
+            formData.append("studyFile", file.file);
+            //请求信息
+            let data = {
+                method: "post",
+                url: "/experiment/submitexperimentreportfile",
+                data: formData,
+                params: {
+                    "userId": this.reportInfo.userid,
+                    "experimentNo": this.reportInfo.experimentno,
+                    "fileName": file.file.name
+                },
+                headers: {
+                "Content-Type": "multipart/form-data",
+                },
+            }
+            //发送请求
+            this.$axios.request(data)
+            .then(response => {
+                //如果请求成功
+                if(200 == response.data.code && (response.data.result != "提交实验报告文档失败")){
+                    this.$message.success("文件上传成功");
+                    this.reportInfo.reportpath = response.data.result
+                }
+                else{
+                    this.$message.error("文件上传失败");
+                }
+            })
+            .catch(failResponse => {
+                console.log(failResponse)
+                this.$message.error("文件上传失败");
+            })
+        },
         
          //根据实验编号请求信息
-         getExperimentDetail(){
+        getExperimentDetail(){
             //请求的信息
             let data = {
                 method: "get",
@@ -150,14 +216,19 @@ export default {
                 this.$message.error("请完善实验感悟")
                 return
             }
+            //检查是否已经上传文件
+            if("none" == this.reportInfo.reportpath){
+                this.$message.error("请先上传报告")
+                return
+            }
             //加入时间戳
             let nowDate = new Date()
             let year = nowDate.getFullYear()
             let month = nowDate.getMonth() + 1
             let day = nowDate.getDate()
             this.reportInfo.experimentsubmissontime =  year + "-" + month + "-" + day
-            console.log(this.reportInfo.experimentsubmissontime)
-            //请求的信息
+            // console.log(this.reportInfo)
+            // 请求的信息
             let data = {
                     method: "post",
                     url:"/experiment/submitexperimentreport",
@@ -219,8 +290,14 @@ export default {
     width: 95%;
 }
 
-.experiment-button{
+.experiment-button1{
     position:relative;
+    top: 30px;
     left: -44.4%;
+}
+
+.upload-button{
+    position:relative;
+    right: -43.5%;
 }
 </style>

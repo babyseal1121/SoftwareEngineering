@@ -8,6 +8,7 @@ import com.example.studyx.result.Result;
 import com.example.studyx.service.ExperimentReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,6 +18,24 @@ public class ExperimentReportController {
 
     @Autowired
     ExperimentReportService experimentReportService;
+
+
+    // 提交实验报告文档
+    @CrossOrigin
+    @PostMapping(value = "/api/experiment/submitexperimentreportfile")
+    public  Result submitExperimentReportFile(@RequestBody MultipartFile studyFile, @RequestParam int userId, @RequestParam int experimentNo, @RequestParam String fileName)
+    {
+        try {
+            String filePath = experimentReportService.submitExperimentReportFile(studyFile, userId, experimentNo, fileName);
+            return new Result(200,"success", filePath);
+        }
+        catch (Exception e){
+
+            System.out.println(e.toString());
+            return new Result(400,"failure", "提交实验报告文档失败");
+        }
+    }
+
 
     //提交实验报告
     @CrossOrigin

@@ -33,6 +33,8 @@ public class ExperimentReport {
 
     String experimentsubmissontime;
 
+    String reportpath;
+
     boolean correctstate;
 
     @Id
@@ -124,5 +126,13 @@ public class ExperimentReport {
 
     public void setExperimentname(String experimentname) {
         this.experimentname = experimentname;
+    }
+
+    public String getReportpath() {
+        return reportpath;
+    }
+
+    public void setReportpath(String reportpath) {
+        this.reportpath = reportpath;
     }
 }
