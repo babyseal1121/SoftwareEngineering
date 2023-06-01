@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 //实验报告的控制器
@@ -33,6 +34,21 @@ public class ExperimentReportController {
 
             System.out.println(e.toString());
             return new Result(400,"failure", "提交实验报告文档失败");
+        }
+    }
+
+
+    //获取实验报告文档
+    @CrossOrigin
+    @GetMapping(value = "/api/experiment/getexperimentreportfile")
+    public Result getStudyMaterial(HttpServletResponse response, @RequestParam String reportPath){
+
+        try{
+            return experimentReportService.getStudyMaterial(response, reportPath);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "获取资料失败");
         }
     }
 

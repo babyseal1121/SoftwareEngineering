@@ -6,14 +6,20 @@ import com.example.studyx.dao.ExperimentReportDAO;
 import com.example.studyx.dao.MemberInClassDAO;
 import com.example.studyx.domain.ExperimentReportSimpleInfo;
 import com.example.studyx.pojo.ExperimentReport;
+import com.example.studyx.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -81,6 +87,49 @@ public class ExperimentReportService {
         }
 
         return filePath;
+    }
+
+    // 获取实验报告文档
+    public Result getStudyMaterial(HttpServletResponse response, String reportPath)
+    {
+        //获取文件位置
+        File file = new File(rootDirPath + reportPath);
+        //判断文件是否存在
+        if(!file.exists()){
+
+            return new Result(400,"failure","文件不存在文件下载失败");
+        }
+        // 获取文件名
+        String  fileName;
+        try {
+            fileName = Arrays.asList(reportPath.split("/")).get(3);
+        }
+        catch(Exception e){
+            fileName = "report";
+        }
+
+        //重设请求头信息
+        response.reset();
+        response.setContentType("application/octet-stream");
+        response.setCharacterEncoding("utf-8");
+        response.setContentLength((int) file.length());
+        response.setHeader("Content-Disposition", "attachment;filename=" + fileName );
+        //开始传输文件
+        try{
+            BufferedInputStream bis = new BufferedInputStream(Files.newInputStream(file.toPath()));
+            byte[] buff = new byte[1024];
+            OutputStream os  = response.getOutputStream();
+            int i = 0;
+            while ((i = bis.read(buff)) != -1) {
+                os.write(buff, 0, i);
+                os.flush();
+            }
+        } catch (IOException e) {
+            System.out.println(e);;
+            return new Result(400,"failure","文件下载失败");
+        }
+
+        return new Result(200,"success","文件下载成功");
     }
 
     //批改实验报告

@@ -77,6 +77,13 @@
                     class="experiment-button"
                     @click="submitExperimentReportCorrect"
                     >提交批改</el-button>    
+
+                    <el-button 
+                    type="primary" 
+                    plain 
+                    class="get-file-button"
+                    @click="getExperimentReportFile"
+                    >查看报告</el-button>    
                 </el-col> 
             </el-row>       
         </div>
@@ -103,12 +110,30 @@ export default {
             //报告得分
             experimentGrade:0,
             //报告评价
-            experimentComments:""
+            experimentComments:"",
+            //报告文件路径
+            reportPath:""
         }
     },
     //函数
     methods:{
         
+        //获取实验报告文件
+        getExperimentReportFile(){
+            // 判断是否存在对应文件
+            if("none" == this.reportPath)
+            {
+                this.$message.error("本报告未上传文件");
+                return
+            }
+            let link = document.createElement('a');
+            link.style.display = 'none';
+            link.href = "http://localhost:8443/api/experiment/getexperimentreportfile?reportPath=" + this.reportPath;
+            link.download = (this.reportPath.split("/"))[3];
+            //document.body.appendChild(link);
+            link.click();
+        },
+
         //提交批改
         submitExperimentReportCorrect(){
             //判断是否有评语
@@ -188,6 +213,8 @@ export default {
                     this.experimentNo = this.reportInfo.experimentno
                     this.experimentGrade = this.reportInfo.experimentgrade
                     this.experimentComments = this.reportInfo.experimentcomments
+                    //获取报告路径
+                    this.reportPath = this.reportInfo.reportpath
                     //获取实验项目内容
                     this.getExperimentDetail()
                }
@@ -233,7 +260,12 @@ export default {
 
 .experiment-button{
     position:relative;
-    left: -45.5%;
+    left: -40.6%;
+}
+
+.get-file-button{
+    position:relative;
+    right: -40.6%;
 }
 
 .experiment-input-box{
