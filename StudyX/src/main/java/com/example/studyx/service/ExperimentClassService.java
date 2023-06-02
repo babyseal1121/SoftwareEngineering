@@ -6,12 +6,20 @@ import com.example.studyx.domain.ExperimentProjectSimpleInfo;
 import com.example.studyx.domain.ExperimentReportSimpleInfo;
 import com.example.studyx.domain.UserSimpleInfo;
 import com.example.studyx.pojo.*;
+import com.example.studyx.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+import static org.springframework.util.FileCopyUtils.BUFFER_SIZE;
 
 @Service
 public class ExperimentClassService {
@@ -30,6 +38,9 @@ public class ExperimentClassService {
     private UserDAO userDAO;
     @Autowired
     GradeDAO gradeDAO;
+
+    //根文件夹地址
+    String rootDirPath = "C:/report";
 
     //创建新的班级
     public void createExperimentClass(ExperimentClassInfo experimentClassInfo){
@@ -384,5 +395,131 @@ public class ExperimentClassService {
         experimentClassDAO.save(experimentClass);
 
         return new String("班级归档成功");
+    }
+
+    //递归压缩
+    private static void compress(File sourceFile, ZipOutputStream zos, String name,
+                                 boolean KeepDirStructure) throws Exception{
+        byte[] buf = new byte[BUFFER_SIZE];
+        if(sourceFile.isFile()){
+            // 向zip输出流中添加一个zip实体，构造器中name为zip实体的文件的名字
+            zos.putNextEntry(new ZipEntry(name));
+            // copy文件到zip输出流中
+            int len;
+            FileInputStream in = new FileInputStream(sourceFile);
+            while ((len = in.read(buf)) != -1){
+                zos.write(buf, 0, len);
+            }
+            // Complete the entry
+            zos.closeEntry();
+            in.close();
+        } else {
+            File[] listFiles = sourceFile.listFiles();
+            if(listFiles == null || listFiles.length == 0){
+                // 需要保留原来的文件结构时,需要对空文件夹进行处理
+                if(KeepDirStructure){
+                    // 空文件夹的处理
+                    zos.putNextEntry(new ZipEntry(name + "/"));
+                    // 没有文件，不需要文件的copy
+                    zos.closeEntry();
+                }
+
+            }else {
+                for (File file : listFiles) {
+                    // 判断是否需要保留原来的文件结构
+                    if (KeepDirStructure) {
+                        // 注意：file.getName()前面需要带上父文件夹的名字加一斜杠,
+                        // 不然最后压缩包中就不能保留原来的文件结构,即：所有文件都跑到压缩包根目录下了
+                        compress(file, zos, name + "/" + file.getName(),KeepDirStructure);
+                    } else {
+                        compress(file, zos, file.getName(),KeepDirStructure);
+                    }
+
+                }
+            }
+        }
+    }
+
+    //获取班级文件的Zip包
+    public Result getExperimentInClassZip(HttpServletResponse response, int experimentClassNo){
+        //获取班级名称
+        String className = experimentClassDAO.findByExperimentclassno(experimentClassNo).getExperimentclassname();
+        //获取班级文件地址
+        String strDir = rootDirPath + "/" + className;
+        //判断是否存在文件夹
+        File fileDir = new File(strDir);
+        //如果不存在就返回
+        if (!fileDir.exists()) {
+
+            return new Result(400,"failure","该班级当前没有文件");
+        }
+
+        //验证是否有压缩好的文件有了就不再压缩了
+        //获取文件位置
+        File zipFile = new File(rootDirPath + "/" + className + ".zip");
+        //判断文件是否存在
+        if(!zipFile.exists()) {
+            try {
+                //进行压缩
+                ZipOutputStream zos = null;
+                FileOutputStream fos = new FileOutputStream(new File(rootDirPath + "/" + className + ".zip"));
+                try {
+                    zos = new ZipOutputStream(fos);
+                    File sourceFile = new File(strDir);
+                    compress(sourceFile, zos, sourceFile.getName(), true);
+                } catch (Exception e) {
+                    throw new RuntimeException("zip error from ZipUtils", e);
+                } finally {
+                    if (zos != null) {
+                        try {
+                            zos.close();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        //验证是否有压缩好的文件
+        //获取文件位置
+        File file = new File(rootDirPath + "/" + className + ".zip");
+        //判断文件是否存在
+        if(!file.exists()){
+            return new Result(400,"failure","文件不存在文件下载失败");
+        }
+
+        //重设请求头信息
+        response.reset();
+        response.setContentType("application/octet-stream");
+        response.setCharacterEncoding("utf-8");
+        response.setContentLength((int) file.length());
+        String formFileName = "";
+        try {
+            String fileName = className + ".zip";
+            formFileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        response.setHeader("Content-Disposition", "attachment;filename=" + formFileName );
+
+        //开始传输文件
+        try{
+            BufferedInputStream bis = new BufferedInputStream(Files.newInputStream(file.toPath()));
+            byte[] buff = new byte[1024];
+            OutputStream os  = response.getOutputStream();
+            int i = 0;
+            while ((i = bis.read(buff)) != -1) {
+                os.write(buff, 0, i);
+                os.flush();
+            }
+        } catch (IOException e) {
+            System.out.println(e);;
+            return new Result(400,"failure","文件下载失败");
+        }
+
+        return new Result(200,"success","文件下载成功");
     }
 }

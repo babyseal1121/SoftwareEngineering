@@ -12,6 +12,7 @@ import com.example.studyx.service.ExperimentClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -272,6 +273,20 @@ public class ExperimentClassController {
         catch (Exception e){
             System.out.println(e);
             return new Result(400,"failure", "班级归档失败");
+        }
+    }
+
+    //下载班级内所有报告的ZIP包
+    @CrossOrigin
+    @GetMapping(value = "/api/experiment/getexperimentinclasszip")
+    public Result getExperimentInClassZip(HttpServletResponse response, @RequestParam int experimentClassNo){
+
+        try {
+            return experimentClassService.getExperimentInClassZip(response, experimentClassNo);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "获取资料失败");
         }
     }
 }

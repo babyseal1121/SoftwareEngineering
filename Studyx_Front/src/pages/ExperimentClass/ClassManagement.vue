@@ -33,7 +33,8 @@
             </el-table-column>
 
             <el-table-column
-            align="right">
+            align="right"
+            width="250">
             <template slot="header">
                 <el-input
                 v-model="search"
@@ -51,6 +52,11 @@
                 size="mini"
                 type="danger"
                 @click="handleClickPigeonhole(scope.row)">归档</el-button>
+
+                <el-button
+                size="mini"
+                type="success"
+                @click="handleClickDownloadZip(scope.row)">下载文档</el-button>
 
             </template>
             </el-table-column>
@@ -117,6 +123,15 @@ export default {
     //函数
     methods:{
 
+        //处理点击下载文件
+        handleClickDownloadZip(row){
+            let link = document.createElement('a');
+            link.style.display = 'none';
+            link.href = "http://localhost:8443/api/experiment/getexperimentinclasszip?experimentClassNo=" + row.experimentclassno;
+            link.download = (row.experimentclassname + ".zip");
+            link.click();
+        },
+
         //处理点击归档
         handleClickPigeonhole(row){
             this.pigeonholeDialogVisible = true;
@@ -146,7 +161,7 @@ export default {
              //发送请求
              this.$axios.request(data)
             .then(response => {
-                    //如果请求成功
+                //如果请求成功
                 if(200 == response.data.code){
                     //获取数据
                     let backInfo = response.data.result
