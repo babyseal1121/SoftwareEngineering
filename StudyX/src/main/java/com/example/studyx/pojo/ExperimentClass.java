@@ -31,6 +31,8 @@ public class ExperimentClass {
 
     int randkey;
 
+    boolean pigeonhole;
+
     public Integer getExperimentclassno() {
         return experimentclassno;
     }
@@ -69,6 +71,14 @@ public class ExperimentClass {
 
     public void setRandkey(int randkey) {
         this.randkey = randkey;
+    }
+
+    public boolean isPigeonhole() {
+        return pigeonhole;
+    }
+
+    public void setPigeonhole(boolean pigeonhole) {
+        this.pigeonhole = pigeonhole;
     }
 
     public ExperimentClass(ExperimentClassInfo experimentClassInfo, int randKey) {

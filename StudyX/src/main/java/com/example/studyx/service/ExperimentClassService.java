@@ -67,6 +67,8 @@ public class ExperimentClassService {
 
         //清空随机码
         experimentClass.setRandkey(-1);
+        //设置归档情况
+        experimentClass.setPigeonhole(false);
         experimentClassDAO.save(experimentClass);
     }
 
@@ -353,4 +355,34 @@ public class ExperimentClassService {
         return experimentList;
     }
 
+    //将班级归档
+    public String pigeonholeExperimentClass(int experimentClassNo){
+        //获取班级信息
+        ExperimentClass experimentClass = experimentClassDAO.findByExperimentclassno(experimentClassNo);
+
+        //查看班级是否已经归档
+        if(experimentClass.isPigeonhole())
+        {
+            return new String("该班级已经归档");
+        }
+
+        //将班级内学生设为未激活状态
+        //查询班级内学生
+        List<MemberInClass> member = memberInClassDAO.findByExperimentclassno(experimentClassNo);
+        //将学生状态改为未激活
+        for(int i = 0; i < member.size(); i++)
+        {
+            User user = userDAO.getById(member.get(i).getUserid());
+            if(user.getLevel().equals("助教") || user.getLevel().equals("学生"))
+            {
+                user.setLevel("未激活");
+                userDAO.save(user);
+            }
+        }
+        //将班级改为归档状态
+        experimentClass.setPigeonhole(true);
+        experimentClassDAO.save(experimentClass);
+
+        return new String("班级归档成功");
+    }
 }

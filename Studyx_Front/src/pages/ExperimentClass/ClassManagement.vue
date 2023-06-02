@@ -47,6 +47,11 @@
                 type="danger"
                 @click="handleClickDelete(scope.row)">删除</el-button>
 
+                <el-button
+                size="mini"
+                type="danger"
+                @click="handleClickPigeonhole(scope.row)">归档</el-button>
+
             </template>
             </el-table-column>
         </el-table>
@@ -70,6 +75,17 @@
                 <el-button type="primary" @click="handleDelete">确 定</el-button>
             </span>
         </el-dialog>
+
+        <el-dialog
+        title="提示"
+        :visible.sync="pigeonholeDialogVisible"
+        width="30%">
+            <span>要将这个班级归档吗</span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="pigeonholeDialogVisible = false">取 消</el-button>
+                <el-button type="primary" @click="handlePigeonhole">确 定</el-button>
+            </span>
+        </el-dialog>
     </Contentfield>
 </template>
 
@@ -88,14 +104,24 @@ export default {
             tableData: [],
             //用于搜素指定班级
             search: '',
-            //弹窗是否可见
+            //删除班级弹窗是否可见
             dialogVisible: false,
             //存储要删除的信息
-            deleteInfo:{}
+            deleteInfo:{},
+            //归档班级弹窗是否可见
+            pigeonholeDialogVisible:false,
+            //存储要归档的信息
+            pigeonholeInfo:{}
         }
     },
     //函数
     methods:{
+
+        //处理点击归档
+        handleClickPigeonhole(row){
+            this.pigeonholeDialogVisible = true;
+            this.pigeonholeInfo = row;
+        },
 
         //前往新建班级
         comeToCreateClass(){
@@ -106,6 +132,37 @@ export default {
         handleClickDelete(row){
             this.dialogVisible = true;
             this.deleteInfo = row;
+        },
+
+        //处理归档
+        handlePigeonhole(){
+            this.pigeonholeDialogVisible = false;
+            //发送的数据
+            let data = {
+                method: "post",
+                url:"/class/pigeonholeexperimentclass",
+                params: {"experimentClassNo": this.pigeonholeInfo.experimentclassno}
+            }
+             //发送请求
+             this.$axios.request(data)
+            .then(response => {
+                    //如果请求成功
+                if(200 == response.data.code){
+                    //获取数据
+                    let backInfo = response.data.result
+                    if(backInfo == "班级归档成功")
+                        this.$message.success(backInfo);
+                    else
+                        this.$message.warning(backInfo);
+                }
+                else{
+                    this.$message.error("班级归档失败");
+                }
+            })
+            .catch(failResponse => {
+                console.log(failResponse)
+                this.$message.error("班级归档失败");
+            })
         },
 
         //处理删除

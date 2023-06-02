@@ -86,7 +86,13 @@ public class StudyMaterialService {
         response.setContentType("application/octet-stream");
         response.setCharacterEncoding("utf-8");
         response.setContentLength((int) file.length());
-        response.setHeader("Content-Disposition", "attachment;filename=" + fileName );
+        String formFileName = "";
+        try {
+            formFileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        response.setHeader("Content-Disposition", "attachment;filename=" + formFileName );
         //开始传输文件
         try{
             BufferedInputStream bis = new BufferedInputStream(Files.newInputStream(file.toPath()));

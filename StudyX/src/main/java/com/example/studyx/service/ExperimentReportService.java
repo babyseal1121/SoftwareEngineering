@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,12 +105,19 @@ public class ExperimentReportService {
             fileName = "report";
         }
 
+        String formFileName = "";
+        try {
+            formFileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+
         //重设请求头信息
         response.reset();
         response.setContentType("application/octet-stream");
         response.setCharacterEncoding("utf-8");
         response.setContentLength((int) file.length());
-        response.setHeader("Content-Disposition", "attachment;filename=" + fileName );
+        response.setHeader("Content-Disposition", "attachment;filename=" + formFileName);
         //开始传输文件
         try{
             BufferedInputStream bis = new BufferedInputStream(Files.newInputStream(file.toPath()));

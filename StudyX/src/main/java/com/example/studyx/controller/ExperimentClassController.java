@@ -1,5 +1,6 @@
 package com.example.studyx.controller;
 
+import com.example.studyx.dao.ExperimentClassDAO;
 import com.example.studyx.domain.ExperimentClassInfo;
 import com.example.studyx.domain.ExperimentProjectSimpleInfo;
 import com.example.studyx.domain.ExperimentReportSimpleInfo;
@@ -18,6 +19,8 @@ public class ExperimentClassController {
 
     @Autowired
     ExperimentClassService experimentClassService;
+    @Autowired
+    private ExperimentClassDAO experimentClassDAO;
 
     //创建新的班级
     @CrossOrigin
@@ -255,6 +258,20 @@ public class ExperimentClassController {
         catch (Exception e){
             System.out.println(e);
             return new Result(400,"failure", "获取项目列表失败");
+        }
+    }
+
+    //将班级归档
+    @CrossOrigin
+    @PostMapping(value = "/api/class/pigeonholeexperimentclass")
+    public Result pigeonholeExperimentClass(@RequestParam int experimentClassNo){
+        try{
+            String backInfo = experimentClassService.pigeonholeExperimentClass(experimentClassNo);
+            return new Result(200,"success", backInfo);
+        }
+        catch (Exception e){
+            System.out.println(e);
+            return new Result(400,"failure", "班级归档失败");
         }
     }
 }
