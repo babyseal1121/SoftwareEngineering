@@ -3,6 +3,10 @@ package com.example.studyx.controller;
 import com.example.studyx.dao.UserDAO;
 import com.example.studyx.pojo.User;
 import com.example.studyx.service.UserService;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
@@ -15,9 +19,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.HtmlUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +39,44 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @CrossOrigin
+    @PostMapping("/api/batchupload")
+    public Result uploadExcel(@RequestParam MultipartFile file) {
+        try {
+            File tempFile = File.createTempFile("temp", null);
+            file.transferTo(tempFile);
+            FileInputStream fis = new FileInputStream(tempFile);
+            Workbook workbook = new XSSFWorkbook(fis);
+            Sheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> rowIterator = sheet.iterator();
+            rowIterator.next();
+            List<User> users = new ArrayList<>();
+
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+                User user = new User();
+                user.setUsername(row.getCell(0).toString());
+                user.setMail(row.getCell(1).toString());
+                user.setLevel("未激活");
+                user.setStatus("normal");
+                // 默认生成 16 位盐，干扰数据
+                String salt = new SecureRandomNumberGenerator().nextBytes().toString();
+                int times = 2;
+                user.setSalt(salt);
+                String encodedPassword = new SimpleHash("md5", "123456", salt, times).toString();
+                user.setPassword(encodedPassword);
+                userDAO.save(user);
+                users.add(user);
+            }
+            fis.close();
+            tempFile.delete();
+
+            return ResultFactory.buildSuccessResult(users.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultFactory.buildFailResult("添加失败");
+        }
+    }
     @CrossOrigin
     @GetMapping("/api/user/login")
     public Result test(@RequestParam int id){
