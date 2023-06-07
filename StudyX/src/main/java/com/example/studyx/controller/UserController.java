@@ -41,7 +41,7 @@ public class UserController {
 
     @CrossOrigin
     @PostMapping("/api/batchupload")
-    public Result uploadExcel(@RequestParam MultipartFile file) {
+    public Result uploadExcel(@RequestBody MultipartFile file) {
         try {
             File tempFile = File.createTempFile("temp", null);
             file.transferTo(tempFile);
@@ -57,7 +57,7 @@ public class UserController {
                 User user = new User();
                 user.setUsername(row.getCell(0).toString());
                 user.setMail(row.getCell(1).toString());
-                user.setLevel("未激活");
+                user.setLevel("未授权");
                 user.setStatus("normal");
                 // 默认生成 16 位盐，干扰数据
                 String salt = new SecureRandomNumberGenerator().nextBytes().toString();
@@ -71,10 +71,10 @@ public class UserController {
             fis.close();
             tempFile.delete();
 
-            return ResultFactory.buildSuccessResult(users.size());
+            return new Result(200,"success", "上传成功");
         } catch (Exception e) {
             e.printStackTrace();
-            return ResultFactory.buildFailResult("添加失败");
+            return new Result(400,"failure", "上传失败");
         }
     }
     @CrossOrigin

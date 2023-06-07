@@ -71,6 +71,13 @@
                         @click="submitExperimentReport"
                         >提交实验报告</el-button>    
 
+                        <el-button 
+                        type="primary" 
+                        plain 
+                        class="experiment-button2"
+                        @click="handleComeToFile"
+                        >查看实验手册</el-button>   
+
                         <el-upload
                         class="upload-button"
                         ref="upload"
@@ -126,6 +133,16 @@ export default {
     },
     //函数
     methods: {
+
+        //跳转到实验手册
+        handleComeToFile(){
+            let row = {
+                experimentname: this.reportInfo.experimentname,
+                nowRoute: '/finishreport?' + 'experimentno=' + (this.reportInfo.experimentno).toString() 
+                + '&experimentname=' + this.reportInfo.experimentname + '&userId=' + (this.reportInfo.userid).toString()
+            }
+            this.$router.push({path:'/experimentfile',query:row})
+        },
 
         //限制只能上传一个文件
         handleExceed(){
@@ -292,8 +309,14 @@ export default {
 
 .experiment-button1{
     position:relative;
-    top: 30px;
-    left: -44.4%;
+    top: 32px;
+    left: -38.2%;
+}
+
+.experiment-button2{
+    position:relative;
+    top: 32px;
+    left: -36%;
 }
 
 .upload-button{

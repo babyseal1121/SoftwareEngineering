@@ -62,6 +62,7 @@ export default {
 
         //处理查看相应资料
         handleEdit(row) {
+            row.nowRoute = '/showstudyfile'
             this.$router.push({path:'/experimentfile',query:row})
         },
 

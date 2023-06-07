@@ -2,7 +2,7 @@
     <Contentfield>
         <div>
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item :to="{ path: '/showstudyfile'}">返回</el-breadcrumb-item>
+                <el-breadcrumb-item :to="{ path: lastPath}">返回</el-breadcrumb-item>
                 <el-breadcrumb-item>实验项目对应文件</el-breadcrumb-item>
             </el-breadcrumb>
             <br/>
@@ -85,7 +85,9 @@ export default {
             //存放当前上传文件列表
             fileList:[],
             //存放当前时间
-            nowTime:""
+            nowTime:"",
+            //存放上一条路径
+            lastPath:""
         }
     },
 
@@ -191,6 +193,8 @@ export default {
     mounted(){
         //获取当前路径(/实验项目名/)
         this.nowPath = "/" + this.$route.query.experimentname + "/"
+        //获取上一个页面的路径
+        this.lastPath = this.$route.query.nowRoute
         //获取文件列表
         this.getStudyMaterialList()
     }

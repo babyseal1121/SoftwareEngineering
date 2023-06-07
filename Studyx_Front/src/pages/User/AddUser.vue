@@ -8,22 +8,34 @@
 
       <div class="flex-display">
 
-        <el-button size="small" type="primary" class="el-btn"@click="add">
+        <!-- <el-button size="small" type="primary" class="el-btn" @click="add">
           创建新用户
-        </el-button>
-        <el-upload
-            action="https://jsonplaceholder.typicode.com/posts/"
-            :on-success="handleChange"
-            :file-list="fileList"
-            class="el-upload"
-        >
+        </el-button> -->
+
+        <el-upload    
+          ref="upload"       
+          action=""
+          :limit="1"
+          :on-exceed="handleExceed"
+          :file-list="fileList"
+          :http-request="onUpload"
+          :auto-upload="false"
+          class="el-upload">            
           <el-tooltip class="item" effect="dark" content="只能上传xlsx文件，且不超过5MB" placement="top-start">
             <el-button size="small" type="primary" class="el-btn">
               导入用户信息
             </el-button>
           </el-tooltip>
         </el-upload>
+
+        <el-button style="margin-left: 10px;" size="small" type="success" class="el-btn" @click="submitUpload">上传</el-button>
+        
+        <el-button size="small" type="primary" class="el-btn" @click="handleGetTemplate">
+          获取信息导入模板
+        </el-button>
+
       </div>
+
       <el-table v-if="tableHead.length" :data="tableData[0]" style="width: 100%">
         <el-table-column
             v-for="(data, key) in tableHead"
@@ -51,19 +63,83 @@ import { read, utils } from "xlsx";
 Vue.use(ElementUI);
 
 export default {
+
   name: "AddUser",
+
   components: { Contentfield,},
+
   data() {
+
     return {
-      fileList: [], //上传文件列表
-      tableHead: [], //表头
-      tableData: [] // 表数据
+      //上传文件列表
+      fileList: [], 
+      //表头
+      tableHead: [], 
+      //表数据
+      tableData: []
     };
   },
+
   methods: {
+
+     //选择上传文件
+    submitUpload(){
+        this.$refs.upload.submit();
+    },
+
+    //处理上传文件
+    onUpload(file){
+        //获取上传文件内容
+        let formData = new FormData();
+        formData.append("file", file.file);
+        //请求信息
+        let data = {
+            method: "post",
+            url: "/batchupload",
+            data: formData,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        //发送请求
+        this.$axios.request(data)
+            .then(response => {
+                //如果请求成功
+                if(200 == response.data.code){
+                    this.$message.success("文件上传成功");
+                    let res = ""
+                    this.handleChange(res, file, this.fileList)
+                }
+                else{
+                    this.$message.error("文件上传失败");
+                }
+            })
+            .catch(failResponse => {
+                console.log(failResponse)
+                this.$message.error("文件上传失败");
+          })
+    },
+
+    //限制只能上传一个文件
+    handleExceed(){
+        this.$message.warning("每次只能上传一个文件");
+    },
+
+    //获取表模板
+    handleGetTemplate(){
+        let link = document.createElement('a');
+        link.style.display = 'none';
+        link.href = "/static/file/template.xlsx"
+        link.download = "template.xlsx";
+        link.click();
+    },
+
+    //很可爱的一个函数
     add(){
       this.$message.success("test");
     },
+
+    //上传成功？
     handleChange(res, file, fileList) {
       // 将文件放入
       for (let i = 0; i < fileList.length; i++) {
@@ -75,11 +151,11 @@ export default {
           });
         }
       }
-
-      // this.fileList = fileList.slice(-3);
       const files = { 0: file };
       this.readExcel(files);
     },
+
+    //查看上传的内容
     readExcel(file) {
       const fileReader = new FileReader();
 
@@ -110,15 +186,17 @@ export default {
           return false;
         }
       };
-      fileReader.readAsBinaryString(file[0].raw);
+      fileReader.readAsBinaryString(file[0].file);
     }
   }
 }
 </script>
 <style  scoped>
+
 .upload-demo {
   width: 100%;
 }
+
 .flex-display {
   margin: 50px 30px;
   width: 100%;
@@ -126,30 +204,33 @@ export default {
   justify-content: flex-start;
 
 }
+
 .left-box {
-//margin: 20 30;
+  margin: 20 30;
   height: 36px;
   line-height: 36px;
 }
-.el-upload {
-  margin-left: 40px;
 
+.el-upload {
+  position:relative;
+  left: -2.5%;
 }
+
 .el-btn {
   font-size: 16px;
 }
+
 .el-upload-tip {
   display: inline;
   font-size: 12px;
 }
+
 .file-ipt {
   width: 200px;
   height: 36px;
   line-height: 36px;
-  button {
-    background-color: #409eff;
-  }
 }
+
 input #file-upload-button {
   background-color: #409eff;
 }
