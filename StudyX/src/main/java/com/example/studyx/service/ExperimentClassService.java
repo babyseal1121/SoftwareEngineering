@@ -38,6 +38,8 @@ public class ExperimentClassService {
     private UserDAO userDAO;
     @Autowired
     GradeDAO gradeDAO;
+    @Autowired
+    GradeSetDAO gradesetDAO;
 
     //根文件夹地址
     String rootDirPath = "C:/report";
@@ -81,6 +83,22 @@ public class ExperimentClassService {
         //设置归档情况
         experimentClass.setPigeonhole(false);
         experimentClassDAO.save(experimentClass);
+
+        //设置成绩计算预设
+        GradeSet gradeSet = new GradeSet();
+        gradeSet.setClassno(experimentClass.getExperimentclassno());
+        gradeSet.setExperimentnum(experimentListSize);
+        gradeSet.setAttandancenum(10);
+        gradeSet.setAttandanceweight(0.3);
+        gradeSet.setExperimentweight(0.7);
+        gradesetDAO.save(gradeSet);
+
+        //设置每个学生的成绩
+        for(int i = 0; i < userListSize; i++){
+
+            Grade grade = new Grade(userList.get(i),experimentClass.getExperimentclassno());
+            gradeDAO.save(grade);
+        }
     }
 
     //删除班级
@@ -454,11 +472,11 @@ public class ExperimentClassService {
             return new Result(400,"failure","该班级当前没有文件");
         }
 
-        //验证是否有压缩好的文件有了就不再压缩了
+        //验证是否有压缩好的文件有了就不再压缩了(算了不合理)
         //获取文件位置
-        File zipFile = new File(rootDirPath + "/" + className + ".zip");
+        //File zipFile = new File(rootDirPath + "/" + className + ".zip");
         //判断文件是否存在
-        if(!zipFile.exists()) {
+        if(true) {
             try {
                 //进行压缩
                 ZipOutputStream zos = null;

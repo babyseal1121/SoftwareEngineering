@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class GradeSet {
     @Id
     @Column(name = "classno")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     Integer classno;
     Integer attandancenum;
     Integer experimentnum;
