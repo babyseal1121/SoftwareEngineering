@@ -39,7 +39,7 @@
                     <el-input
                       v-model="loginForm.mail"
                       style="width: 230px"
-                      placeholder="邮箱/学号"
+                      placeholder="邮箱"
                       size="meddle"
                       autocomplete="off"
                     ></el-input>
@@ -529,7 +529,7 @@ export default {
                       console.log(res.data.menu_data)
                     })
                     this.$router.push({
-                      path: "/index",
+                      path: "/gradedisplay",
                     });
                   }
                   else if(res.data.result.level=="未激活"){
