@@ -62,12 +62,12 @@
         <el-table-column label="操作按钮" width="400px">
 
           <template slot-scope="scope">
-            <el-button size="mini"
+            <!-- <el-button size="mini"
                        type="success"
                        @click="mod(scope.row)"
                        plain
             >编辑用户信息</el-button
-            >
+            > -->
 
             <el-dialog
                 title="修改用户权限"
